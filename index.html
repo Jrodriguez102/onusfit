@@ -4,193 +4,373 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Onus Fitness — Personalized training programs built around your goals, schedule, and lifestyle." />
-    <title>Onus Fitness | Your Program. Your Results.</title>
-
-    <!-- Google Fonts -->
+    <title>Onus Fitness | Built Around You</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
-
-    <!-- CSS -->
     <link rel="stylesheet" href="src/styles/main.css" />
   </head>
-
   <body>
 
-    <!-- =================== HERO =================== -->
+    <!-- ========== NAV ========== -->
+    <nav id="navbar">
+      <div class="nav-inner">
+        <span class="nav-logo">Onus Fitness</span>
+        <a href="#pricing" class="btn-nav">Get Started</a>
+      </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
     <section id="hero">
-      <div class="hero-content">
-        <h1>Your Body. Your Goals.<br />Your Program.</h1>
-        <p class="subheadline">Training, recovery, and programming built specifically around you — not a generic plan made for everyone.</p>
-        <a href="#pricing" class="btn-primary">Get My Personalized Plan</a>
+      <div class="hero-left">
+        <p class="hero-question">What are your fitness goals?</p>
+        <h1>A Program Built<br />Around <em>Your</em> Life.</h1>
+        <p class="hero-sub">Strength, fat loss, endurance, or total transformation — your program is engineered around your body, schedule, and goals. Not anyone else's.</p>
+        <div class="hero-cta-group">
+          <a href="#pricing" class="btn-primary">Get My Program</a>
+          <span class="hero-price-note">Programs starting at $30</span>
+        </div>
       </div>
-    </section>
-
-    <!-- =================== SOCIAL PROOF =================== -->
-    <section id="social-proof">
-      <div class="stats-row">
-        <div class="stat">
-          <span class="stat-number">500+</span>
-          <span class="stat-label">Programs Delivered</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">4.9★</span>
-          <span class="stat-label">Average Rating</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">4</span>
-          <span class="stat-label">Month Programs</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">3</span>
-          <span class="stat-label">Tiers Available</span>
+      <div class="hero-right">
+        <div class="hero-image-panel">
+          <div class="hero-image-overlay"></div>
+          <div class="hero-image-label">
+            <span class="label-tag">Personalized</span>
+            <p>Built for you. Delivered to you.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- =================== HOW IT WORKS =================== -->
+    <!-- ========== SOCIAL PROOF STRIP ========== -->
+    <div id="proof-strip">
+      <div class="proof-inner">
+        <div class="proof-stat">
+          <span class="proof-number">500+</span>
+          <span class="proof-label">Programs Delivered</span>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-stat">
+          <span class="proof-number">4.9★</span>
+          <span class="proof-label">Average Rating</span>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-stat">
+          <span class="proof-number">4</span>
+          <span class="proof-label">Month Structure</span>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-stat">
+          <span class="proof-number">3</span>
+          <span class="proof-label">Tiers Available</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== BUILT AROUND YOU ========== -->
+    <section id="personalization">
+      <div class="section-header">
+        <h2>No Generic Plans.<br />Ever.</h2>
+        <p class="section-sub">Every variable that makes you different is built into your program from day one.</p>
+      </div>
+      <div class="adapt-grid">
+        <div class="adapt-card">
+          <span class="adapt-icon">◎</span>
+          <h4>Fitness Level</h4>
+          <p>Your program starts exactly where you are — beginner to advanced.</p>
+        </div>
+        <div class="adapt-card">
+          <span class="adapt-icon">◎</span>
+          <h4>Your Schedule</h4>
+          <p>2 days or 6 days a week — we build around your availability.</p>
+        </div>
+        <div class="adapt-card">
+          <span class="adapt-icon">◎</span>
+          <h4>Your Goals</h4>
+          <p>Fat loss, muscle, strength, or endurance — you define the outcome.</p>
+        </div>
+        <div class="adapt-card">
+          <span class="adapt-icon">◎</span>
+          <h4>Equipment Access</h4>
+          <p>Full gym, home setup, or minimal gear — all fully accommodated.</p>
+        </div>
+        <div class="adapt-card">
+          <span class="adapt-icon">◎</span>
+          <h4>Age &amp; Body</h4>
+          <p>Height, weight, and age shape every programming decision.</p>
+        </div>
+        <div class="adapt-card">
+          <span class="adapt-icon">◎</span>
+          <h4>Recovery</h4>
+          <p>Lifestyle and stress levels factored directly into your training load.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROGRAM PREVIEW ========== -->
+    <section id="preview">
+      <div class="section-header">
+        <h2>What Your Program<br />Looks Like</h2>
+        <p class="section-sub">A real sample from a personalized 4-month training block.</p>
+      </div>
+      <div class="preview-shell">
+        <div class="preview-header">
+          <div class="preview-header-left">
+            <span class="preview-tag">Week 1 — Foundation Block</span>
+            <p class="preview-name">Intermediate · 4 Days/Week · Goal: Muscle + Strength</p>
+          </div>
+          <div class="preview-badge">Month 1 of 4</div>
+        </div>
+        <div class="week-grid">
+          <div class="day-card active">
+            <span class="day-label">Monday</span>
+            <span class="day-type">Upper — Push</span>
+            <ul class="exercise-list">
+              <li>Barbell Bench Press <span>4×6</span></li>
+              <li>Incline DB Press <span>3×10</span></li>
+              <li>Overhead Press <span>3×8</span></li>
+              <li>Tricep Dips <span>3×12</span></li>
+            </ul>
+          </div>
+          <div class="day-card rest">
+            <span class="day-label">Tuesday</span>
+            <span class="day-type rest-type">Active Recovery</span>
+            <p class="rest-note">Light walk or mobility work — 20–30 min</p>
+          </div>
+          <div class="day-card">
+            <span class="day-label">Wednesday</span>
+            <span class="day-type">Lower — Strength</span>
+            <ul class="exercise-list">
+              <li>Back Squat <span>4×5</span></li>
+              <li>Romanian Deadlift <span>3×10</span></li>
+              <li>Leg Press <span>3×12</span></li>
+              <li>Calf Raises <span>4×15</span></li>
+            </ul>
+          </div>
+          <div class="day-card rest">
+            <span class="day-label">Thursday</span>
+            <span class="day-type rest-type">Rest</span>
+            <p class="rest-note">Full rest — recovery is part of the program.</p>
+          </div>
+          <div class="day-card">
+            <span class="day-label">Friday</span>
+            <span class="day-type">Upper — Pull</span>
+            <ul class="exercise-list">
+              <li>Weighted Pull-Ups <span>4×6</span></li>
+              <li>Barbell Row <span>3×8</span></li>
+              <li>Face Pulls <span>3×15</span></li>
+              <li>Hammer Curls <span>3×12</span></li>
+            </ul>
+          </div>
+          <div class="day-card">
+            <span class="day-label">Saturday</span>
+            <span class="day-type">Lower — Power</span>
+            <ul class="exercise-list">
+              <li>Deadlift <span>4×4</span></li>
+              <li>Bulgarian Split Squat <span>3×10</span></li>
+              <li>Hip Thrust <span>3×12</span></li>
+              <li>Nordic Curl <span>3×8</span></li>
+            </ul>
+          </div>
+          <div class="day-card rest full-rest">
+            <span class="day-label">Sunday</span>
+            <span class="day-type rest-type">Full Rest</span>
+            <p class="rest-note">Prepare mentally and physically for the next week.</p>
+          </div>
+        </div>
+        <div class="preview-footer">
+          <span>Progressively overloads every 2 weeks · Adjusts to your feedback · Delivered as a full 4-month plan</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
     <section id="how-it-works">
-      <h2>How It Works</h2>
-      <p class="section-sub">Three steps. Zero guesswork.</p>
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p class="section-sub">Simple, fast, and built around you from the start.</p>
+      </div>
       <div class="steps-row">
         <div class="step">
-          <span class="step-number">01</span>
-          <h3>Select Your Tier</h3>
-          <p>Choose Beginner, Intermediate, or Advanced based on your experience level.</p>
+          <span class="step-num">01</span>
+          <h3>Tell Us Your Goals</h3>
+          <p>Select your tier and submit your details — age, goals, schedule, experience, and equipment access.</p>
         </div>
+        <div class="step-arrow">→</div>
         <div class="step">
-          <span class="step-number">02</span>
-          <h3>Submit Your Info</h3>
-          <p>Tell us your age, goals, schedule, and lifestyle. We handle the rest.</p>
-        </div>
-        <div class="step">
-          <span class="step-number">03</span>
+          <span class="step-num">02</span>
           <h3>Receive Your Program</h3>
-          <p>Your fully personalized 4-month training program delivered straight to you.</p>
+          <p>Your personalized 4-month training program is generated and delivered directly to you within 24 hours.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Build and Transform</h3>
+          <p>Follow your structured program, track your progress, and build the consistency that creates lasting change.</p>
         </div>
       </div>
     </section>
 
-    <!-- =================== PERSONALIZATION =================== -->
-    <section id="personalization">
-      <h2>Built Around You.<br />Not Everyone Else.</h2>
-      <p class="section-sub">Every variable that makes you different is factored into your program.</p>
-      <div class="cards-row">
-        <div class="card"><h4>Fitness Level</h4><p>Beginner to advanced — your program starts where you are.</p></div>
-        <div class="card"><h4>Your Schedule</h4><p>2 days or 6 days a week — we work with your life.</p></div>
-        <div class="card"><h4>Your Goals</h4><p>Fat loss, muscle gain, strength, endurance — you define it.</p></div>
-        <div class="card"><h4>Equipment Access</h4><p>Full gym, home setup, or minimal gear — all accommodated.</p></div>
-        <div class="card"><h4>Age &amp; Body</h4><p>Your height, weight, and age shape every programming decision.</p></div>
-        <div class="card"><h4>Recovery</h4><p>Sleep, stress, and lifestyle factored into your training load.</p></div>
+    <!-- ========== BENEFITS ========== -->
+    <section id="benefits">
+      <div class="section-header">
+        <h2>What You'll Actually<br />Walk Away With</h2>
+        <p class="section-sub">Not features. Outcomes.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <span class="benefit-accent">—</span>
+          <h4>Sustainable Energy</h4>
+          <p>Training designed to fit your life, not drain it.</p>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-accent">—</span>
+          <h4>Real Structure</h4>
+          <p>A 4-month progressive plan with clear direction every single day.</p>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-accent">—</span>
+          <h4>Visible Results</h4>
+          <p>Programming built around your body and goals — results follow naturally.</p>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-accent">—</span>
+          <h4>Lasting Habits</h4>
+          <p>Consistency built in from day one — not motivation, but systems.</p>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-accent">—</span>
+          <h4>Confidence</h4>
+          <p>Walk into any gym knowing exactly what you're doing and why.</p>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-accent">—</span>
+          <h4>Long-Term Health</h4>
+          <p>Programming that optimizes your body without burning it out.</p>
+        </div>
       </div>
     </section>
 
-    <!-- =================== TESTIMONIALS =================== -->
-    <section id="testimonials">
-      <h2>Real People. Real Results.</h2>
-      <div class="testimonials-row">
-        <div class="testimonial">
-          <p>"I've tried every generic program out there. This was the first one that actually felt like it was made for me."</p>
-          <span class="t-name">— Sarah M., Intermediate</span>
-        </div>
-        <div class="testimonial">
-          <p>"Lost 18 lbs in the first 8 weeks. The program accounted for my work schedule and I never felt like I was failing."</p>
-          <span class="t-name">— James R., Beginner</span>
-        </div>
-        <div class="testimonial">
-          <p>"Finally a program that pushed me at the right level. I've hit PRs every single month."</p>
-          <span class="t-name">— Kayla T., Advanced</span>
-        </div>
+    <!-- ========== PHILOSOPHY ========== -->
+    <section id="philosophy">
+      <div class="philosophy-inner">
+        <p class="philosophy-quote">"Fitness should fit into your life — not consume it."</p>
+        <p class="philosophy-body">Most programs are built for an average person who doesn't exist. Onus Fitness is built around the reality of your schedule, your body, and your goals — giving you a structured path forward without asking you to rebuild your entire life around a gym.</p>
       </div>
     </section>
 
-    <!-- =================== COMPARISON =================== -->
+    <!-- ========== COMPARISON ========== -->
     <section id="comparison">
-      <h2>Why Onus?</h2>
-      <div class="comparison-table">
+      <div class="section-header">
+        <h2>Why Onus?</h2>
+        <p class="section-sub">The difference between a plan built for everyone and one built for you.</p>
+      </div>
+      <div class="comp-wrap">
         <div class="comp-col generic">
           <h3>Generic Plans</h3>
           <ul>
             <li>One size fits all</li>
-            <li>No account for your schedule</li>
+            <li>Ignores your schedule</li>
             <li>Built for the average person</li>
             <li>No progression logic</li>
             <li>You figure it out alone</li>
+            <li>No account for recovery</li>
           </ul>
         </div>
         <div class="comp-col onus">
-          <h3>Onus Fitness</h3>
+          <div class="comp-onus-badge">Onus Fitness</div>
           <ul>
             <li>Built around your body</li>
             <li>Fits your exact schedule</li>
             <li>Personalized to your goals</li>
             <li>4-month progressive structure</li>
             <li>Delivered directly to you</li>
+            <li>Recovery factored in</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- =================== PRICING =================== -->
+    <!-- ========== PRICING ========== -->
     <section id="pricing">
-      <h2>Choose Your Tier</h2>
-      <p class="section-sub">One-time payment. Four months of personalized programming.</p>
+      <div class="section-header">
+        <h2>Choose Your Tier</h2>
+        <p class="section-sub">One payment. Four months of programming built around you.</p>
+      </div>
       <div class="pricing-row">
+
         <div class="price-card">
-          <h3>Beginner</h3>
-          <p class="price">$97</p>
-          <ul>
+          <div class="price-card-top">
+            <h3>Base</h3>
+            <p class="price-desc">Everything you need to start training with structure and purpose.</p>
+            <div class="price-amount">$30</div>
+          </div>
+          <ul class="price-features">
             <li>Full 4-month program</li>
             <li>Personalized to your info</li>
             <li>2–3 days/week structure</li>
             <li>Delivered via email</li>
           </ul>
-          <a href="#" class="btn-primary">Get Started</a>
+          <a href="#" class="btn-price">Get Started</a>
         </div>
+
         <div class="price-card featured">
-          <h3>Intermediate</h3>
-          <p class="price">$127</p>
-          <ul>
+          <div class="featured-badge">Most Popular</div>
+          <div class="price-card-top">
+            <h3>Advanced</h3>
+            <p class="price-desc">A full progressive program built for serious, consistent training.</p>
+            <div class="price-amount">$45<span class="price-range">– $55</span></div>
+          </div>
+          <ul class="price-features">
             <li>Full 4-month program</li>
             <li>Personalized to your info</li>
-            <li>3–5 days/week structure</li>
+            <li>4–5 days/week structure</li>
             <li>Delivered via email + SMS</li>
+            <li>Progressive overload built in</li>
           </ul>
-          <a href="#" class="btn-primary">Get Started</a>
+          <a href="#" class="btn-price">Get Started</a>
         </div>
-        <div class="price-card">
-          <h3>Advanced</h3>
-          <p class="price">$157</p>
-          <ul>
-            <li>Full 4-month program</li>
-            <li>Personalized to your info</li>
-            <li>4–6 days/week structure</li>
-            <li>Delivered via email + SMS</li>
+
+        <div class="price-card vip">
+          <div class="price-card-top">
+            <h3>VIP</h3>
+            <p class="price-desc">Full personalization plus direct coaching access and ongoing support.</p>
+            <div class="price-amount">$100</div>
+          </div>
+          <ul class="price-features">
+            <li>Everything in Advanced</li>
+            <li>Direct coach contact</li>
+            <li>Program adjustments included</li>
+            <li>Priority delivery</li>
+            <li>Ongoing check-ins</li>
           </ul>
-          <a href="#" class="btn-primary">Get Started</a>
+          <a href="#" class="btn-price vip-btn">Get Started</a>
         </div>
+
       </div>
     </section>
 
-    <!-- =================== FAQ =================== -->
+    <!-- ========== FAQ ========== -->
     <section id="faq">
-      <h2>Common Questions</h2>
+      <div class="section-header">
+        <h2>Common Questions</h2>
+      </div>
       <div class="faq-list">
         <div class="faq-item">
           <h4>Do I need a gym membership?</h4>
-          <p>No. We build your program around whatever equipment you have access to — full gym, home setup, or minimal gear.</p>
+          <p>No. We build your program around whatever equipment you have — full gym, home setup, or minimal gear.</p>
         </div>
         <div class="faq-item">
           <h4>What experience level is this for?</h4>
-          <p>All levels. Beginner, Intermediate, and Advanced tiers are each built differently to match exactly where you are.</p>
+          <p>All levels. Base, Advanced, and VIP tiers are each structured differently to match exactly where you are.</p>
         </div>
         <div class="faq-item">
           <h4>How is this different from a generic program?</h4>
-          <p>Your age, weight, schedule, goals, and experience are all inputted into our system to generate a program built specifically for you — not a template.</p>
+          <p>Your age, weight, schedule, goals, and experience are all used to generate a program built specifically for you — not a recycled template.</p>
         </div>
         <div class="faq-item">
           <h4>When do I receive my program?</h4>
-          <p>Within 24 hours of purchase. You'll receive it via email and SMS.</p>
+          <p>Within 24 hours of purchase via email. SMS delivery included on Advanced and VIP tiers.</p>
         </div>
         <div class="faq-item">
           <h4>What if I'm not satisfied?</h4>
@@ -199,21 +379,25 @@
       </div>
     </section>
 
-    <!-- =================== FINAL CTA =================== -->
+    <!-- ========== FINAL CTA ========== -->
     <section id="final-cta">
-      <h2>Ready for a Program Built Around Your Life?</h2>
-      <p>Stop following plans made for someone else. Start training with one built for you.</p>
-      <a href="#pricing" class="btn-primary">Start My Personalized Program</a>
+      <div class="final-cta-inner">
+        <h2>Ready to Build a Stronger,<br />Healthier Version of Yourself?</h2>
+        <p>Structured guidance. Personalized programming. Sustainable progress.</p>
+        <a href="#pricing" class="btn-primary">Start My Program</a>
+      </div>
     </section>
 
-    <!-- =================== FOOTER =================== -->
+    <!-- ========== FOOTER ========== -->
     <footer>
-      <p>© 2026 Onus Fitness. All rights reserved.</p>
-      <p><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+      <span class="footer-logo">Onus Fitness</span>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <p class="footer-copy">© 2026 Onus Fitness. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
     <script src="src/scripts/main.js"></script>
-
   </body>
 </html>

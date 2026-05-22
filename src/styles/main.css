@@ -1,733 +1,203 @@
-/* ============================================
-   ONUS FITNESS — v3
-   Future structure · WHOOP dark UI · Oura type
-   ============================================ */
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 body {
-  font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
-  color: #e8e8e8;
+  font-family: 'DM Sans', sans-serif;
+  background: #f0ebe3;
+  color: #2a2520;
   line-height: 1.6;
   overflow-x: hidden;
 }
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
 
-/* Oura signature: italic serif for emotional phrases */
+a { text-decoration: none; color: inherit; }
+
 em {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Serif Display', Georgia, serif;
   font-style: italic;
   color: inherit;
 }
 
 :root {
-  --accent: #c8960c;
-  --accent-light: #e8b020;
-  --accent-glow: rgba(200, 150, 12, 0.10);
-  --accent-border: rgba(200, 150, 12, 0.22);
-  --bg-0: #0a0a0a;
-  --bg-1: #0f0f0f;
-  --bg-2: #141414;
-  --bg-card: #131313;
-  --border: rgba(255,255,255,0.07);
-  --border-mid: rgba(255,255,255,0.11);
-  --t1: #f2f2f2;
-  --t2: #808080;
-  --t3: #404040;
-  --radius: 14px;
+  --bg: #f0ebe3;
+  --text-1: #2a2520;
+  --text-2: #7a6f65;
+  --text-3: #b0a89e;
+  --accent: #2a2520;
   --radius-pill: 100px;
 }
 
-/* ============================================
-   TYPE SCALE
-   ============================================ */
 h1 {
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 800;
-  line-height: 1.04;
-  letter-spacing: -0.03em;
-  color: var(--t1);
-}
-h2 {
-  font-size: clamp(2.4rem, 4.5vw, 4rem);
-  font-weight: 800;
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  font-weight: 300;
   line-height: 1.06;
-  letter-spacing: -0.025em;
-  color: var(--t1);
-}
-h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--t1);
-  letter-spacing: -0.01em;
-}
-h4 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--t1);
-  letter-spacing: 0.01em;
-}
-p { color: var(--t2); font-size: 1rem; line-height: 1.75; }
-
-.section-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 20px;
-}
-
-.section-sub {
-  color: var(--t2);
-  font-size: 1.05rem;
-  margin-top: 18px;
-  max-width: 500px;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
 }
 
 /* ============================================
-   BUTTONS — Future pill style
-   ============================================ */
-.btn-primary {
-  display: inline-block;
-  background: var(--t1);
-  color: #0a0a0a;
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 16px 40px;
-  border-radius: var(--radius-pill);
-  letter-spacing: 0.01em;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  cursor: pointer;
-}
-.btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
-
-.btn-nav {
-  display: inline-block;
-  background: var(--t1);
-  color: #0a0a0a;
-  font-weight: 700;
-  font-size: 0.82rem;
-  padding: 10px 22px;
-  border-radius: var(--radius-pill);
-  letter-spacing: 0.01em;
-  transition: opacity 0.2s ease;
-}
-.btn-nav:hover { opacity: 0.85; }
-
-/* ============================================
-   NAVBAR — Future transparent style
+   NAVBAR
    ============================================ */
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 20px 48px;
+  padding: 22px 52px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to bottom, rgba(10,10,10,0.9) 0%, transparent 100%);
+  background: rgba(240,235,227,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(42,37,32,0.08);
 }
+
 .nav-logo {
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--t1);
+  color: var(--text-1);
 }
 
-/* ============================================
-   SECTION BASE
-   ============================================ */
-section {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 120px 48px;
+.btn-nav {
+  display: inline-block;
+  background: var(--text-1);
+  color: #f0ebe3;
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 11px 26px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.01em;
+  transition: opacity 0.2s ease;
 }
+.btn-nav:hover { opacity: 0.78; }
 
 /* ============================================
-   HERO — Future full-bleed style
+   HERO — Oura style
    ============================================ */
 #hero {
   max-width: 100%;
   min-height: 100vh;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 160px 48px 120px;
+  padding: 140px 52px 100px;
+  gap: 80px;
   background:
-    radial-gradient(ellipse at 50% 80%, rgba(200,150,12,0.05) 0%, transparent 60%),
-    linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+    radial-gradient(ellipse at 20% 50%, rgba(220,180,120,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(180,160,200,0.10) 0%, transparent 50%),
+    var(--bg);
   position: relative;
 }
-#hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: var(--border);
-}
+
 .hero-content {
-  max-width: 860px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 28px;
+  max-width: 580px;
 }
+
 .hero-eyebrow {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text-2);
 }
+
 .hero-sub {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: var(--t2);
-  max-width: 560px;
-  text-align: center;
+  font-size: 1rem;
+  color: var(--text-2);
+  max-width: 400px;
+  line-height: 1.75;
 }
+
 .hero-actions {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 20px;
+  flex-wrap: wrap;
   margin-top: 8px;
 }
+
+.btn-primary {
+  display: inline-block;
+  background: var(--text-1);
+  color: #f0ebe3;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 15px 36px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.01em;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+.btn-primary:hover { opacity: 0.78; }
+
 .hero-price-hint {
   font-size: 0.82rem;
-  color: var(--t3);
-  letter-spacing: 0.02em;
+  color: var(--text-3);
 }
 
-/* ============================================
-   PROOF STRIP
-   ============================================ */
-#proof-strip {
-  background: var(--bg-1);
-  border-bottom: 1px solid var(--border);
-  padding: 52px 48px;
-}
-.proof-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0;
-}
-.proof-stat {
-  flex: 1;
-  min-width: 140px;
+/* Right side — Oura style stat/feature panel */
+.hero-right {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 7px;
-  padding: 0 40px;
-}
-.proof-num {
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: var(--t1);
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-.proof-label {
-  font-size: 0.72rem;
-  color: var(--t2);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-.proof-line {
-  width: 1px;
-  height: 44px;
-  background: var(--border-mid);
-  flex-shrink: 0;
+  gap: 20px;
+  align-self: center;
 }
 
-/* ============================================
-   PERSONALIZATION
-   ============================================ */
-#personalization { padding-bottom: 100px; }
-.adapt-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-top: 60px;
-}
-.adapt-card {
-  background: var(--bg-card);
-  padding: 36px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: background 0.2s ease;
-}
-.adapt-card:hover { background: #181818; }
-.adapt-card h4 { color: var(--t1); margin-bottom: 4px; }
-.adapt-card p { font-size: 0.9rem; }
-
-/* ============================================
-   PROGRAM PREVIEW
-   ============================================ */
-#preview {
-  background: var(--bg-0);
-  max-width: 100%;
-  padding: 120px 48px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-#preview > * { max-width: 1080px; margin-left: auto; margin-right: auto; }
-#preview .section-label,
-#preview h2,
-#preview .section-sub { max-width: 1080px; }
-
-.preview-shell {
-  margin-top: 56px;
-  border: 1px solid var(--border-mid);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--bg-card);
-}
-.preview-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 28px;
-  border-bottom: 1px solid var(--border);
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.preview-tag {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 5px;
-}
-.preview-meta { font-size: 0.82rem; color: var(--t2); }
-.preview-badge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-glow);
-  border: 1px solid var(--accent-border);
-  padding: 5px 14px;
-  border-radius: var(--radius-pill);
-}
-.week-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  border-bottom: 1px solid var(--border);
-}
-@media (max-width: 900px) {
-  .week-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 600px) {
-  .week-grid { grid-template-columns: 1fr 1fr; }
-}
-.day-card {
-  padding: 20px 16px;
-  border-right: 1px solid var(--border);
-}
-.day-card:last-child { border-right: none; }
-.day-name {
-  display: block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--t3);
-  margin-bottom: 5px;
-}
-.day-focus {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--t1);
-  margin-bottom: 14px;
-}
-.day-focus.muted { color: var(--t3); }
-.day-rest { background: rgba(255,255,255,0.01); }
-.rest-note { font-size: 0.76rem; color: var(--t3); line-height: 1.5; }
-.ex-list { display: flex; flex-direction: column; gap: 7px; }
-.ex-list li {
-  font-size: 0.74rem;
-  color: var(--t2);
-  display: flex;
-  justify-content: space-between;
-  gap: 6px;
-}
-.ex-list li span {
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 0.7rem;
-  white-space: nowrap;
-}
-.preview-footer {
-  padding: 16px 28px;
-  font-size: 0.76rem;
-  color: var(--t3);
-}
-
-/* ============================================
-   HOW IT WORKS
-   ============================================ */
-.steps {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  margin-top: 70px;
-  flex-wrap: wrap;
-}
-.step {
-  flex: 1;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 0 32px 0 0;
-}
-.step-n {
-  font-size: 3.5rem;
-  font-weight: 900;
-  color: var(--t1);
-  letter-spacing: -0.05em;
-  line-height: 1;
-  opacity: 0.15;
-}
-.step h3 { font-size: 1.1rem; }
-.step-connector {
-  width: 1px;
-  height: 80px;
-  background: var(--border-mid);
-  margin: 10px 40px 0;
-  flex-shrink: 0;
-  align-self: flex-start;
-}
-
-/* ============================================
-   PHILOSOPHY — warm off-white break (Oura)
-   ============================================ */
-#philosophy {
-  max-width: 100%;
-  background: #f5f0e8;
-  padding: 120px 48px;
-  border-top: 1px solid rgba(0,0,0,0.06);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-.philosophy-inner {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-.phil-quote {
-  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-  font-weight: 700;
-  line-height: 1.25;
-  color: #1a1a1a;
-  letter-spacing: -0.02em;
-}
-.phil-quote em {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-  color: #1a1a1a;
-}
-.phil-body {
-  font-size: 1.05rem;
-  color: #666;
-  max-width: 600px;
-  margin: 0 auto;
+.hero-right p {
+  font-size: 1rem;
+  color: var(--text-2);
+  max-width: 380px;
   line-height: 1.8;
 }
 
-/* ============================================
-   BENEFITS
-   ============================================ */
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 48px 64px;
-  margin-top: 70px;
-}
-.benefit { display: flex; flex-direction: column; gap: 12px; }
-.benefit-line {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--accent);
-}
-.benefit h4 { font-size: 1rem; }
-.benefit p { font-size: 0.9rem; }
-
-/* ============================================
-   COMPARISON
-   ============================================ */
-.comp-wrap {
+.hero-stat-row {
   display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.hero-stat {
+  display: flex;
+  align-items: center;
   gap: 16px;
-  margin-top: 60px;
-  flex-wrap: wrap;
+  padding: 18px 22px;
+  background: rgba(42,37,32,0.04);
+  border: 1px solid rgba(42,37,32,0.08);
+  border-radius: 12px;
+  transition: background 0.2s ease;
 }
-.comp-col {
-  flex: 1;
-  min-width: 260px;
-  border-radius: var(--radius);
-  padding: 40px 36px;
-}
-.comp-title {
-  font-size: 0.72rem;
+.hero-stat:hover { background: rgba(42,37,32,0.07); }
+
+.hero-stat-num {
+  font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 28px;
+  color: var(--text-1);
+  letter-spacing: -0.03em;
+  min-width: 52px;
 }
-.comp-col ul { display: flex; flex-direction: column; gap: 18px; }
-.comp-col ul li {
-  font-size: 0.92rem;
-  padding-left: 22px;
-  position: relative;
+
+.hero-stat-label {
+  font-size: 0.85rem;
+  color: var(--text-2);
   line-height: 1.4;
 }
-.comp-col ul li::before {
-  position: absolute;
-  left: 0;
-  font-size: 0.8rem;
-}
-.generic {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-}
-.generic .comp-title { color: var(--t3); }
-.generic ul li { color: var(--t2); }
-.generic ul li::before { content: '×'; color: var(--t3); }
-.onus {
-  background: #0f0c02;
-  border: 1px solid var(--accent-border);
-}
-.onus .comp-title { color: var(--accent); }
-.onus ul li { color: var(--t1); }
-.onus ul li::before { content: '✓'; color: var(--accent); font-weight: 700; }
 
-/* ============================================
-   PRICING — WHOOP card style
-   ============================================ */
-.pricing-row {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 64px;
-  align-items: stretch;
-}
-.price-card {
-  flex: 1;
-  min-width: 260px;
-  max-width: 320px;
-  background: #f5f5f5;
-  border-radius: var(--radius);
-  padding: 40px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  position: relative;
-  transition: transform 0.25s ease;
-}
-.price-card:hover { transform: translateY(-5px); }
-.price-card--featured {
-  background: #ffffff;
-  box-shadow: 0 0 0 2px var(--accent);
-}
-.price-card--vip {
-  background: #0f0f0f;
-  border: 1px solid var(--border-mid);
-}
-.featured-label {
-  position: absolute;
-  top: -13px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 14px;
-  border-radius: var(--radius-pill);
-  white-space: nowrap;
-}
-.price-top { display: flex; flex-direction: column; gap: 10px; }
-.tier-name {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #111;
-}
-.price-card--vip .tier-name { color: var(--t2); }
-.tier-desc { font-size: 0.88rem; color: #666; line-height: 1.55; }
-.price-card--vip .tier-desc { color: var(--t2); }
-.tier-price {
-  font-size: 3.2rem;
-  font-weight: 900;
-  color: #111;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-top: 6px;
-}
-.price-card--vip .tier-price { color: var(--t1); }
-.tier-price-range {
-  font-size: 1.4rem;
-  color: #999;
-  font-weight: 500;
-}
-.tier-features { display: flex; flex-direction: column; gap: 14px; flex: 1; }
-.tier-features li {
-  font-size: 0.88rem;
-  color: #444;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.price-card--vip .tier-features li { color: var(--t2); }
-.check {
-  color: #111;
-  font-weight: 800;
-  font-size: 0.8rem;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.price-card--vip .check { color: var(--accent); }
-.btn-tier {
-  display: block;
-  text-align: center;
-  background: #111;
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.88rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 15px;
-  border-radius: var(--radius-pill);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  cursor: pointer;
-}
-.btn-tier:hover { opacity: 0.82; transform: translateY(-1px); }
-.btn-tier--featured {
-  background: var(--accent);
-  color: #fff;
-}
-.price-card--vip .btn-tier {
-  background: var(--t1);
-  color: #111;
+@media (max-width: 900px) {
+  #hero {
+    grid-template-columns: 1fr;
+    padding: 130px 32px 80px;
+    gap: 48px;
+  }
+  .hero-content { max-width: 100%; }
+  .hero-right p { max-width: 100%; }
 }
 
-/* ============================================
-   FAQ
-   ============================================ */
-.faq-list {
-  max-width: 680px;
-  margin: 60px auto 0;
-  display: flex;
-  flex-direction: column;
-}
-.faq-item {
-  padding: 28px 0;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.faq-item:first-child { border-top: 1px solid var(--border); }
-.faq-item h4 { font-size: 0.95rem; color: var(--t1); }
-.faq-item p { font-size: 0.9rem; }
-
-/* ============================================
-   FINAL CTA — Future footer-CTA style
-   ============================================ */
-#final-cta {
-  max-width: 100%;
-  padding: 160px 48px;
-  text-align: center;
-  background:
-    linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.60) 100%),
-    url('../../public/images/cta-bg.jpg') center center / cover no-repeat;
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-  position: relative;
-}
-#final-cta h2 { max-width: 700px; }
-#final-cta p { font-size: 1.05rem; max-width: 440px; }
-
-/* ============================================
-   FOOTER
-   ============================================ */
-footer {
-  background: var(--bg-1);
-  border-top: 1px solid var(--border);
-  padding: 52px 48px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  text-align: center;
-}
-.footer-logo {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--t1);
-  letter-spacing: -0.01em;
-}
-.footer-links { display: flex; gap: 28px; }
-.footer-links a {
-  font-size: 0.8rem;
-  color: var(--t3);
-  transition: color 0.2s ease;
-}
-.footer-links a:hover { color: var(--t1); }
-.footer-copy { font-size: 0.76rem; color: var(--t3); }
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 768px) {
-  section { padding: 90px 24px; }
+@media (max-width: 600px) {
   #navbar { padding: 18px 24px; }
-  #hero { padding: 140px 24px 100px; }
-  #proof-strip { padding: 48px 24px; }
-  .proof-line { display: none; }
-  .proof-stat { padding: 16px 24px; }
-  .steps { flex-direction: column; }
-  .step { padding: 0; }
-  .step-connector { width: 40px; height: 1px; margin: 0; }
-  .pricing-row { flex-direction: column; align-items: center; }
-  .price-card { max-width: 100%; width: 100%; }
-  .comp-wrap { flex-direction: column; }
-  #philosophy { padding: 90px 24px; }
-  #final-cta { padding: 120px 24px; }
-  footer { padding: 48px 24px; }
-}
-.tier-footnote {
-  font-size: 0.78rem;
-  color: #999;
-  line-height: 1.5;
-  font-style: italic;
+  #hero { padding: 120px 24px 80px; }
 }

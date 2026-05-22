@@ -724,3 +724,9 @@ footer {
   #final-cta { padding: 120px 24px; }
   footer { padding: 48px 24px; }
 }
+.tier-footnote {
+  font-size: 0.78rem;
+  color: #999;
+  line-height: 1.5;
+  font-style: italic;
+}

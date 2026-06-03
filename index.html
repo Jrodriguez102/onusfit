@@ -150,6 +150,7 @@
   .prev-2 { background: linear-gradient(135deg, #F7F4EF 0%, #EDE7DA 100%); }
   .prev-3 { background: linear-gradient(135deg, #F6F8FA 0%, #EEF3F8 100%); }
   .prev-4 { background: linear-gradient(135deg, #F5F0E8 0%, #EDE7DA 100%); }
+  .prev-5 { background: linear-gradient(135deg, #E4EAED 0%, #C5D4DB 100%); }
 
   .preview-label {
     font-size: 11px; font-weight: 500;
@@ -162,7 +163,8 @@
   .prev-1 .preview-label,
   .prev-2 .preview-label,
   .prev-3 .preview-label,
-  .prev-4 .preview-label { background: rgba(28,34,43,0.06); color: var(--body); }
+  .prev-4 .preview-label,
+  .prev-5 .preview-label { background: rgba(28,34,43,0.06); color: var(--body); }
 
   /* Mock browser chrome */
   .mock-browser {
@@ -207,6 +209,7 @@
   .prev-2 .mock-line.accent { background: rgba(155,114,66,0.3); }
   .prev-3 .mock-line.accent { background: rgba(75,110,245,0.3); }
   .prev-4 .mock-line.accent { background: rgba(168,123,72,0.3); }
+  .prev-5 .mock-line.accent { background: rgba(95,122,138,0.4); }
 
   /* Card body */
   .card-body {
@@ -238,6 +241,7 @@
   .tag-editorial { background: rgba(155,114,66,0.12); color: #9B7242; }
   .tag-saas      { background: rgba(75,110,245,0.1); color: #4B6EF5; }
   .tag-luxury    { background: rgba(168,123,72,0.12); color: #A87B48; }
+  .tag-variant   { background: rgba(95,122,138,0.12); color: #5F7A8A; }
 
   .card-desc {
     font-size: 14px; font-weight: 300;
@@ -302,6 +306,7 @@
   .card:nth-child(3) { animation-delay: 0.3s; }
   .card:nth-child(4) { animation-delay: 0.4s; }
   .card:nth-child(5) { animation-delay: 0.5s; }
+  .card:nth-child(6) { animation-delay: 0.6s; }
 
   @keyframes cardIn {
     to { opacity: 1; transform: none; }
@@ -320,9 +325,9 @@
     <span class="header-label">Design Review — onusfit.com</span>
   </div>
   <div class="hero-text">
-    <div class="hero-tag">5 concepts for review</div>
+    <div class="hero-tag">6 concepts for review</div>
     <h1 class="hero-h">Choose the direction for <em>Onus Fitness.</em></h1>
-    <p class="hero-sub">Five distinct design concepts for the Onus Fitness landing page. Each takes a different approach to communicating personalized fitness programming. Click any concept to view the full page.</p>
+    <p class="hero-sub">Six design concepts for the Onus Fitness landing page — including a brand colorway variant. Each takes a different approach to communicating personalized fitness programming. Click any concept to view the full page.</p>
   </div>
 </header>
 
@@ -506,6 +511,42 @@
         <span class="trait">Dark metrics bar</span>
       </div>
       <a href="v4-warm-luxury.html" class="card-cta" target="_blank">
+        View design
+        <svg viewBox="0 0 14 14"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- V4 LOGO COLORWAY VARIANT -->
+  <div class="card">
+    <div class="card-preview prev-5">
+      <span class="preview-label">Concept 04 — Variant</span>
+      <div class="mock-browser">
+        <div class="mock-bar">
+          <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+          <div class="mock-url"></div>
+        </div>
+        <div class="mock-content">
+          <div class="mock-line accent" style="width:58%"></div>
+          <div class="mock-line" style="width:42%"></div>
+          <div class="mock-line" style="width:72%"></div>
+          <div class="mock-line" style="width:28%"></div>
+          <div class="mock-line" style="width:55%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-top">
+        <div class="card-title">Warm Luxury — Logo Colorway</div>
+        <span class="card-tag tag-variant">Concept 04 Variant</span>
+      </div>
+      <p class="card-desc">Same layout as Concept 04 with the Onus logo added to the header and the full color palette updated to match the brand — slate blue replacing bronze throughout the design.</p>
+      <div class="card-traits">
+        <span class="trait">Slate blue palette</span>
+        <span class="trait">Logo in header</span>
+        <span class="trait">Brand colorway</span>
+      </div>
+      <a href="v4-warm-luxury-logo.html" class="card-cta" target="_blank">
         View design
         <svg viewBox="0 0 14 14"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
       </a>

@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onus Fitness — Built Around Your Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --charcoal: #111111;
+    --ivory: #F5F0E8;
+    --ivory-dark: #EDE7DA;
+    --bronze: #A87B48;
+    --bronze-light: #C4975E;
+    --warm-gray: #B8B1A7;
+    --warm-gray-dark: #7A7369;
+    --sand: #D4C9B8;
+    --cream: #FAF7F2;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ivory);
+    color: var(--charcoal);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 60px;
+    background: rgba(245,240,232,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(168,123,72,0.12);
+    transition: padding 0.4s;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--bronze); }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray-dark);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--charcoal); }
+
+  .nav-cta {
+    background: var(--charcoal);
+    color: var(--ivory) !important;
+    padding: 11px 28px;
+    border-radius: 100px;
+    font-size: 12px !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase;
+    transition: background 0.3s !important;
+  }
+
+  .nav-cta:hover { background: var(--bronze) !important; color: var(--ivory) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 160px 60px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(168,123,72,0.10) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 20% 80%, rgba(180,160,130,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.2s forwards;
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(64px, 8vw, 112px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--charcoal);
+    max-width: 820px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 1s 0.4s forwards;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--bronze);
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--warm-gray-dark);
+    max-width: 440px;
+    line-height: 1.75;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 1s 0.6s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    opacity: 0;
+    animation: fadeUp 1s 0.8s forwards;
+  }
+
+  .btn-primary {
+    background: var(--charcoal);
+    color: var(--ivory);
+    padding: 16px 40px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.35s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--bronze); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--warm-gray-dark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s;
+  }
+
+  .btn-ghost:hover { color: var(--charcoal); }
+
+  .btn-ghost::after {
+    content: '→';
+    transition: transform 0.3s;
+  }
+
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  .hero-scroll-line {
+    position: absolute;
+    bottom: 48px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s forwards;
+  }
+
+  .hero-scroll-line span {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  .scroll-bar {
+    width: 48px;
+    height: 1px;
+    background: var(--sand);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-bar::after {
+    content: '';
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bronze);
+    animation: scrollBar 2s 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollBar {
+    0% { left: -100%; }
+    50% { left: 0; }
+    100% { left: 100%; }
+  }
+
+  /* ── METRICS BAR ── */
+  .metrics-bar {
+    background: var(--charcoal);
+    padding: 36px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .metric {
+    padding: 0 40px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+  }
+
+  .metric:first-child { padding-left: 0; }
+  .metric:last-child { border-right: none; padding-right: 0; }
+
+  .metric-num {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--ivory);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .metric-num span { color: var(--bronze); }
+
+  .metric-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 140px 60px;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .section-headline {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 68px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+
+  .section-headline em {
+    font-style: italic;
+    color: var(--bronze);
+  }
+
+  .section-sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--warm-gray-dark);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+
+  /* ── PERSONALIZATION SECTION ── */
+  #personalization {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .pillar {
+    background: var(--ivory);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+  }
+
+  .pillar:hover { background: var(--charcoal); }
+  .pillar:hover .pillar-icon { color: var(--bronze); }
+  .pillar:hover .pillar-title { color: var(--ivory); }
+  .pillar:hover .pillar-text { color: var(--warm-gray); }
+
+  .pillar-icon {
+    font-size: 22px;
+    margin-bottom: 20px;
+    display: block;
+    color: var(--bronze);
+    transition: color 0.4s;
+  }
+
+  .pillar-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    transition: color 0.4s;
+  }
+
+  .pillar-text {
+    font-size: 14px;
+    color: var(--warm-gray-dark);
+    line-height: 1.7;
+    transition: color 0.4s;
+  }
+
+  .pillar-large {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    background: var(--bronze);
+    padding: 36px 40px;
+  }
+
+  .pillar-large .pillar-icon { margin-bottom: 0; color: rgba(255,255,255,0.7); font-size: 32px; }
+  .pillar-large .pillar-title { color: var(--ivory); margin-bottom: 4px; font-size: 26px; }
+  .pillar-large .pillar-text { color: rgba(245,240,232,0.75); font-size: 15px; }
+
+  /* ── HOW IT WORKS ── */
+  #how-it-works {
+    text-align: center;
+  }
+
+  .steps-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 80px;
+    position: relative;
+  }
+
+  .steps-container::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 16.66%;
+    right: 16.66%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--sand), var(--sand), transparent);
+  }
+
+  .step {
+    padding: 0 48px;
+    position: relative;
+  }
+
+  .step-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--bronze);
+    background: var(--ivory);
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+    transition: background 0.35s, border-color 0.35s;
+  }
+
+  .step:hover .step-number {
+    background: var(--charcoal);
+    border-color: var(--charcoal);
+    color: var(--ivory);
+  }
+
+  .step-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+
+  .step-text {
+    font-size: 15px;
+    color: var(--warm-gray-dark);
+    line-height: 1.75;
+  }
+
+  /* ── PROGRAM PREVIEW ── */
+  #program-preview {
+    background: var(--charcoal);
+    padding: 140px 60px;
+  }
+
+  #program-preview .section-headline { color: var(--ivory); }
+  #program-preview .section-eyebrow { color: var(--bronze); }
+  #program-preview .section-sub { color: var(--warm-gray); }
+
+  .preview-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 80px;
+    align-items: start;
+  }
+
+  .program-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .program-card-header {
+    padding: 28px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .program-card-title {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  .program-card-badge {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: rgba(168,123,72,0.2);
+    color: var(--bronze-light);
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .program-week {
+    padding: 24px 32px;
+  }
+
+  .week-day {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .week-day:last-child { border-bottom: none; }
+
+  .day-name {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    width: 48px;
+  }
+
+  .day-workout {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--ivory);
+    flex: 1;
+    padding: 0 20px;
+  }
+
+  .day-tags {
+    display: flex;
+    gap: 8px;
+  }
+
+  .day-tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    background: rgba(255,255,255,0.05);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .day-rest .day-workout {
+    color: var(--warm-gray-dark);
+    font-style: italic;
+  }
+
+  .profile-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    padding: 36px 32px;
+  }
+
+  .profile-name {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--ivory);
+    margin-bottom: 6px;
+  }
+
+  .profile-role {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 36px;
+  }
+
+  .profile-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .profile-stat:last-of-type { border-bottom: none; }
+
+  .profile-stat-label {
+    font-size: 12px;
+    color: var(--warm-gray);
+    letter-spacing: 0.08em;
+  }
+
+  .profile-stat-value {
+    font-size: 13px;
+    color: var(--ivory);
+    text-align: right;
+  }
+
+  .progress-bar-wrap {
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--warm-gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .progress-track {
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--bronze), var(--bronze-light));
+    border-radius: 100px;
+    transition: width 1.5s ease;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {
+    background: var(--ivory-dark);
+  }
+
+  .testimonials-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .testimonial {
+    background: var(--ivory);
+    padding: 48px 40px;
+    position: relative;
+    transition: background 0.4s, transform 0.3s;
+  }
+
+  .testimonial:hover { background: var(--cream); transform: translateY(-4px); }
+
+  .testimonial-quote {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--charcoal);
+    margin-bottom: 36px;
+    font-style: italic;
+  }
+
+  .testimonial-mark {
+    font-family: var(--serif);
+    font-size: 64px;
+    color: var(--bronze);
+    opacity: 0.25;
+    line-height: 1;
+    position: absolute;
+    top: 32px;
+    right: 40px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bronze);
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 2px;
+  }
+
+  .author-detail {
+    font-size: 12px;
+    color: var(--warm-gray-dark);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── WHY ONUS ── */
+  #why-onus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    align-items: center;
+  }
+
+  .why-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 48px;
+  }
+
+  .why-point {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--sand);
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    transition: padding-left 0.3s;
+    cursor: default;
+  }
+
+  .why-point:hover { padding-left: 12px; }
+  .why-point:first-child { border-top: 1px solid var(--sand); }
+
+  .why-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--bronze);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .why-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .why-text {
+    font-size: 14px;
+    color: var(--warm-gray-dark);
+    line-height: 1.75;
+  }
+
+  .why-visual {
+    background: var(--charcoal);
+    aspect-ratio: 4/5;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .why-visual-inner {
+    text-align: center;
+    padding: 60px;
+  }
+
+  .why-big-stat {
+    font-family: var(--serif);
+    font-size: 96px;
+    font-weight: 300;
+    color: var(--ivory);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .why-big-stat span { color: var(--bronze); }
+
+  .why-stat-label {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 48px;
+  }
+
+  .why-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--bronze);
+    margin: 0 auto 48px;
+  }
+
+  .why-quote-block {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.5;
+  }
+
+  /* ── FINAL CTA ── */
+  #final-cta {
+    background: var(--charcoal);
+    text-align: center;
+    padding: 180px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(168,123,72,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-headline {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ivory);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .cta-headline em {
+    font-style: italic;
+    color: var(--bronze);
+  }
+
+  .cta-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    margin-bottom: 56px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+  }
+
+  .btn-light {
+    background: var(--ivory);
+    color: var(--charcoal);
+    padding: 18px 48px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.35s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-light:hover { background: var(--bronze); color: var(--ivory); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 1px solid rgba(245,240,232,0.2);
+    color: var(--ivory);
+    padding: 18px 48px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.35s, background 0.35s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--bronze); background: rgba(168,123,72,0.1); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0A0A;
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ivory);
+    margin-bottom: 12px;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-logo span { color: var(--bronze); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--warm-gray-dark);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray-dark);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--bronze); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">ONUS<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#program-preview">Programs</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#final-cta" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow">Personalized Fitness Programming</div>
+  <h1 class="hero-headline">Training built<br>around <em>your life.</em></h1>
+  <p class="hero-sub">Your program adapts to your schedule, recovery, goals, and the way you actually live — not the other way around.</p>
+  <div class="hero-actions">
+    <a href="#final-cta" class="btn-primary">Start Your Assessment</a>
+    <a href="#how-it-works" class="btn-ghost">See how it works</a>
+  </div>
+  <div class="hero-scroll-line">
+    <div class="scroll-bar"></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- METRICS BAR -->
+<div class="metrics-bar">
+  <div class="metric">
+    <div class="metric-num">94<span>%</span></div>
+    <div class="metric-label">Clients hit first goal within 12 weeks</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">3<span>×</span></div>
+    <div class="metric-label">More consistent than self-programmed</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">180<span>+</span></div>
+    <div class="metric-label">Active members trained</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">100<span>%</span></div>
+    <div class="metric-label">Fully personalized — no templates</div>
+  </div>
+</div>
+
+<!-- PERSONALIZATION -->
+<section id="personalization">
+  <div class="reveal">
+    <span class="section-eyebrow">Built for you</span>
+    <h2 class="section-headline">Every variable<br>accounted for.</h2>
+    <p class="section-sub">Generic programs fail because they ignore the complexity of real life. Onus maps every factor that shapes your training — then builds around it.</p>
+  </div>
+  <div class="pillars-grid reveal reveal-delay-1">
+    <div class="pillar">
+      <span class="pillar-icon">◎</span>
+      <div class="pillar-title">Goals</div>
+      <p class="pillar-text">Strength, endurance, body composition — or all three. Your programming reflects exactly what you're working toward.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-icon">◈</span>
+      <div class="pillar-title">Schedule</div>
+      <p class="pillar-text">3 days or 6 — your program fits your actual week, not an idealized version of it.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-icon">◇</span>
+      <div class="pillar-title">Recovery</div>
+      <p class="pillar-text">Sleep, stress, and strain are factored in. Intensity adjusts to how your body is actually recovering.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-icon">◉</span>
+      <div class="pillar-title">Experience</div>
+      <p class="pillar-text">Whether you're starting from zero or coming off a competition season, the entry point is calibrated to you.</p>
+    </div>
+    <div class="pillar pillar-large">
+      <span class="pillar-icon">✦</span>
+      <div>
+        <div class="pillar-title">Lifestyle</div>
+        <p class="pillar-text">Travel weeks, injury history, equipment access, dietary approach — nothing is ignored. Your program works around your life, not against it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <span class="section-eyebrow reveal">The process</span>
+  <h2 class="section-headline reveal">Simple by design.<br><em>Powerful in practice.</em></h2>
+  <div class="steps-container">
+    <div class="step reveal">
+      <div class="step-number">01</div>
+      <div class="step-title">Assessment</div>
+      <p class="step-text">A detailed intake covering your goals, history, schedule, recovery habits, and lifestyle. This becomes the foundation everything is built on.</p>
+    </div>
+    <div class="step reveal reveal-delay-1">
+      <div class="step-number">02</div>
+      <div class="step-title">Program Creation</div>
+      <p class="step-text">Your coach designs a fully individualized program — not a template with your name on it. Every exercise, set, and session is deliberate.</p>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-number">03</div>
+      <div class="step-title">Ongoing Progression</div>
+      <p class="step-text">Weekly check-ins, real-time adjustments, and continuous refinement as your life and capacity evolve. Your program grows with you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM PREVIEW -->
+<section id="program-preview">
+  <div class="reveal">
+    <span class="section-eyebrow">Inside your program</span>
+    <h2 class="section-headline">What it looks like<br><em>in practice.</em></h2>
+    <p class="section-sub">Structured, purposeful, and built around how you actually train — not how an algorithm thinks you should.</p>
+  </div>
+  <div class="preview-layout">
+    <div class="program-card reveal reveal-delay-1">
+      <div class="program-card-header">
+        <span class="program-card-title">Week 4 · Strength Phase</span>
+        <span class="program-card-badge">On Track</span>
+      </div>
+      <div class="program-week">
+        <div class="week-day">
+          <span class="day-name">Mon</span>
+          <span class="day-workout">Lower Body — Strength</span>
+          <div class="day-tags"><span class="day-tag">60 min</span><span class="day-tag">High</span></div>
+        </div>
+        <div class="week-day">
+          <span class="day-name">Tue</span>
+          <span class="day-workout">Upper Push — Hypertrophy</span>
+          <div class="day-tags"><span class="day-tag">50 min</span><span class="day-tag">Mod</span></div>
+        </div>
+        <div class="week-day day-rest">
+          <span class="day-name">Wed</span>
+          <span class="day-workout">Active Recovery</span>
+          <div class="day-tags"><span class="day-tag">Walk</span></div>
+        </div>
+        <div class="week-day">
+          <span class="day-name">Thu</span>
+          <span class="day-workout">Upper Pull — Strength</span>
+          <div class="day-tags"><span class="day-tag">55 min</span><span class="day-tag">High</span></div>
+        </div>
+        <div class="week-day">
+          <span class="day-name">Fri</span>
+          <span class="day-workout">Full Body — Power</span>
+          <div class="day-tags"><span class="day-tag">45 min</span><span class="day-tag">High</span></div>
+        </div>
+        <div class="week-day day-rest">
+          <span class="day-name">Sat</span>
+          <span class="day-workout">Rest</span>
+          <div class="day-tags"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="profile-card reveal reveal-delay-2">
+        <div class="profile-name">Marcus T.</div>
+        <div class="profile-role">Onus Member · Week 8</div>
+        <div class="profile-stat">
+          <span class="profile-stat-label">Primary Goal</span>
+          <span class="profile-stat-value">Build lean muscle</span>
+        </div>
+        <div class="profile-stat">
+          <span class="profile-stat-label">Sessions / Week</span>
+          <span class="profile-stat-value">4–5 days</span>
+        </div>
+        <div class="profile-stat">
+          <span class="profile-stat-label">Equipment</span>
+          <span class="profile-stat-value">Full gym access</span>
+        </div>
+        <div class="profile-stat">
+          <span class="profile-stat-label">Constraint</span>
+          <span class="profile-stat-value">Travels 1×/month</span>
+        </div>
+        <div class="profile-stat">
+          <span class="profile-stat-label">Experience</span>
+          <span class="profile-stat-value">3 years lifting</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-label"><span>Goal Progress</span><span>Week 8 of 12</span></div>
+          <div class="progress-track">
+            <div class="progress-fill" style="width: 67%"></div>
+          </div>
+          <div class="progress-label"><span>Adherence</span><span>94%</span></div>
+          <div class="progress-track">
+            <div class="progress-fill" style="width: 94%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <div>
+      <span class="section-eyebrow reveal">Results</span>
+      <h2 class="section-headline reveal">What members say.</h2>
+    </div>
+    <p class="section-sub reveal" style="text-align:right; max-width: 280px;">Real outcomes from real people training with real programs built for them.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial reveal">
+      <div class="testimonial-mark">"</div>
+      <p class="testimonial-quote">I've tried every program out there. This is the first one that actually accounted for the fact that I travel every other week. I haven't missed a session in two months.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">S</div>
+        <div>
+          <div class="author-name">Sarah K.</div>
+          <div class="author-detail">Business Analyst · 14 weeks</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial reveal reveal-delay-1">
+      <div class="testimonial-mark">"</div>
+      <p class="testimonial-quote">My previous coach gave me a cookie-cutter plan and wished me luck. Onus actually adjusts every single week based on how I'm recovering. It's a completely different level.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">D</div>
+        <div>
+          <div class="author-name">David R.</div>
+          <div class="author-detail">Software Engineer · 6 months</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial reveal reveal-delay-2">
+      <div class="testimonial-mark">"</div>
+      <p class="testimonial-quote">Down 22 lbs and deadlifting more than I ever have. The program made sense for my body, my schedule, and my life. That's rare.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">J</div>
+        <div>
+          <div class="author-name">Jamie L.</div>
+          <div class="author-detail">Teacher · 20 weeks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ONUS -->
+<section id="why-onus">
+  <div class="why-visual reveal">
+    <div class="why-visual-inner">
+      <div class="why-big-stat">87<span>%</span></div>
+      <div class="why-stat-label">of people quit generic programs<br>within 8 weeks</div>
+      <div class="why-divider"></div>
+      <div class="why-quote-block">"Because they were never<br>built for that person."</div>
+    </div>
+  </div>
+  <div class="reveal reveal-delay-1">
+    <span class="section-eyebrow">The Onus difference</span>
+    <h2 class="section-headline">Why generic<br><em>always fails.</em></h2>
+    <div class="why-points">
+      <div class="why-point">
+        <span class="why-num">01</span>
+        <div>
+          <div class="why-title">No program fits everyone</div>
+          <p class="why-text">A program designed for the average person is, by definition, wrong for everyone. Yours is built from the ground up, for you.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <span class="why-num">02</span>
+        <div>
+          <div class="why-title">Life doesn't pause for fitness</div>
+          <p class="why-text">Stress, travel, sleep, illness — your program accounts for the variability of real life and adjusts in real time.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <span class="why-num">03</span>
+        <div>
+          <div class="why-title">Consistency is built in</div>
+          <p class="why-text">When a program actually fits your life, you follow it. That's the single biggest predictor of long-term results.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <h2 class="cta-headline reveal">Built around<br>your life.<br><em>Not someone else's.</em></h2>
+  <p class="cta-sub reveal">Start with a full assessment. Your program will be ready within 48 hours.</p>
+  <div class="cta-actions reveal">
+    <a href="#" class="btn-light">Begin Your Assessment</a>
+    <a href="#" class="btn-outline">Talk to a Coach</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">ONUS<span>.</span></div>
+    <div class="footer-copy">© 2026 Onus Fitness. All rights reserved.</div>
+  </div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+    <a href="#">Instagram</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Animate progress bars on scroll
+  const progressFills = document.querySelectorAll('.progress-fill');
+  const progObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = e.target.style.width;
+        e.target.style.width = '0%';
+        setTimeout(() => { e.target.style.width = target; }, 100);
+        progObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  progressFills.forEach(el => progObserver.observe(el));
+</script>
+</body>
+</html>

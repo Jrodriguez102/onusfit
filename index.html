@@ -3,28 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onus — Training That Adapts to You</title>
+<title>Onus — Personalized Fitness, Built Around Your Life</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:       #F7F9FC;
-  --surface:  #FFFFFF;
-  --surface2: #EEF3F8;
-  --ink:      #17212B;
-  --body:     #667085;
-  --accent:   #4B6EF5;
-  --accent2:  #8DA8FF;
-  --hi:       #DDE7FF;
-  --success:  #9CC8B5;
-  --border:   rgba(23,33,43,0.08);
-  --shadow:   0 1px 3px rgba(23,33,43,0.06), 0 4px 16px rgba(23,33,43,0.06);
-  --shadow-lg:0 4px 6px rgba(23,33,43,0.04), 0 12px 40px rgba(23,33,43,0.10);
-  --sans:     'Inter', system-ui, sans-serif;
-  --r:        10px;
-  --r-sm:     6px;
+  --bg:        #F6F8FA;
+  --surface:   #FFFFFF;
+  --surface2:  #F0F4F8;
+  --ink:       #1C222B;
+  --body:      #5D6673;
+  --accent:    #4E7B7B;
+  --accent2:   #B8D6D6;
+  --hi:        #E4F0F0;
+  --warm:      #D8CEC0;
+  --warm-dk:   #A89880;
+  --border:    rgba(28,34,43,0.07);
+  --border-accent: rgba(78,123,123,0.2);
+  --shadow:    0 1px 2px rgba(28,34,43,0.04), 0 4px 16px rgba(28,34,43,0.05);
+  --shadow-md: 0 2px 4px rgba(28,34,43,0.05), 0 8px 28px rgba(28,34,43,0.09);
+  --shadow-lg: 0 4px 8px rgba(28,34,43,0.05), 0 16px 48px rgba(28,34,43,0.12);
+  --serif:     'Instrument Serif', Georgia, serif;
+  --sans:      'DM Sans', system-ui, sans-serif;
+  --r:         12px;
+  --r-sm:      7px;
 }
 
 html { scroll-behavior: smooth; }
@@ -39,1418 +43,1357 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ─── ANNOUNCE ─── */
+.announce {
+  background: var(--accent);
+  padding: 10px 40px;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.88);
+  letter-spacing: 0.01em;
+}
+
+.announce a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  padding-bottom: 1px;
+  transition: border-color 0.2s;
+}
+
+.announce a:hover { border-color: rgba(255,255,255,0.8); }
+
 /* ─── NAV ─── */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: sticky;
+  top: 0;
   z-index: 300;
-  height: 60px;
+  height: 62px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
-  background: rgba(247,249,252,0.92);
+  padding: 0 52px;
+  background: rgba(246,248,250,0.95);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
 
 .nav-logo {
-  font-size: 17px;
-  font-weight: 600;
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 400;
   color: var(--ink);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 }
 
-.nav-logo-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
+.logo-mark {
+  width: 24px; height: 24px;
+  border-radius: 6px;
   background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
 }
 
-.nav-center {
-  display: flex;
-  gap: 4px;
-  list-style: none;
-  position: absolute;
-  left: 50%; transform: translateX(-50%);
+.logo-mark svg { width: 12px; height: 12px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
+
+.nav-links {
+  display: flex; gap: 2px; list-style: none;
+  position: absolute; left: 50%; transform: translateX(-50%);
 }
 
-.nav-center a {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--body);
-  text-decoration: none;
-  padding: 6px 14px;
-  border-radius: var(--r-sm);
+.nav-links a {
+  font-size: 13.5px; font-weight: 400;
+  color: var(--body); text-decoration: none;
+  padding: 6px 15px; border-radius: var(--r-sm);
   transition: background 0.2s, color 0.2s;
+  letter-spacing: -0.01em;
 }
 
-.nav-center a:hover { background: var(--surface2); color: var(--ink); }
+.nav-links a:hover { background: var(--hi); color: var(--accent); }
 
 .nav-right { display: flex; align-items: center; gap: 10px; }
 
-.nav-link {
-  font-size: 13px; font-weight: 400;
+.nav-login {
+  font-size: 13.5px; font-weight: 400;
   color: var(--body); text-decoration: none;
-  padding: 7px 14px; border-radius: var(--r-sm);
+  padding: 7px 15px; border-radius: var(--r-sm);
   transition: color 0.2s;
 }
 
-.nav-link:hover { color: var(--ink); }
+.nav-login:hover { color: var(--ink); }
 
 .nav-cta {
   background: var(--accent);
   color: #fff;
-  padding: 8px 18px;
-  border-radius: var(--r-sm);
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
+  padding: 9px 20px; border-radius: var(--r-sm);
+  font-size: 13.5px; font-weight: 500;
+  text-decoration: none; letter-spacing: -0.01em;
   transition: opacity 0.2s, transform 0.15s;
-  letter-spacing: -0.01em;
 }
 
-.nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+.nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
 
 /* ─── HERO ─── */
 #hero {
-  padding: 128px 40px 80px;
-  text-align: center;
+  padding: 100px 52px 0;
   position: relative;
   overflow: hidden;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Webflow-style gradient bg */
-.hero-glow {
+/* Subtle mesh background */
+.hero-mesh {
   position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 900px; height: 600px;
-  background: radial-gradient(ellipse at 50% 0%, rgba(75,110,245,0.12) 0%, transparent 70%);
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 20%, rgba(78,123,123,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 85% 70%, rgba(216,206,192,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 60% 10%, rgba(78,123,123,0.04) 0%, transparent 50%);
   pointer-events: none;
 }
 
+.hero-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  flex: 1;
+}
+
+.hero-left {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-flex; align-items: center; gap: 8px;
   background: var(--hi);
+  border: 1px solid var(--border-accent);
   color: var(--accent);
-  padding: 5px 14px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: up 0.6s 0.1s forwards;
+  padding: 5px 14px; border-radius: 100px;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 36px; align-self: flex-start;
+  opacity: 0; animation: up 0.6s 0.1s forwards;
 }
 
-.hero-badge-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
+.hero-badge-pulse {
+  width: 6px; height: 6px; border-radius: 50%;
   background: var(--accent);
+  position: relative;
 }
 
+.hero-badge-pulse::after {
+  content: '';
+  position: absolute; inset: -3px;
+  border-radius: 50%; background: var(--accent);
+  opacity: 0.3;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.8); opacity: 0; }
+}
+
+/* V2 editorial + V3 modern merge */
 .hero-h1 {
-  font-size: clamp(44px, 6vw, 80px);
-  font-weight: 600;
-  line-height: 1.05;
+  font-family: var(--sans);
+  font-size: clamp(46px, 5.5vw, 76px);
+  font-weight: 300;
+  line-height: 1.06;
   letter-spacing: -0.03em;
   color: var(--ink);
-  max-width: 800px;
-  margin: 0 auto 24px;
-  opacity: 0;
-  animation: up 0.7s 0.2s forwards;
+  margin-bottom: 28px;
+  opacity: 0; animation: up 0.8s 0.25s forwards;
 }
 
-.hero-h1 span { color: var(--accent); }
+.hero-h1 .serif-em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
 
 .hero-sub {
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--body);
-  max-width: 500px;
-  margin: 0 auto 40px;
-  line-height: 1.7;
-  opacity: 0;
-  animation: up 0.7s 0.35s forwards;
+  font-size: 17px; font-weight: 300;
+  color: var(--body); line-height: 1.75;
+  max-width: 400px; margin-bottom: 44px;
+  opacity: 0; animation: up 0.8s 0.4s forwards;
 }
 
 .hero-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 64px;
-  opacity: 0;
-  animation: up 0.7s 0.45s forwards;
+  display: flex; align-items: center; gap: 12px;
+  opacity: 0; animation: up 0.8s 0.52s forwards;
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: #fff;
-  padding: 13px 28px;
-  border-radius: var(--r-sm);
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  letter-spacing: -0.01em;
+  background: var(--accent); color: #fff;
+  padding: 13px 28px; border-radius: var(--r-sm);
+  font-size: 14px; font-weight: 500;
+  text-decoration: none; letter-spacing: -0.01em;
   transition: opacity 0.2s, transform 0.15s;
   display: inline-block;
 }
 
-.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
 
-.btn-secondary {
-  background: var(--surface);
-  color: var(--ink);
-  padding: 13px 28px;
-  border-radius: var(--r-sm);
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  letter-spacing: -0.01em;
+.btn-ghost {
+  background: var(--surface); color: var(--ink);
+  padding: 13px 28px; border-radius: var(--r-sm);
+  font-size: 14px; font-weight: 500;
+  text-decoration: none; letter-spacing: -0.01em;
   border: 1px solid var(--border);
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
   display: inline-block;
 }
 
-.btn-secondary:hover { background: var(--surface2); transform: translateY(-1px); }
+.btn-ghost:hover { background: var(--hi); border-color: var(--border-accent); transform: translateY(-1px); }
 
-/* Hero module cards — Attio/Webflow style */
-.hero-modules {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  max-width: 880px;
-  margin: 0 auto;
-  opacity: 0;
-  animation: up 0.8s 0.6s forwards;
+/* Hero right — layered system visual (V3 approach, V1 polish) */
+.hero-right {
+  display: flex; flex-direction: column;
+  gap: 12px; padding-top: 8px;
+  opacity: 0; animation: fadeUp 1s 0.65s forwards;
 }
 
-.hero-mod {
+.hcard {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r);
-  padding: 24px;
-  text-align: left;
+  padding: 20px 22px;
   box-shadow: var(--shadow);
+  transition: box-shadow 0.3s, transform 0.3s;
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.25s, transform 0.25s;
 }
 
-.hero-mod:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.hcard:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
-.hero-mod-accent {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
+.hcard-top-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
 }
 
-.hero-mod:nth-child(1) .hero-mod-accent { background: var(--accent); }
-.hero-mod:nth-child(2) .hero-mod-accent { background: var(--success); }
-.hero-mod:nth-child(3) .hero-mod-accent { background: var(--accent2); }
+.hcard:nth-child(1) .hcard-top-bar { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.hcard:nth-child(2) .hcard-top-bar { background: linear-gradient(90deg, var(--warm-dk), var(--warm)); }
+.hcard:nth-child(3) .hcard-top-bar { background: linear-gradient(90deg, var(--accent2), var(--hi)); }
 
-.hero-mod-icon {
-  width: 36px; height: 36px;
-  border-radius: var(--r-sm);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px;
+.hcard-header {
+  display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 14px;
 }
 
-.hero-mod:nth-child(1) .hero-mod-icon { background: var(--hi); }
-.hero-mod:nth-child(2) .hero-mod-icon { background: rgba(156,200,181,0.2); }
-.hero-mod:nth-child(3) .hero-mod-icon { background: rgba(141,168,255,0.2); }
-
-.hero-mod-title {
-  font-size: 14px; font-weight: 600;
-  color: var(--ink); margin-bottom: 6px;
-  letter-spacing: -0.01em;
-}
-
-.hero-mod-text {
-  font-size: 13px; color: var(--body); line-height: 1.6;
-}
-
-/* ─── TRUST BAR ─── */
-.trust-bar {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 48px;
-}
-
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 500;
+.hcard-label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--body);
 }
 
-.trust-num {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.trust-sep {
-  width: 1px; height: 20px;
-  background: var(--border);
-}
-
-/* ─── SECTION BASE ─── */
-section { padding: 100px 40px; }
-
-.section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--hi);
-  color: var(--accent);
-  padding: 4px 12px;
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-.section-h {
-  font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: var(--ink);
-  margin-bottom: 16px;
-}
-
-.section-h span { color: var(--accent); }
-
-.section-sub {
-  font-size: 16px;
-  color: var(--body);
-  line-height: 1.75;
-  max-width: 480px;
-}
-
-/* ─── PERSONALIZATION ─── */
-#personalization {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.personal-layout {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 64px;
-  align-items: start;
-}
-
-.personal-left {}
-
-/* Airtable-style tab list */
-.tab-list {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.tab-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  border-radius: var(--r-sm);
-  cursor: pointer;
-  transition: background 0.2s;
-  border: 1px solid transparent;
-}
-
-.tab-item:hover { background: var(--bg); }
-
-.tab-item.active {
-  background: var(--hi);
-  border-color: rgba(75,110,245,0.15);
-}
-
-.tab-item-num {
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 600;
-  background: var(--surface2);
-  color: var(--body);
-  flex-shrink: 0;
-  transition: background 0.2s, color 0.2s;
-}
-
-.tab-item.active .tab-item-num {
-  background: var(--accent);
-  color: #fff;
-}
-
-.tab-item-label {
-  font-size: 14px; font-weight: 500;
-  color: var(--body);
-  transition: color 0.2s;
-}
-
-.tab-item.active .tab-item-label { color: var(--accent); }
-
-.tab-item-arrow {
-  margin-left: auto;
-  color: var(--body);
-  font-size: 12px;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.tab-item.active .tab-item-arrow { opacity: 1; color: var(--accent); }
-
-/* Tab panels */
-.tab-panels { }
-
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
-
-.panel-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  overflow: hidden;
-}
-
-.panel-card-header {
-  padding: 20px 24px 16px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.panel-card-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-}
-
-.panel-card-title {
-  font-size: 13px; font-weight: 500;
-  color: var(--ink); letter-spacing: -0.01em;
-}
-
-.panel-body {
-  padding: 28px 24px;
-}
-
-.panel-h {
-  font-size: 22px; font-weight: 600;
-  color: var(--ink); letter-spacing: -0.02em;
-  margin-bottom: 10px; line-height: 1.2;
-}
-
-.panel-p {
-  font-size: 14px; color: var(--body);
-  line-height: 1.75; margin-bottom: 24px;
-}
-
-.panel-chips {
-  display: flex; flex-wrap: wrap; gap: 8px;
-}
-
-.chip {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 5px 14px;
-  font-size: 12px; font-weight: 500;
-  color: var(--body);
-}
-
-.chip.hi {
-  background: var(--hi);
-  border-color: rgba(75,110,245,0.2);
-  color: var(--accent);
-}
-
-.panel-metric-row {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-  margin-top: 20px;
-}
-
-.panel-metric {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  padding: 16px;
-}
-
-.panel-metric-val {
-  font-size: 24px; font-weight: 600;
-  color: var(--ink); letter-spacing: -0.02em;
-  margin-bottom: 4px;
-}
-
-.panel-metric-val span { color: var(--accent); font-size: 16px; }
-
-.panel-metric-label {
-  font-size: 11px; color: var(--body);
-  font-weight: 500; letter-spacing: 0.02em;
-}
-
-/* ─── ADAPTIVE SYSTEM ─── */
-#adaptive {
-  background: var(--ink);
-  padding: 100px 40px;
-}
-
-.adaptive-header {
-  text-align: center;
-  margin-bottom: 64px;
-}
-
-.adaptive-header .section-tag {
-  background: rgba(75,110,245,0.18);
-  color: var(--accent2);
-}
-
-.adaptive-header .section-h { color: #fff; max-width: 560px; margin: 0 auto 16px; }
-.adaptive-header .section-sub { color: rgba(255,255,255,0.45); margin: 0 auto; }
-
-/* Retool-style cards on dark */
-.adaptive-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.adaptive-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: var(--r);
-  padding: 32px 28px;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.3s, border-color 0.3s;
-}
-
-.adaptive-card:hover {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(75,110,245,0.3);
-}
-
-.adaptive-card-status {
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
-  margin-bottom: 28px;
-  font-family: monospace;
-}
-
-.adaptive-card-status span { color: var(--success); }
-
-/* Retool-style visual dots */
-.adaptive-visual {
-  width: 100%; aspect-ratio: 1;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.06);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 28px;
-  position: relative;
-  max-width: 120px;
-}
-
-.dot-grid {
-  display: grid; grid-template-columns: repeat(6,1fr); gap: 5px;
-}
-
-.dot-grid span {
-  width: 7px; height: 7px; border-radius: 2px;
-  background: rgba(255,255,255,0.12);
-}
-
-.dot-grid span.lit-blue  { background: var(--accent); opacity: 0.9; }
-.dot-grid span.lit-green { background: var(--success); opacity: 0.9; }
-.dot-grid span.lit-soft  { background: var(--accent2); opacity: 0.7; }
-
-.adaptive-card-title {
-  font-size: 18px; font-weight: 600;
-  color: #fff; letter-spacing: -0.02em;
-  margin-bottom: 10px; line-height: 1.2;
-}
-
-.adaptive-card-text {
-  font-size: 13px; color: rgba(255,255,255,0.45);
-  line-height: 1.75;
-}
-
-/* ─── COACHING ─── */
-#coaching {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.coaching-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.coaching-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 40px;
-}
-
-.coaching-step {
-  display: flex;
-  gap: 20px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--border);
-  cursor: default;
-}
-
-.coaching-step:first-child { border-top: 1px solid var(--border); }
-
-.coaching-step-n {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 600;
-  color: var(--body);
-  flex-shrink: 0;
-  margin-top: 2px;
-  transition: background 0.25s, border-color 0.25s, color 0.25s;
-}
-
-.coaching-step:hover .coaching-step-n {
-  background: var(--hi);
-  border-color: rgba(75,110,245,0.3);
-  color: var(--accent);
-}
-
-.coaching-step-title {
-  font-size: 15px; font-weight: 600;
-  color: var(--ink); letter-spacing: -0.01em;
-  margin-bottom: 6px;
-}
-
-.coaching-step-text {
-  font-size: 14px; color: var(--body); line-height: 1.7;
-}
-
-/* Coaching right — floating card stack */
-.coaching-right {}
-
-.card-stack {
-  position: relative;
-  height: 420px;
-}
-
-.stack-card {
-  position: absolute;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.stack-card:nth-child(1) {
-  width: 100%; left: 0; top: 0;
-}
-
-.stack-card:nth-child(2) {
-  width: 88%; left: 6%; top: 180px;
-  box-shadow: var(--shadow-lg);
-}
-
-.stack-card:nth-child(3) {
-  width: 76%; left: 12%; top: 310px;
-}
-
-.scard-header {
-  padding: 14px 18px;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 8px;
-  background: var(--bg);
-}
-
-.scard-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-}
-
-.scard-label {
-  font-size: 11px; font-weight: 600;
-  color: var(--body); letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.scard-body { padding: 18px; }
-
-.scard-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.scard-row:last-child { border-bottom: none; }
-
-.scard-key { font-size: 12px; color: var(--body); }
-
-.scard-val {
-  font-size: 13px; font-weight: 600; color: var(--ink);
-  letter-spacing: -0.01em;
-}
-
-.scard-badge {
-  font-size: 11px; font-weight: 600;
+.hcard-badge {
+  font-size: 11px; font-weight: 500;
   padding: 3px 10px; border-radius: 100px;
 }
 
-.badge-blue { background: var(--hi); color: var(--accent); }
-.badge-green { background: rgba(156,200,181,0.2); color: #3a8a6e; }
+.badge-teal { background: var(--hi); color: var(--accent); }
+.badge-warm { background: rgba(216,206,192,0.4); color: var(--warm-dk); }
 .badge-gray { background: var(--surface2); color: var(--body); }
+.badge-green { background: rgba(156,200,181,0.2); color: #3c8870; }
 
-.progress-row { padding: 12px 0; }
+.hcard-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+}
 
-.progress-label-row {
+.hcard-row:last-child { border-bottom: none; }
+
+.hcard-key { font-size: 13px; color: var(--body); }
+
+.hcard-val { font-size: 13px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+
+.hcard-prog-wrap { padding: 10px 0 4px; }
+.hcard-prog-label {
   display: flex; justify-content: space-between;
   font-size: 11px; color: var(--body);
   margin-bottom: 8px; font-weight: 500;
 }
 
-.prog-track {
-  height: 6px; background: var(--surface2);
-  border-radius: 100px; overflow: hidden;
+.prog-track { height: 5px; background: var(--surface2); border-radius: 100px; overflow: hidden; }
+.prog-fill  { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.prog-fill.warm { background: linear-gradient(90deg, var(--warm-dk), var(--warm)); }
+
+/* Hero bottom stats */
+.hero-bottom {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 72px;
+  border-top: 1px solid var(--border);
+  opacity: 0; animation: fadeIn 1s 1.1s forwards;
 }
 
-.prog-fill {
-  height: 100%; border-radius: 100px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
+.hstat {
+  padding: 28px 0 28px 32px;
+  border-right: 1px solid var(--border);
 }
 
-/* ─── TESTIMONIALS ─── */
-#testimonials { background: var(--bg); }
+.hstat:last-child { border-right: none; }
 
-.test-top {
+.hstat-num {
+  font-family: var(--serif);
+  font-size: 38px; font-weight: 400; font-style: italic;
+  color: var(--ink); line-height: 1; margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.hstat-num span { color: var(--accent); }
+
+.hstat-label { font-size: 12.5px; color: var(--body); line-height: 1.5; }
+
+/* ─── SECTION UTILITIES ─── */
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--hi); color: var(--accent);
+  padding: 4px 13px; border-radius: 100px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border: 1px solid var(--border-accent);
+  margin-bottom: 20px;
+}
+
+.section-h {
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 300;
+  line-height: 1.08; letter-spacing: -0.025em;
+  color: var(--ink); margin-bottom: 16px;
+}
+
+.section-h .si { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); }
+
+.section-body {
+  font-size: 16px; font-weight: 300;
+  color: var(--body); line-height: 1.8;
+}
+
+/* ─── PERSONALIZATION — TABS (V3 + V1 polish) ─── */
+#personalization {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 110px 52px;
+}
+
+.personal-grid {
+  display: grid; grid-template-columns: 320px 1fr;
+  gap: 72px; align-items: start;
+}
+
+.personal-left {}
+.personal-left .tag { margin-bottom: 20px; }
+
+.tab-list {
+  margin-top: 40px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+
+.tab-btn {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 16px; border-radius: var(--r-sm);
+  cursor: pointer; border: 1px solid transparent;
+  background: none; width: 100%; text-align: left;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.tab-btn:hover { background: var(--bg); }
+
+.tab-btn.active {
+  background: var(--hi);
+  border-color: var(--border-accent);
+}
+
+.tab-n {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600;
+  background: var(--surface2); color: var(--body);
+  flex-shrink: 0; transition: background 0.2s, color 0.2s;
+}
+
+.tab-btn.active .tab-n { background: var(--accent); color: #fff; }
+
+.tab-name {
+  font-size: 14px; font-weight: 500; color: var(--body);
+  letter-spacing: -0.01em; transition: color 0.2s;
+  font-family: var(--sans);
+}
+
+.tab-btn.active .tab-name { color: var(--accent); }
+
+.tab-arrow {
+  margin-left: auto; color: var(--body); font-size: 12px;
+  opacity: 0; transition: opacity 0.2s;
+}
+
+.tab-btn.active .tab-arrow { opacity: 1; color: var(--accent); }
+
+/* Panel */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.panel-surface {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.panel-bar {
+  padding: 16px 22px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+
+.panel-bar-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+.panel-bar-title {
+  font-size: 12.5px; font-weight: 500;
+  color: var(--ink); letter-spacing: -0.01em;
+}
+
+.panel-content { padding: 28px 24px; }
+
+.panel-h {
+  font-size: 22px; font-weight: 300;
+  letter-spacing: -0.02em; color: var(--ink);
+  margin-bottom: 10px; line-height: 1.2;
+}
+
+.panel-h .si { font-family: var(--serif); font-style: italic; color: var(--accent); }
+
+.panel-p {
+  font-size: 14px; font-weight: 300;
+  color: var(--body); line-height: 1.8; margin-bottom: 24px;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
+
+.chip {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 100px; padding: 5px 14px;
+  font-size: 12px; font-weight: 400; color: var(--body);
+}
+
+.chip.active {
+  background: var(--hi); border-color: var(--border-accent);
+  color: var(--accent); font-weight: 500;
+}
+
+.panel-metrics {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+
+.pm {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 16px;
+}
+
+.pm-val {
+  font-family: var(--serif);
+  font-size: 28px; font-weight: 400; font-style: italic;
+  color: var(--ink); line-height: 1; margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.pm-val span { color: var(--accent); font-size: 18px; }
+
+.pm-label { font-size: 11.5px; color: var(--body); font-weight: 400; line-height: 1.4; }
+
+.prog-row { margin-bottom: 14px; }
+.prog-row:last-child { margin-bottom: 0; }
+.prog-info { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--body); margin-bottom: 7px; font-weight: 400; }
+
+/* ─── EDITORIAL STATEMENT (V2 rhythm) ─── */
+.edit-band {
+  background: var(--ink);
+  padding: 120px 52px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+
+.edit-band::before {
+  content: '';
+  position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(78,123,123,0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.edit-band-label {
+  font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  margin-bottom: 44px; display: block; position: relative;
+}
+
+.edit-band-h {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5.5vw, 80px);
+  font-weight: 400; font-style: italic;
+  line-height: 1.1; letter-spacing: -0.01em;
+  color: #fff; max-width: 760px;
+  margin: 0 auto 32px; position: relative;
+}
+
+.edit-band-h em { color: var(--accent2); font-style: normal; }
+
+.edit-band-sub {
+  font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,0.45); line-height: 1.8;
+  max-width: 400px; margin: 0 auto; position: relative;
+}
+
+/* ─── HOW IT WORKS ─── */
+#how {
+  padding: 110px 52px;
+  background: var(--bg);
+}
+
+.how-header {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: end;
-  margin-bottom: 48px;
+  gap: 80px; align-items: end; margin-bottom: 80px;
 }
 
-.test-h { font-size: clamp(28px, 3vw, 40px); font-weight: 600; letter-spacing: -0.025em; color: var(--ink); }
-.test-h span { color: var(--accent); }
-
-.test-sub { font-size: 15px; color: var(--body); line-height: 1.75; }
-
-/* Attio-style stats + cards */
-.test-stat-row {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 16px; margin-bottom: 16px;
+.how-steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
 }
 
-.test-stat {
+.how-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r);
-  padding: 28px 24px;
-  text-align: center;
+  padding: 32px 28px;
   box-shadow: var(--shadow);
-  transition: box-shadow 0.25s, transform 0.25s;
+  transition: box-shadow 0.3s, transform 0.3s;
+  position: relative; overflow: hidden;
 }
 
-.test-stat:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.how-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 
-.test-stat-num {
-  font-size: 40px; font-weight: 600;
-  color: var(--ink); letter-spacing: -0.03em;
-  line-height: 1; margin-bottom: 8px;
+.how-card-n {
+  font-family: var(--serif);
+  font-size: 48px; font-weight: 400; font-style: italic;
+  color: var(--hi); line-height: 1;
+  margin-bottom: 20px;
+  transition: color 0.3s;
 }
 
-.test-stat-num span { color: var(--accent); font-size: 28px; }
+.how-card:hover .how-card-n { color: var(--accent2); }
 
-.test-stat-label {
-  font-size: 12px; color: var(--body);
-  font-weight: 500; line-height: 1.5;
+.how-card-title {
+  font-size: 17px; font-weight: 500;
+  color: var(--ink); margin-bottom: 12px;
+  letter-spacing: -0.015em; line-height: 1.25;
 }
+
+.how-card-text {
+  font-size: 14px; font-weight: 300;
+  color: var(--body); line-height: 1.8;
+}
+
+.how-card-tag {
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 11px; font-weight: 500;
+  padding: 4px 12px; border-radius: 100px;
+  background: var(--hi); color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+/* ─── ADAPTIVE COACHING ─── */
+#coaching {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 110px 52px;
+}
+
+.coaching-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+
+.coaching-right {}
+
+/* Floating layered cards — V1 polish, V3 layout */
+.float-stack {
+  position: relative; height: 460px;
+}
+
+.fcard {
+  position: absolute;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.fcard:hover { box-shadow: var(--shadow-md); }
+
+.fcard-1 { width: 100%; top: 0; left: 0; }
+.fcard-2 { width: 86%; top: 192px; left: 7%; box-shadow: var(--shadow-md); }
+.fcard-3 { width: 72%; top: 352px; left: 14%; }
+
+.fcard-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 13px 18px; border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.fcard-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+.fcard-title {
+  font-size: 11.5px; font-weight: 500;
+  color: var(--body); letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.fcard-body { padding: 16px 18px; }
+
+.fcard-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.fcard-row:last-child { border-bottom: none; }
+
+.fcard-key { color: var(--body); font-weight: 300; }
+.fcard-val { color: var(--ink); font-weight: 500; letter-spacing: -0.01em; }
+
+/* Coaching steps */
+.coaching-steps { margin-top: 40px; display: flex; flex-direction: column; }
+
+.cstep {
+  display: flex; gap: 20px; padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  transition: padding-left 0.3s;
+  cursor: default;
+}
+
+.cstep:first-child { border-top: 1px solid var(--border); }
+.cstep:hover { padding-left: 8px; }
+
+.cstep-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--bg); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 500; color: var(--body);
+  flex-shrink: 0; margin-top: 3px;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.cstep:hover .cstep-num {
+  background: var(--hi); border-color: var(--border-accent); color: var(--accent);
+}
+
+.cstep-title {
+  font-size: 15px; font-weight: 500; color: var(--ink);
+  margin-bottom: 6px; letter-spacing: -0.01em;
+}
+
+.cstep-text { font-size: 13.5px; font-weight: 300; color: var(--body); line-height: 1.75; }
+
+/* ─── RESULTS ─── */
+#results {
+  padding: 110px 52px;
+  background: var(--bg);
+}
+
+.results-header {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: end; margin-bottom: 60px;
+}
+
+.stat-row {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 12px; margin-bottom: 12px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px 24px; text-align: center;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: 48px; font-weight: 400; font-style: italic;
+  color: var(--ink); line-height: 1; margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.stat-num span { color: var(--accent); font-size: 34px; font-style: normal; }
+
+.stat-label { font-size: 13px; color: var(--body); font-weight: 300; line-height: 1.5; }
 
 .tcards {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
 }
 
 .tcard {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 28px 24px;
+  border-radius: var(--r); padding: 28px 24px;
   box-shadow: var(--shadow);
-  transition: box-shadow 0.25s, transform 0.25s;
+  transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
 }
 
-.tcard:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.tcard:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--border-accent); }
 
-.tcard-stars {
-  display: flex; gap: 3px; margin-bottom: 16px;
-}
-
-.tcard-stars span { color: #F6BE4B; font-size: 13px; }
+.tcard-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+.tcard-stars span { color: var(--accent); font-size: 13px; opacity: 0.8; }
 
 .tcard-q {
-  font-size: 14px; color: var(--ink);
-  line-height: 1.75; margin-bottom: 24px;
-  font-weight: 400;
+  font-family: var(--serif);
+  font-size: 17px; font-weight: 400; font-style: italic;
+  color: var(--ink); line-height: 1.65; margin-bottom: 28px;
 }
 
-.tcard-divider { height: 1px; background: var(--border); margin-bottom: 16px; }
+.tcard-rule { height: 1px; background: var(--border); margin-bottom: 20px; }
 
 .tcard-author { display: flex; align-items: center; gap: 10px; }
 
 .tcard-av {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: var(--hi);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 600; color: var(--accent);
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--hi); display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 15px; font-style: italic;
+  color: var(--accent); flex-shrink: 0;
 }
 
-.tcard-name { font-size: 13px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
-.tcard-detail { font-size: 11px; color: var(--body); }
+.tcard-name { font-size: 13.5px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+.tcard-detail { font-size: 12px; color: var(--body); font-weight: 300; }
 
 /* ─── WHY ONUS ─── */
-#why { background: var(--surface); border-top: 1px solid var(--border); }
-
-.why-layout {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+#why {
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 110px 52px;
 }
 
-.why-cards {
-  display: flex; flex-direction: column; gap: 12px; margin-top: 40px;
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+
+.why-points { margin-top: 40px; display: flex; flex-direction: column; }
+
+.wpt {
+  display: flex; gap: 18px; padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+  transition: padding-left 0.3s; cursor: default;
 }
 
-.why-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 22px 20px;
-  display: flex; gap: 16px; align-items: flex-start;
-  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+.wpt:first-child { border-top: 1px solid var(--border); }
+.wpt:hover { padding-left: 10px; }
+
+.wpt-line {
+  width: 20px; height: 1px; background: var(--accent2);
+  margin-top: 12px; flex-shrink: 0;
+  transition: width 0.3s, background 0.3s;
 }
 
-.why-card:hover {
-  border-color: rgba(75,110,245,0.3);
-  background: var(--hi);
-  transform: translateX(4px);
-}
+.wpt:hover .wpt-line { width: 32px; background: var(--accent); }
 
-.why-card-icon {
-  width: 36px; height: 36px; border-radius: var(--r-sm);
+.wpt-title { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+.wpt-text  { font-size: 13.5px; font-weight: 300; color: var(--body); line-height: 1.75; }
+
+/* Right — comparison + data (V3 structure, V1 authority) */
+.why-panel {
   background: var(--surface);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; flex-shrink: 0;
-  transition: background 0.25s, border-color 0.25s;
-}
-
-.why-card:hover .why-card-icon {
-  background: var(--accent);
-  border-color: transparent;
-}
-
-.why-card-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.01em; }
-.why-card-text  { font-size: 13px; color: var(--body); line-height: 1.65; }
-
-/* Right — comparison table Retool-style */
-.compare-table {
-  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--r);
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
 }
+
+.wp-header {
+  padding: 20px 24px; background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.wp-title { font-size: 12px; font-weight: 500; color: var(--body); letter-spacing: 0.06em; text-transform: uppercase; }
+
+.wp-badge { font-size: 11px; font-weight: 500; background: var(--hi); color: var(--accent); padding: 3px 10px; border-radius: 100px; }
 
 .compare-header {
   display: grid; grid-template-columns: 2fr 1fr 1fr;
-  padding: 14px 20px;
+  padding: 12px 24px; border-bottom: 1px solid var(--border);
   background: var(--surface);
-  border-bottom: 1px solid var(--border);
 }
 
-.compare-header span { font-size: 11px; font-weight: 600; color: var(--body); letter-spacing: 0.06em; text-transform: uppercase; text-align: center; }
+.compare-header span { font-size: 11px; font-weight: 600; color: var(--body); letter-spacing: 0.08em; text-transform: uppercase; text-align: center; }
 .compare-header span:first-child { text-align: left; }
 
 .compare-row {
   display: grid; grid-template-columns: 2fr 1fr 1fr;
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--border);
-  align-items: center;
-  transition: background 0.2s;
+  padding: 13px 24px; border-bottom: 1px solid var(--border);
+  align-items: center; transition: background 0.2s;
 }
 
 .compare-row:last-child { border-bottom: none; }
-.compare-row:hover { background: var(--surface); }
+.compare-row:hover { background: var(--bg); }
 
-.compare-row-label { font-size: 13px; color: var(--ink); font-weight: 500; }
+.cr-label { font-size: 13px; color: var(--ink); font-weight: 400; }
+.cr-cell  { text-align: center; font-size: 14px; }
+.cr-y     { color: var(--accent); font-weight: 500; }
+.cr-n     { color: var(--border); }
 
-.compare-cell { text-align: center; font-size: 15px; }
-
-.check { color: var(--accent); }
-.cross { color: #D0D5DD; }
-
-/* ─── FINAL CTA ─── */
-#cta {
-  background: var(--accent);
-  padding: 120px 40px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+/* Data strip below table */
+.data-strip {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0; border-top: 1px solid var(--border);
+  background: var(--ink);
 }
 
-#cta::before {
+.ds-item {
+  padding: 22px 24px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+
+.ds-item:last-child { border-right: none; }
+
+.ds-num {
+  font-family: var(--serif);
+  font-size: 32px; font-weight: 400; font-style: italic;
+  color: #fff; line-height: 1; margin-bottom: 6px;
+}
+
+.ds-num span { color: var(--accent2); font-size: 20px; font-style: normal; }
+
+.ds-label { font-size: 11.5px; color: rgba(255,255,255,0.35); font-weight: 300; line-height: 1.4; }
+
+/* ─── EDITORIAL CLOSE (V2 influence) ─── */
+.edit-close {
+  padding: 60px 52px 0;
+  background: var(--bg);
+}
+
+.edit-close-inner {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 80px 80px 0;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.edit-close-inner::before {
   content: '';
-  position: absolute;
-  top: -200px; left: 50%; transform: translateX(-50%);
-  width: 800px; height: 800px;
+  position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.06);
+  background: radial-gradient(circle, rgba(78,123,123,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.cta-inner { position: relative; z-index: 1; }
-
-.cta-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.15);
-  color: #fff; padding: 5px 14px;
-  border-radius: 100px;
-  font-size: 12px; font-weight: 500;
-  margin-bottom: 32px;
-  backdrop-filter: blur(8px);
+.ec-label {
+  font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--body);
+  margin-bottom: 36px; display: block; position: relative;
 }
 
-.cta-h {
-  font-size: clamp(36px, 5vw, 64px);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  color: #fff;
-  line-height: 1.05;
-  margin-bottom: 20px;
+.ec-h {
+  font-family: var(--serif);
+  font-size: clamp(44px, 6vw, 88px);
+  font-weight: 400; font-style: italic;
+  line-height: 1.0; letter-spacing: -0.01em;
+  color: var(--ink); margin-bottom: 20px;
+  position: relative;
 }
 
-.cta-sub {
-  font-size: 18px; color: rgba(255,255,255,0.7);
-  max-width: 440px; margin: 0 auto 44px;
-  line-height: 1.7;
+.ec-h em { color: var(--accent); font-style: normal; }
+
+.ec-sub {
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-family: var(--serif); font-style: italic;
+  color: var(--body); line-height: 1.4;
+  margin-bottom: 52px; position: relative;
+  font-weight: 400;
 }
 
-.cta-btns {
-  display: flex; align-items: center; justify-content: center; gap: 12px;
+.ec-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 64px; position: relative;
 }
 
-.btn-white {
-  background: #fff; color: var(--accent);
-  padding: 13px 28px;
-  border-radius: var(--r-sm);
-  font-size: 14px; font-weight: 600;
-  text-decoration: none;
-  letter-spacing: -0.01em;
+.btn-accent {
+  background: var(--accent); color: #fff;
+  padding: 15px 36px; border-radius: var(--r-sm);
+  font-size: 14px; font-weight: 500;
+  text-decoration: none; letter-spacing: -0.01em;
   transition: opacity 0.2s, transform 0.15s;
   display: inline-block;
 }
 
-.btn-white:hover { opacity: 0.9; transform: translateY(-2px); }
+.btn-accent:hover { opacity: 0.85; transform: translateY(-2px); }
 
-.btn-ghost-white {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  padding: 13px 28px;
-  border-radius: var(--r-sm);
-  border: 1px solid rgba(255,255,255,0.2);
+.btn-bordered {
+  background: transparent; color: var(--ink);
+  padding: 15px 36px; border-radius: var(--r-sm);
   font-size: 14px; font-weight: 500;
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  transition: background 0.2s;
+  text-decoration: none; letter-spacing: -0.01em;
+  border: 1px solid var(--border);
+  transition: background 0.2s, border-color 0.2s;
   display: inline-block;
 }
 
-.btn-ghost-white:hover { background: rgba(255,255,255,0.2); }
+.btn-bordered:hover { background: var(--hi); border-color: var(--border-accent); }
+
+/* Decorative bottom element */
+.ec-deco {
+  height: 120px;
+  background: linear-gradient(to bottom, var(--surface), var(--hi));
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  gap: 60px;
+}
+
+.ec-deco-item {
+  font-size: 12px; color: var(--body);
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 400;
+}
+
+.ec-deco-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
 
 /* ─── FOOTER ─── */
 footer {
   background: var(--ink);
-  padding: 64px 40px 40px;
+  padding: 72px 52px 44px;
 }
 
-.footer-top {
-  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 48px; padding-bottom: 48px;
+.ft-top {
+  display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 56px; padding-bottom: 56px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
-.footer-logo {
-  font-size: 16px; font-weight: 600;
-  color: #fff; margin-bottom: 12px;
-  letter-spacing: -0.02em;
-  display: flex; align-items: center; gap: 8px;
+.ft-brand {}
+
+.ft-logo {
+  font-family: var(--serif);
+  font-size: 22px; font-style: italic; font-weight: 400;
+  color: #fff; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
 }
 
-.footer-logo-dot {
-  width: 7px; height: 7px; border-radius: 50%;
+.ft-logo-m {
+  width: 26px; height: 26px; border-radius: 7px;
   background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
 }
 
-.footer-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.8; max-width: 220px; }
+.ft-logo-m svg { width: 12px; height: 12px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
 
-.footer-col-h { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+.ft-tagline { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.8; max-width: 220px; font-weight: 300; }
 
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.ft-col-h { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
 
-.footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: rgba(255,255,255,0.85); }
+.ft-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
-.footer-bottom {
-  display: flex; justify-content: space-between; align-items: center;
-}
+.ft-links a { font-size: 13.5px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; font-weight: 300; }
+.ft-links a:hover { color: rgba(255,255,255,0.8); }
 
-.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+.ft-bottom { display: flex; justify-content: space-between; align-items: center; }
 
-.footer-legal { display: flex; gap: 24px; }
-.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.2s; }
-.footer-legal a:hover { color: rgba(255,255,255,0.5); }
+.ft-copy { font-size: 12px; color: rgba(255,255,255,0.2); font-weight: 300; }
+
+.ft-legal { display: flex; gap: 24px; }
+.ft-legal a { font-size: 12px; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.2s; }
+.ft-legal a:hover { color: rgba(255,255,255,0.5); }
 
 /* ─── ANIMATIONS ─── */
 @keyframes up {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .reveal {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1);
 }
 
 .reveal.in { opacity: 1; transform: none; }
-.reveal.d1 { transition-delay: 0.08s; }
-.reveal.d2 { transition-delay: 0.16s; }
-.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.2s; }
+.reveal.d3 { transition-delay: 0.3s; }
 </style>
 </head>
 <body>
 
+<!-- ANNOUNCE -->
+<div class="announce">
+  Personalized programs delivered within 48 hours.
+  <a href="#">Begin your assessment →</a>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <span class="nav-logo-dot"></span>Onus
+    <span class="logo-mark">
+      <svg viewBox="0 0 12 12"><path d="M2 6 Q6 2 10 6 Q6 10 2 6Z"/></svg>
+    </span>
+    Onus
   </a>
-  <ul class="nav-center">
+  <ul class="nav-links">
     <li><a href="#personalization">How It Works</a></li>
-    <li><a href="#adaptive">Adaptive System</a></li>
     <li><a href="#coaching">Coaching</a></li>
-    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#why">Philosophy</a></li>
   </ul>
   <div class="nav-right">
-    <a href="#" class="nav-link">Log in</a>
+    <a href="#" class="nav-login">Log in</a>
     <a href="#cta" class="nav-cta">Get Started</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-badge"><span class="hero-badge-dot"></span> Personalized fitness programming</div>
-  <h1 class="hero-h1">Training that <span>adapts</span> to you.</h1>
-  <p class="hero-sub">Your program is built around your goals, schedule, and lifestyle — then adjusts continuously as your life evolves.</p>
-  <div class="hero-actions">
-    <a href="#cta" class="btn-primary">Start Your Assessment</a>
-    <a href="#personalization" class="btn-secondary">See how it works →</a>
+  <div class="hero-mesh"></div>
+
+  <div class="hero-top">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-pulse"></span>
+        Personalized fitness programming
+      </div>
+
+      <h1 class="hero-h1">
+        Fitness built<br>
+        around <span class="serif-em">your life.</span>
+      </h1>
+
+      <p class="hero-sub">Training plans that adapt to your goals, schedule, recovery, and the way you actually live — not someone else's program with your name on it.</p>
+
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">Begin Your Assessment</a>
+        <a href="#personalization" class="btn-ghost">How it works →</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <!-- Member profile card -->
+      <div class="hcard">
+        <div class="hcard-top-bar"></div>
+        <div class="hcard-header">
+          <span class="hcard-label">Member Profile</span>
+          <span class="hcard-badge badge-teal">Active · Week 8</span>
+        </div>
+        <div class="hcard-row"><span class="hcard-key">Goal</span><span class="hcard-val">Build lean muscle</span></div>
+        <div class="hcard-row"><span class="hcard-key">Schedule</span><span class="hcard-val">4 days / week</span></div>
+        <div class="hcard-row"><span class="hcard-key">Constraint</span><span class="hcard-val">Travels bi-weekly</span></div>
+        <div class="hcard-row"><span class="hcard-key">Phase</span><span class="hcard-badge badge-teal" style="border-radius:100px">Hypertrophy</span></div>
+      </div>
+
+      <!-- This week card -->
+      <div class="hcard">
+        <div class="hcard-top-bar"></div>
+        <div class="hcard-header">
+          <span class="hcard-label">This Week</span>
+          <span class="hcard-badge badge-green">On Track</span>
+        </div>
+        <div class="hcard-row"><span class="hcard-key">Mon</span><span class="hcard-val">Lower — Strength</span></div>
+        <div class="hcard-row"><span class="hcard-key">Tue</span><span class="hcard-val">Upper Push</span></div>
+        <div class="hcard-row"><span class="hcard-key">Wed</span><span class="hcard-badge badge-gray">Active Recovery</span></div>
+        <div class="hcard-row"><span class="hcard-key">Thu</span><span class="hcard-val">Upper Pull</span></div>
+      </div>
+
+      <!-- Progress card -->
+      <div class="hcard">
+        <div class="hcard-top-bar"></div>
+        <div class="hcard-header">
+          <span class="hcard-label">Progress</span>
+          <span class="hcard-badge badge-warm">8 of 12 weeks</span>
+        </div>
+        <div class="hcard-prog-wrap">
+          <div class="hcard-prog-label"><span>Goal Progress</span><span>67%</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:67%"></div></div>
+        </div>
+        <div class="hcard-prog-wrap">
+          <div class="hcard-prog-label"><span>Adherence</span><span>94%</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:94%"></div></div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="hero-modules">
-    <div class="hero-mod">
-      <div class="hero-mod-accent"></div>
-      <div class="hero-mod-icon">🎯</div>
-      <div class="hero-mod-title">Goal-aligned programming</div>
-      <p class="hero-mod-text">Every session is built toward your specific goal — strength, endurance, or body composition.</p>
+
+  <div class="hero-bottom">
+    <div class="hstat">
+      <div class="hstat-num">94<span>%</span></div>
+      <div class="hstat-label">Goal achievement<br>within 12 weeks</div>
     </div>
-    <div class="hero-mod">
-      <div class="hero-mod-accent"></div>
-      <div class="hero-mod-icon">🔄</div>
-      <div class="hero-mod-title">Adapts to real life</div>
-      <p class="hero-mod-text">Travel weeks, high-stress periods, schedule changes — your program adjusts to match reality.</p>
+    <div class="hstat">
+      <div class="hstat-num">3<span style="color:var(--accent)">×</span></div>
+      <div class="hstat-label">More consistent than<br>self-programming</div>
     </div>
-    <div class="hero-mod">
-      <div class="hero-mod-accent"></div>
-      <div class="hero-mod-icon">📈</div>
-      <div class="hero-mod-title">Built for the long game</div>
-      <p class="hero-mod-text">Deliberate progression phases designed for sustainable results — not quick, unsustainable gains.</p>
+    <div class="hstat">
+      <div class="hstat-num">48<span style="color:var(--accent);font-size:22px">hr</span></div>
+      <div class="hstat-label">Program delivered<br>after assessment</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-num">0</div>
+      <div class="hstat-label">Templates ever used —<br>every program is original</div>
     </div>
   </div>
 </section>
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-item"><span class="trust-num">94%</span> goal achievement rate</div>
-  <div class="trust-sep"></div>
-  <div class="trust-item"><span class="trust-num">180+</span> active members</div>
-  <div class="trust-sep"></div>
-  <div class="trust-item"><span class="trust-num">3×</span> more consistent than self-programming</div>
-  <div class="trust-sep"></div>
-  <div class="trust-item"><span class="trust-num">0</span> templates ever used</div>
-</div>
 
 <!-- PERSONALIZATION -->
 <section id="personalization">
-  <div class="personal-layout">
+  <div class="personal-grid">
     <div class="personal-left reveal">
-      <div class="section-tag">How it works</div>
-      <h2 class="section-h">Every variable<br><span>mapped</span> to your program.</h2>
-      <p class="section-sub">Five factors determine whether a training program works for you in the real world. Onus accounts for all of them.</p>
+      <div class="tag">How it works</div>
+      <h2 class="section-h">Every variable<br>mapped to <span class="si">your program.</span></h2>
+      <p class="section-body">Five factors determine whether a training program works for you in real life. Onus accounts for all of them before writing a single session.</p>
       <div class="tab-list">
-        <div class="tab-item active" data-tab="goals">
-          <span class="tab-item-num">1</span>
-          <span class="tab-item-label">Goals</span>
-          <span class="tab-item-arrow">→</span>
-        </div>
-        <div class="tab-item" data-tab="schedule">
-          <span class="tab-item-num">2</span>
-          <span class="tab-item-label">Schedule</span>
-          <span class="tab-item-arrow">→</span>
-        </div>
-        <div class="tab-item" data-tab="recovery">
-          <span class="tab-item-num">3</span>
-          <span class="tab-item-label">Recovery</span>
-          <span class="tab-item-arrow">→</span>
-        </div>
-        <div class="tab-item" data-tab="experience">
-          <span class="tab-item-num">4</span>
-          <span class="tab-item-label">Experience Level</span>
-          <span class="tab-item-arrow">→</span>
-        </div>
-        <div class="tab-item" data-tab="lifestyle">
-          <span class="tab-item-num">5</span>
-          <span class="tab-item-label">Lifestyle</span>
-          <span class="tab-item-arrow">→</span>
-        </div>
+        <button class="tab-btn active" data-tab="goals"><span class="tab-n">1</span><span class="tab-name">Goals</span><span class="tab-arrow">→</span></button>
+        <button class="tab-btn" data-tab="schedule"><span class="tab-n">2</span><span class="tab-name">Schedule</span><span class="tab-arrow">→</span></button>
+        <button class="tab-btn" data-tab="recovery"><span class="tab-n">3</span><span class="tab-name">Recovery</span><span class="tab-arrow">→</span></button>
+        <button class="tab-btn" data-tab="experience"><span class="tab-n">4</span><span class="tab-name">Experience Level</span><span class="tab-arrow">→</span></button>
+        <button class="tab-btn" data-tab="lifestyle"><span class="tab-n">5</span><span class="tab-name">Lifestyle</span><span class="tab-arrow">→</span></button>
       </div>
     </div>
 
-    <div class="tab-panels reveal d1">
-
+    <div class="reveal d1">
+      <!-- GOALS -->
       <div class="tab-panel active" id="panel-goals">
-        <div class="panel-card">
-          <div class="panel-card-header">
-            <span class="panel-card-dot" style="background:var(--accent)"></span>
-            <span class="panel-card-title">Goal Configuration</span>
-          </div>
-          <div class="panel-body">
-            <div class="panel-h">What are you training for?</div>
-            <p class="panel-p">Your programming reflects your exact target — and evolves as priorities change. Strength, endurance, body composition, or a deliberate combination of all three.</p>
-            <div class="panel-chips">
-              <span class="chip hi">Build Strength</span>
-              <span class="chip">Lose Body Fat</span>
-              <span class="chip">Improve Endurance</span>
-              <span class="chip">Build Muscle</span>
-              <span class="chip">5K Training</span>
+        <div class="panel-surface">
+          <div class="panel-bar"><span class="panel-bar-dot" style="background:var(--accent)"></span><span class="panel-bar-title">Goal Configuration</span></div>
+          <div class="panel-content">
+            <div class="panel-h">What are you <span class="si">training toward?</span></div>
+            <p class="panel-p">Your programming reflects your exact target. Strength, endurance, body composition — or a deliberate combination — mapped and sequenced across your full program arc.</p>
+            <div class="chips">
+              <span class="chip active">Build Strength</span><span class="chip">Lose Body Fat</span>
+              <span class="chip">Improve Endurance</span><span class="chip">Build Muscle</span><span class="chip">5K Training</span>
             </div>
-            <div class="panel-metric-row">
-              <div class="panel-metric">
-                <div class="panel-metric-val">12<span>wk</span></div>
-                <div class="panel-metric-label">Avg. to first milestone</div>
-              </div>
-              <div class="panel-metric">
-                <div class="panel-metric-val">94<span>%</span></div>
-                <div class="panel-metric-label">Goal achievement rate</div>
-              </div>
+            <div class="panel-metrics">
+              <div class="pm"><div class="pm-val">12<span>wk</span></div><div class="pm-label">Avg. time to first milestone</div></div>
+              <div class="pm"><div class="pm-val">94<span>%</span></div><div class="pm-label">Goal achievement rate</div></div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- SCHEDULE -->
       <div class="tab-panel" id="panel-schedule">
-        <div class="panel-card">
-          <div class="panel-card-header">
-            <span class="panel-card-dot" style="background:var(--success)"></span>
-            <span class="panel-card-title">Schedule Mapping</span>
-          </div>
-          <div class="panel-body">
-            <div class="panel-h">Fits your actual week.</div>
-            <p class="panel-p">3 days or 5, mornings or evenings, gym or home — your program is built around how your week actually looks, not an idealized version of it.</p>
-            <div class="panel-chips">
-              <span class="chip hi">3 Days / Week</span>
-              <span class="chip">4 Days / Week</span>
-              <span class="chip">5 Days / Week</span>
-              <span class="chip">Morning</span>
-              <span class="chip">Lunch</span>
-              <span class="chip">Evening</span>
+        <div class="panel-surface">
+          <div class="panel-bar"><span class="panel-bar-dot" style="background:var(--warm-dk)"></span><span class="panel-bar-title">Schedule Mapping</span></div>
+          <div class="panel-content">
+            <div class="panel-h">Fits your <span class="si">actual week.</span></div>
+            <p class="panel-p">3 days or 5, mornings or evenings, gym or home — your program is built around your real schedule, not an idealized version that assumes unlimited time and energy.</p>
+            <div class="chips">
+              <span class="chip active">3 Days/Week</span><span class="chip">4 Days/Week</span><span class="chip">5 Days/Week</span>
+              <span class="chip">Morning</span><span class="chip">Lunch</span><span class="chip">Evening</span>
             </div>
-            <div class="panel-metric-row">
-              <div class="panel-metric">
-                <div class="panel-metric-val">3×</div>
-                <div class="panel-metric-label">More consistent adherence</div>
-              </div>
-              <div class="panel-metric">
-                <div class="panel-metric-val">0</div>
-                <div class="panel-metric-label">Missed weeks due to scheduling</div>
-              </div>
+            <div class="panel-metrics">
+              <div class="pm"><div class="pm-val">3<span>×</span></div><div class="pm-label">More consistent adherence</div></div>
+              <div class="pm"><div class="pm-val">0</div><div class="pm-label">Missed weeks due to scheduling conflicts</div></div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- RECOVERY -->
       <div class="tab-panel" id="panel-recovery">
-        <div class="panel-card">
-          <div class="panel-card-header">
-            <span class="panel-card-dot" style="background:var(--accent2)"></span>
-            <span class="panel-card-title">Recovery Intelligence</span>
-          </div>
-          <div class="panel-body">
-            <div class="panel-h">Intensity adapts to recovery.</div>
-            <p class="panel-p">Sleep quality, stress load, and training history are factored in. High-demand weeks get adjusted load. Recovery is treated as part of training, not a break from it.</p>
-            <div class="panel-chips">
-              <span class="chip hi">Sleep Tracking</span>
-              <span class="chip">Stress Load</span>
-              <span class="chip">Weekly Deloads</span>
-              <span class="chip">Injury History</span>
+        <div class="panel-surface">
+          <div class="panel-bar"><span class="panel-bar-dot" style="background:var(--accent2)"></span><span class="panel-bar-title">Recovery Intelligence</span></div>
+          <div class="panel-content">
+            <div class="panel-h">Intensity adapts to <span class="si">how you're feeling.</span></div>
+            <p class="panel-p">Sleep quality, stress load, and prior training volume are factored into every decision. High-demand weeks get adjusted load. Recovery is part of training, not a break from it.</p>
+            <div class="chips">
+              <span class="chip active">Sleep Quality</span><span class="chip">Stress Load</span>
+              <span class="chip">Weekly Deloads</span><span class="chip">Injury History</span>
             </div>
-            <div class="progress-row">
-              <div class="progress-label-row"><span>Recovery Score</span><span>Good week</span></div>
+            <div class="prog-row">
+              <div class="prog-info"><span>Recovery capacity</span><span>Good week · 82%</span></div>
               <div class="prog-track"><div class="prog-fill" style="width:82%"></div></div>
             </div>
-            <div class="progress-row">
-              <div class="progress-label-row"><span>Adjusted Load</span><span>Optimal</span></div>
-              <div class="prog-track"><div class="prog-fill" style="width:75%"></div></div>
+            <div class="prog-row" style="margin-top:14px">
+              <div class="prog-info"><span>Adjusted training load</span><span>Optimal · 76%</span></div>
+              <div class="prog-track"><div class="prog-fill warm" style="width:76%"></div></div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- EXPERIENCE -->
       <div class="tab-panel" id="panel-experience">
-        <div class="panel-card">
-          <div class="panel-card-header">
-            <span class="panel-card-dot" style="background:#F6BE4B"></span>
-            <span class="panel-card-title">Experience Calibration</span>
-          </div>
-          <div class="panel-body">
-            <div class="panel-h">Starts exactly where you are.</div>
-            <p class="panel-p">Whether you're beginning for the first time or returning after years away, the entry point is calibrated precisely — so day one is productive, not overwhelming.</p>
-            <div class="panel-chips">
-              <span class="chip hi">Beginner</span>
-              <span class="chip">Intermediate</span>
-              <span class="chip">Advanced</span>
-              <span class="chip">Return from Injury</span>
+        <div class="panel-surface">
+          <div class="panel-bar"><span class="panel-bar-dot" style="background:#C4A96B"></span><span class="panel-bar-title">Experience Calibration</span></div>
+          <div class="panel-content">
+            <div class="panel-h">Starts exactly <span class="si">where you are.</span></div>
+            <p class="panel-p">Whether beginning for the first time or returning after years away, the entry point is calibrated precisely — so progress is real from week one, not from week eight.</p>
+            <div class="chips">
+              <span class="chip active">Beginner</span><span class="chip">Intermediate</span>
+              <span class="chip">Advanced</span><span class="chip">Return from Injury</span><span class="chip">Post-Competition</span>
             </div>
-            <div class="panel-metric-row">
-              <div class="panel-metric">
-                <div class="panel-metric-val">48<span>hr</span></div>
-                <div class="panel-metric-label">Program delivery time</div>
-              </div>
-              <div class="panel-metric">
-                <div class="panel-metric-val">100<span>%</span></div>
-                <div class="panel-metric-label">Custom, never templated</div>
-              </div>
+            <div class="panel-metrics">
+              <div class="pm"><div class="pm-val">48<span>hr</span></div><div class="pm-label">Program delivered after assessment</div></div>
+              <div class="pm"><div class="pm-val">100<span>%</span></div><div class="pm-label">Custom — never templated</div></div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- LIFESTYLE -->
       <div class="tab-panel" id="panel-lifestyle">
-        <div class="panel-card">
-          <div class="panel-card-header">
-            <span class="panel-card-dot" style="background:var(--success)"></span>
-            <span class="panel-card-title">Lifestyle Integration</span>
-          </div>
-          <div class="panel-body">
-            <div class="panel-h">Works around your life.</div>
-            <p class="panel-p">Travel frequency, equipment access, dietary approach, work demands — nothing relevant is ignored. Your program is designed around the full picture of how you actually live.</p>
-            <div class="panel-chips">
-              <span class="chip hi">Frequent Travel</span>
-              <span class="chip">Home Gym</span>
-              <span class="chip">Shift Work</span>
-              <span class="chip">Parent</span>
-              <span class="chip">Remote Worker</span>
+        <div class="panel-surface">
+          <div class="panel-bar"><span class="panel-bar-dot" style="background:var(--success, #9CC8B5)"></span><span class="panel-bar-title">Lifestyle Integration</span></div>
+          <div class="panel-content">
+            <div class="panel-h">Works around <span class="si">your life.</span></div>
+            <p class="panel-p">Travel cadence, equipment access, dietary approach, work demands, family constraints — nothing relevant is ignored. Your program fits the full picture of how you actually live.</p>
+            <div class="chips">
+              <span class="chip active">Frequent Travel</span><span class="chip">Home Gym</span>
+              <span class="chip">Shift Work</span><span class="chip">Parent</span><span class="chip">Desk Job</span>
             </div>
-            <div class="panel-metric-row">
-              <div class="panel-metric">
-                <div class="panel-metric-val">∞</div>
-                <div class="panel-metric-label">Program variations possible</div>
-              </div>
-              <div class="panel-metric">
-                <div class="panel-metric-val">1</div>
-                <div class="panel-metric-label">Program built just for you</div>
-              </div>
+            <div class="panel-metrics">
+              <div class="pm"><div class="pm-val">∞</div><div class="pm-label">Possible program configurations</div></div>
+              <div class="pm"><div class="pm-val">1</div><div class="pm-label">Program built specifically for you</div></div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ADAPTIVE SYSTEM -->
-<section id="adaptive">
-  <div class="adaptive-header reveal">
-    <div class="section-tag">Adaptive by design</div>
-    <h2 class="section-h">Your program<br>evolves as you do.</h2>
-    <p class="section-sub">Three ongoing processes keep your training relevant, effective, and aligned with where you actually are.</p>
-  </div>
-  <div class="adaptive-grid">
-    <div class="adaptive-card reveal">
-      <div class="adaptive-card-status">> <span>ACTIVE</span> · Week 6 / Phase 2</div>
-      <div class="adaptive-visual">
-        <div class="dot-grid">
-          <span class="lit-blue"></span><span class="lit-blue"></span><span></span><span></span><span class="lit-blue"></span><span></span>
-          <span></span><span class="lit-blue"></span><span class="lit-blue"></span><span></span><span class="lit-blue"></span><span class="lit-blue"></span>
-          <span class="lit-blue"></span><span></span><span class="lit-blue"></span><span class="lit-blue"></span><span></span><span></span>
-          <span></span><span class="lit-blue"></span><span></span><span class="lit-blue"></span><span class="lit-blue"></span><span></span>
-          <span class="lit-blue"></span><span class="lit-blue"></span><span></span><span></span><span class="lit-blue"></span><span class="lit-blue"></span>
-          <span></span><span class="lit-blue"></span><span class="lit-blue"></span><span class="lit-blue"></span><span></span><span></span>
-        </div>
-      </div>
-      <div class="adaptive-card-title">Progressive overload</div>
-      <p class="adaptive-card-text">Load, volume, and intensity increase deliberately phase by phase — matched to your actual rate of adaptation, not a generic timeline.</p>
-    </div>
-    <div class="adaptive-card reveal d1">
-      <div class="adaptive-card-status">> <span>SYNCING</span> · Weekly check-in</div>
-      <div class="adaptive-visual">
-        <div class="dot-grid">
-          <span></span><span class="lit-green"></span><span></span><span class="lit-green"></span><span></span><span></span>
-          <span class="lit-green"></span><span></span><span class="lit-green"></span><span></span><span class="lit-green"></span><span></span>
-          <span></span><span class="lit-green"></span><span class="lit-green"></span><span></span><span></span><span class="lit-green"></span>
-          <span class="lit-green"></span><span></span><span></span><span class="lit-green"></span><span class="lit-green"></span><span></span>
-          <span></span><span class="lit-green"></span><span class="lit-green"></span><span></span><span class="lit-green"></span><span></span>
-          <span class="lit-green"></span><span></span><span></span><span class="lit-green"></span><span></span><span class="lit-green"></span>
-        </div>
-      </div>
-      <div class="adaptive-card-title">Real-time adjustment</div>
-      <p class="adaptive-card-text">Weekly check-ins capture what's working, what's changed, and what's coming up in your life — so your program adjusts before it becomes a mismatch.</p>
-    </div>
-    <div class="adaptive-card reveal d2">
-      <div class="adaptive-card-status">> <span>PLANNING</span> · Phase 3 prep</div>
-      <div class="adaptive-visual">
-        <div class="dot-grid">
-          <span class="lit-soft"></span><span></span><span class="lit-soft"></span><span></span><span class="lit-soft"></span><span></span>
-          <span></span><span class="lit-soft"></span><span></span><span class="lit-soft"></span><span></span><span class="lit-soft"></span>
-          <span class="lit-soft"></span><span class="lit-soft"></span><span></span><span></span><span class="lit-soft"></span><span class="lit-soft"></span>
-          <span></span><span class="lit-soft"></span><span class="lit-soft"></span><span class="lit-soft"></span><span></span><span></span>
-          <span class="lit-soft"></span><span></span><span class="lit-soft"></span><span class="lit-soft"></span><span></span><span class="lit-soft"></span>
-          <span></span><span class="lit-soft"></span><span></span><span></span><span class="lit-soft"></span><span class="lit-soft"></span>
-        </div>
-      </div>
-      <div class="adaptive-card-title">Long-term periodization</div>
-      <p class="adaptive-card-text">Phases are planned months ahead — build, intensity, deload, specialize — so short-term progress compounds into meaningful long-term results.</p>
-    </div>
-  </div>
-</section>
+<!-- EDITORIAL STATEMENT — V2 rhythm -->
+<div class="edit-band reveal">
+  <span class="edit-band-label">The Onus principle</span>
+  <h2 class="edit-band-h">Fitness should adapt to <em>your life.</em><br>Not the other way around.</h2>
+  <p class="edit-band-sub">The burden of change belongs to the program — not the person. When training fits naturally, consistency follows. Results follow consistency.</p>
+</div>
 
-<!-- COACHING -->
-<section id="coaching">
-  <div class="coaching-layout">
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="how-header">
     <div class="reveal">
-      <div class="section-tag">The coaching experience</div>
-      <h2 class="section-h">Premium support,<br><span>built in.</span></h2>
-      <p class="section-sub">Programming and coaching work together continuously — not just at the start.</p>
+      <div class="tag">The process</div>
+      <h2 class="section-h">Simple to start.<br><span class="si">Powerful over time.</span></h2>
+    </div>
+    <p class="section-body reveal d1">Three deliberate steps. Fully personalized from day one. Continuously refined as your life and capacity evolve — never static, always relevant.</p>
+  </div>
+  <div class="how-steps-grid">
+    <div class="how-card reveal">
+      <div class="how-card-n">01</div>
+      <div class="how-card-title">Your Assessment</div>
+      <p class="how-card-text">A thorough intake covering goals, training history, schedule constraints, recovery habits, equipment access, and lifestyle. This becomes the foundation — not a formality.</p>
+      <span class="how-card-tag">~20 minutes</span>
+    </div>
+    <div class="how-card reveal d1">
+      <div class="how-card-n">02</div>
+      <div class="how-card-title">Program Design</div>
+      <p class="how-card-text">Your coach designs a fully individualized program within 48 hours. Not a template with your name on it — a genuine design where every session and exercise is deliberate.</p>
+      <span class="how-card-tag">48hr delivery</span>
+    </div>
+    <div class="how-card reveal d2">
+      <div class="how-card-n">03</div>
+      <div class="how-card-title">Ongoing Refinement</div>
+      <p class="how-card-text">Weekly check-ins, real-time adjustments, and continuous evolution as your capacity grows. Your program progresses with you — and adapts when life requires it.</p>
+      <span class="how-card-tag">Every week</span>
+    </div>
+  </div>
+</section>
+
+<!-- ADAPTIVE COACHING -->
+<section id="coaching">
+  <div class="coaching-grid">
+    <div class="reveal">
+      <div class="tag">Coaching experience</div>
+      <h2 class="section-h">Support that<br><span class="si">moves with you.</span></h2>
+      <p class="section-body">Programming and coaching work together continuously — not just at onboarding. Your program is a living document, not a fixed plan.</p>
       <div class="coaching-steps">
-        <div class="coaching-step">
-          <span class="coaching-step-n">1</span>
-          <div>
-            <div class="coaching-step-title">Deep assessment</div>
-            <p class="coaching-step-text">A thorough intake capturing everything that matters — goals, schedule, history, lifestyle, constraints, and what's been tried before.</p>
-          </div>
+        <div class="cstep">
+          <span class="cstep-num">1</span>
+          <div><div class="cstep-title">Deep intake assessment</div><p class="cstep-text">Everything that matters — goals, history, schedule, lifestyle, and what's been tried before — captured thoroughly before a single session is written.</p></div>
         </div>
-        <div class="coaching-step">
-          <span class="coaching-step-n">2</span>
-          <div>
-            <div class="coaching-step-title">Program delivered in 48 hours</div>
-            <p class="coaching-step-text">Not a template with your name on it. A genuine individual design built specifically around your assessment — delivered within two days.</p>
-          </div>
+        <div class="cstep">
+          <span class="cstep-num">2</span>
+          <div><div class="cstep-title">Custom program in 48 hours</div><p class="cstep-text">Your coach builds from scratch. Every session, exercise, and set is chosen deliberately — calibrated to your specific starting point and goals.</p></div>
         </div>
-        <div class="coaching-step">
-          <span class="coaching-step-n">3</span>
-          <div>
-            <div class="coaching-step-title">Weekly check-ins & adjustments</div>
-            <p class="coaching-step-text">Short weekly reviews feed real-time adjustments. Your program evolves with your life — never static, always relevant.</p>
-          </div>
+        <div class="cstep">
+          <span class="cstep-num">3</span>
+          <div><div class="cstep-title">Weekly check-ins</div><p class="cstep-text">Short weekly reviews feed real-time adjustments. Life changes, demands shift, capacity grows — your program adapts to all of it before it becomes a mismatch.</p></div>
         </div>
-        <div class="coaching-step">
-          <span class="coaching-step-n">4</span>
-          <div>
-            <div class="coaching-step-title">Phase progression & planning</div>
-            <p class="coaching-step-text">Deliberate phase transitions keep progress compounding. Deloads are planned. Intensity is earned. Long-term development is always the goal.</p>
-          </div>
+        <div class="cstep">
+          <span class="cstep-num">4</span>
+          <div><div class="cstep-title">Phase-by-phase progression</div><p class="cstep-text">Deliberate phases — build, intensity, deload, specialize — planned ahead so short-term effort compounds into meaningful long-term results.</p></div>
         </div>
       </div>
     </div>
+
     <div class="coaching-right reveal d1">
-      <div class="card-stack">
-        <div class="stack-card">
-          <div class="scard-header">
-            <span class="scard-dot" style="background:var(--accent)"></span>
-            <span class="scard-label">Member Profile · Marcus T.</span>
+      <div class="float-stack">
+        <div class="fcard fcard-1">
+          <div class="fcard-bar">
+            <span class="fcard-dot" style="background:var(--accent)"></span>
+            <span class="fcard-title">Member · Marcus T. · Week 8</span>
           </div>
-          <div class="scard-body">
-            <div class="scard-row">
-              <span class="scard-key">Goal</span>
-              <span class="scard-val">Build lean muscle</span>
-            </div>
-            <div class="scard-row">
-              <span class="scard-key">Schedule</span>
-              <span class="scard-val">4–5 days / week</span>
-            </div>
-            <div class="scard-row">
-              <span class="scard-key">Phase</span>
-              <span class="scard-badge badge-blue">Hypertrophy · Wk 8</span>
-            </div>
-            <div class="scard-row">
-              <span class="scard-key">Adherence</span>
-              <span class="scard-badge badge-green">94%</span>
-            </div>
-            <div class="scard-row">
-              <span class="scard-key">Status</span>
-              <span class="scard-badge badge-green">On Track</span>
-            </div>
+          <div class="fcard-body">
+            <div class="fcard-row"><span class="fcard-key">Primary goal</span><span class="fcard-val">Build lean muscle</span></div>
+            <div class="fcard-row"><span class="fcard-key">Current phase</span><span class="hcard-badge badge-teal" style="font-size:11px;padding:3px 10px;border-radius:100px;background:var(--hi);color:var(--accent)">Hypertrophy · Phase 2</span></div>
+            <div class="fcard-row"><span class="fcard-key">Sessions / week</span><span class="fcard-val">4–5 days</span></div>
+            <div class="fcard-row"><span class="fcard-key">Adherence</span><span class="fcard-val" style="color:var(--accent)">94%</span></div>
+            <div class="fcard-row"><span class="fcard-key">Status</span><span class="fcard-val">On Track</span></div>
           </div>
         </div>
-        <div class="stack-card">
-          <div class="scard-header">
-            <span class="scard-dot" style="background:var(--success)"></span>
-            <span class="scard-label">This Week · Program</span>
+        <div class="fcard fcard-2">
+          <div class="fcard-bar">
+            <span class="fcard-dot" style="background:var(--warm-dk)"></span>
+            <span class="fcard-title">Weekly Program</span>
           </div>
-          <div class="scard-body">
-            <div class="scard-row"><span class="scard-key">Mon</span><span class="scard-val">Lower Strength</span></div>
-            <div class="scard-row"><span class="scard-key">Tue</span><span class="scard-val">Upper Push</span></div>
-            <div class="scard-row"><span class="scard-key">Wed</span><span class="scard-badge badge-gray">Rest</span></div>
-            <div class="scard-row"><span class="scard-key">Thu</span><span class="scard-val">Upper Pull</span></div>
+          <div class="fcard-body">
+            <div class="fcard-row"><span class="fcard-key">Mon</span><span class="fcard-val">Lower Body Strength</span></div>
+            <div class="fcard-row"><span class="fcard-key">Tue</span><span class="fcard-val">Upper Push</span></div>
+            <div class="fcard-row"><span class="fcard-key">Wed</span><span class="fcard-val" style="color:var(--body)">Active Recovery</span></div>
+            <div class="fcard-row"><span class="fcard-key">Thu</span><span class="fcard-val">Upper Pull</span></div>
           </div>
         </div>
-        <div class="stack-card">
-          <div class="scard-header">
-            <span class="scard-dot" style="background:var(--accent2)"></span>
-            <span class="scard-label">Progress · 8 weeks</span>
+        <div class="fcard fcard-3">
+          <div class="fcard-bar">
+            <span class="fcard-dot" style="background:var(--accent2)"></span>
+            <span class="fcard-title">Goal Progress · 8 weeks</span>
           </div>
-          <div class="scard-body">
-            <div class="progress-row">
-              <div class="progress-label-row"><span>Goal Progress</span><span>Week 8 / 12</span></div>
+          <div class="fcard-body">
+            <div class="prog-row">
+              <div class="prog-info"><span>Phase completion</span><span>67%</span></div>
               <div class="prog-track"><div class="prog-fill" style="width:67%"></div></div>
             </div>
           </div>
@@ -1460,34 +1403,36 @@ footer {
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="test-top reveal">
-    <div>
-      <div class="section-tag">Results</div>
-      <h2 class="test-h">Real outcomes.<br>Real <span>lives.</span></h2>
+<!-- RESULTS -->
+<section id="results">
+  <div class="results-header">
+    <div class="reveal">
+      <div class="tag">Member results</div>
+      <h2 class="section-h">Real outcomes.<br><span class="si">Real lives.</span></h2>
     </div>
-    <p class="test-sub">Not transformations. Consistent, meaningful results from people who trained with programs built around how they actually live.</p>
+    <p class="section-body reveal d1">Not transformations. Not before-and-afters. Consistent, meaningful results from people who trained with programs built around how they actually live.</p>
   </div>
-  <div class="test-stat-row">
-    <div class="test-stat reveal">
-      <div class="test-stat-num">94<span>%</span></div>
-      <div class="test-stat-label">Members reach their first<br>goal within 12 weeks</div>
+
+  <div class="stat-row">
+    <div class="stat-card reveal">
+      <div class="stat-num">94<span>%</span></div>
+      <div class="stat-label">Members reach their first goal within 12 weeks</div>
     </div>
-    <div class="test-stat reveal d1">
-      <div class="test-stat-num">3<span>×</span></div>
-      <div class="test-stat-label">More consistent than<br>self-programmed training</div>
+    <div class="stat-card reveal d1">
+      <div class="stat-num">3<span>×</span></div>
+      <div class="stat-label">More consistent than self-programmed training</div>
     </div>
-    <div class="test-stat reveal d2">
-      <div class="test-stat-num">0</div>
-      <div class="test-stat-label">Templates used — every<br>program is built from scratch</div>
+    <div class="stat-card reveal d2">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Templates used — every program built from scratch</div>
     </div>
   </div>
-  <div class="tcards" style="margin-top:16px;">
+
+  <div class="tcards" style="margin-top:12px;">
     <div class="tcard reveal">
       <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       <p class="tcard-q">I've tried every program out there. This is the first one that actually accounted for the fact that I travel every other week. I haven't missed a session in two months.</p>
-      <div class="tcard-divider"></div>
+      <div class="tcard-rule"></div>
       <div class="tcard-author">
         <div class="tcard-av">S</div>
         <div><div class="tcard-name">Sarah K.</div><div class="tcard-detail">Business Analyst · 14 weeks</div></div>
@@ -1495,8 +1440,8 @@ footer {
     </div>
     <div class="tcard reveal d1">
       <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <p class="tcard-q">My previous coach gave me a template and wished me luck. Onus adjusts every single week based on how I'm recovering. It's a completely different experience.</p>
-      <div class="tcard-divider"></div>
+      <p class="tcard-q">My previous coach gave me a template and wished me luck. Onus adjusts every week based on how I'm recovering. It's a completely different experience — and the results show it.</p>
+      <div class="tcard-rule"></div>
       <div class="tcard-author">
         <div class="tcard-av">D</div>
         <div><div class="tcard-name">David R.</div><div class="tcard-detail">Software Engineer · 6 months</div></div>
@@ -1504,8 +1449,8 @@ footer {
     </div>
     <div class="tcard reveal d2">
       <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <p class="tcard-q">Down 22 lbs and lifting more than ever. The program made sense for my schedule, my body, and my life. That combination is rare — I've never had it before.</p>
-      <div class="tcard-divider"></div>
+      <p class="tcard-q">Down 22 lbs and lifting more than I ever have. The program made sense for my schedule, my body, and my life. That combination is rare — I've never had it before Onus.</p>
+      <div class="tcard-rule"></div>
       <div class="tcard-author">
         <div class="tcard-av">J</div>
         <div><div class="tcard-name">Jamie L.</div><div class="tcard-detail">Teacher · 20 weeks</div></div>
@@ -1516,169 +1461,123 @@ footer {
 
 <!-- WHY ONUS -->
 <section id="why">
-  <div class="why-layout">
+  <div class="why-grid">
     <div class="reveal">
-      <div class="section-tag">Why Onus works</div>
-      <h2 class="section-h">A smarter approach to <span>personalized</span> fitness.</h2>
-      <p class="section-sub" style="margin-bottom:0">Personalized programming isn't a feature — it's the entire premise. Every design decision exists to make training fit your life, not the other way around.</p>
-      <div class="why-cards">
-        <div class="why-card">
-          <div class="why-card-icon">🧩</div>
-          <div>
-            <div class="why-card-title">No program fits everyone</div>
-            <p class="why-card-text">Generic programs are mathematically wrong for most people. Yours is built from scratch — for you specifically.</p>
-          </div>
-        </div>
-        <div class="why-card">
-          <div class="why-card-icon">🔄</div>
-          <div>
-            <div class="why-card-title">Life doesn't pause for fitness</div>
-            <p class="why-card-text">Your program accounts for the variability of real life and adjusts in real time — not just at the start.</p>
-          </div>
-        </div>
-        <div class="why-card">
-          <div class="why-card-icon">📊</div>
-          <div>
-            <div class="why-card-title">Consistency drives everything</div>
-            <p class="why-card-text">When a program actually fits your life, consistent follow-through follows naturally. That's the single biggest predictor of results.</p>
-          </div>
-        </div>
-        <div class="why-card">
-          <div class="why-card-icon">🎯</div>
-          <div>
-            <div class="why-card-title">Long-term by design</div>
-            <p class="why-card-text">Phases, deloads, and progression are planned deliberately. Short-term results compound into lasting change.</p>
-          </div>
-        </div>
+      <div class="tag">Philosophy</div>
+      <h2 class="section-h">A more thoughtful<br>approach to <span class="si">fitness.</span></h2>
+      <p class="section-body">Personalized programming isn't a feature — it's the entire premise. Every decision at Onus exists to make training fit your life, not the other way around.</p>
+      <div class="why-points">
+        <div class="wpt"><span class="wpt-line"></span><div><div class="wpt-title">No program fits everyone</div><p class="wpt-text">Generic programs are designed for nobody in particular. Yours is built from the ground up — for you, specifically, at this point in your life.</p></div></div>
+        <div class="wpt"><span class="wpt-line"></span><div><div class="wpt-title">Life doesn't pause for fitness</div><p class="wpt-text">Stress, travel, poor sleep, demanding weeks — your program accounts for all of it. When life shifts, your training adjusts before it becomes a problem.</p></div></div>
+        <div class="wpt"><span class="wpt-line"></span><div><div class="wpt-title">Consistency drives everything</div><p class="wpt-text">When training genuinely fits your life, consistent follow-through is the natural outcome. That single factor predicts long-term results more than anything else.</p></div></div>
+        <div class="wpt"><span class="wpt-line"></span><div><div class="wpt-title">Long-term by design</div><p class="wpt-text">Phases, deloads, and progression are planned deliberately. Short-term effort compounds into lasting change when the architecture is right.</p></div></div>
       </div>
     </div>
+
     <div class="reveal d1">
-      <div class="compare-table">
+      <div class="why-panel">
+        <div class="wp-header">
+          <span class="wp-title">Onus vs. Generic</span>
+          <span class="wp-badge">Side by side</span>
+        </div>
         <div class="compare-header">
-          <span>Feature</span>
-          <span>Onus</span>
-          <span>Generic</span>
+          <span>Feature</span><span>Onus</span><span>Generic</span>
         </div>
-        <div class="compare-row">
-          <span class="compare-row-label">Fully custom program</span>
-          <span class="compare-cell check">✓</span>
-          <span class="compare-cell cross">✕</span>
-        </div>
-        <div class="compare-row">
-          <span class="compare-row-label">Adapts to your schedule</span>
-          <span class="compare-cell check">✓</span>
-          <span class="compare-cell cross">✕</span>
-        </div>
-        <div class="compare-row">
-          <span class="compare-row-label">Recovery-informed load</span>
-          <span class="compare-cell check">✓</span>
-          <span class="compare-cell cross">✕</span>
-        </div>
-        <div class="compare-row">
-          <span class="compare-row-label">Adjusts to life events</span>
-          <span class="compare-cell check">✓</span>
-          <span class="compare-cell cross">✕</span>
-        </div>
-        <div class="compare-row">
-          <span class="compare-row-label">Weekly coaching check-ins</span>
-          <span class="compare-cell check">✓</span>
-          <span class="compare-cell cross">✕</span>
-        </div>
-        <div class="compare-row">
-          <span class="compare-row-label">Long-term phase planning</span>
-          <span class="compare-cell check">✓</span>
-          <span class="compare-cell cross">✕</span>
-        </div>
-        <div class="compare-row">
-          <span class="compare-row-label">Template-based</span>
-          <span class="compare-cell cross">✕</span>
-          <span class="compare-cell check">✓</span>
+        <div class="compare-row"><span class="cr-label">Fully custom program</span><span class="cr-cell cr-y">✓</span><span class="cr-cell cr-n">✕</span></div>
+        <div class="compare-row"><span class="cr-label">Adapts to your schedule</span><span class="cr-cell cr-y">✓</span><span class="cr-cell cr-n">✕</span></div>
+        <div class="compare-row"><span class="cr-label">Recovery-informed load</span><span class="cr-cell cr-y">✓</span><span class="cr-cell cr-n">✕</span></div>
+        <div class="compare-row"><span class="cr-label">Adjusts to life events</span><span class="cr-cell cr-y">✓</span><span class="cr-cell cr-n">✕</span></div>
+        <div class="compare-row"><span class="cr-label">Weekly coaching check-ins</span><span class="cr-cell cr-y">✓</span><span class="cr-cell cr-n">✕</span></div>
+        <div class="compare-row"><span class="cr-label">Long-term phase planning</span><span class="cr-cell cr-y">✓</span><span class="cr-cell cr-n">✕</span></div>
+        <div class="compare-row"><span class="cr-label">Template-based</span><span class="cr-cell cr-n">✕</span><span class="cr-cell cr-y">✓</span></div>
+        <div class="data-strip">
+          <div class="ds-item"><div class="ds-num">180<span>+</span></div><div class="ds-label">Active members</div></div>
+          <div class="ds-item"><div class="ds-num">8<span>mo</span></div><div class="ds-label">Avg. member tenure</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section id="cta">
-  <div class="cta-inner">
-    <div class="cta-badge reveal">✦ Built around you, not a template</div>
-    <h2 class="cta-h reveal">Training that adapts<br>to your life.</h2>
-    <p class="cta-sub reveal">Start with a full assessment. Your personalized program will be ready within 48 hours.</p>
-    <div class="cta-btns reveal">
-      <a href="#" class="btn-white">Begin Your Assessment</a>
-      <a href="#" class="btn-ghost-white">Talk to a Coach</a>
+<!-- EDITORIAL CLOSE + CTA -->
+<div class="edit-close" id="cta">
+  <div class="edit-close-inner reveal">
+    <span class="ec-label">Begin today</span>
+    <h2 class="ec-h">Built around <em>you.</em></h2>
+    <p class="ec-sub">Never built from a template.</p>
+    <div class="ec-actions">
+      <a href="#" class="btn-accent">Begin Your Assessment</a>
+      <a href="#" class="btn-bordered">Talk to a Coach</a>
+    </div>
+    <div class="ec-deco">
+      <span class="ec-deco-item"><span class="ec-deco-dot"></span>Personalized programs</span>
+      <span class="ec-deco-item"><span class="ec-deco-dot"></span>48hr delivery</span>
+      <span class="ec-deco-item"><span class="ec-deco-dot"></span>Weekly check-ins</span>
+      <span class="ec-deco-item"><span class="ec-deco-dot"></span>0 templates, ever</span>
     </div>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div>
-      <div class="footer-logo"><span class="footer-logo-dot"></span>Onus</div>
-      <p class="footer-desc">Personalized fitness programming built around your goals, schedule, and life.</p>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <div class="ft-logo">
+        <span class="ft-logo-m">
+          <svg viewBox="0 0 12 12"><path d="M2 6 Q6 2 10 6 Q6 10 2 6Z"/></svg>
+        </span>
+        Onus
+      </div>
+      <p class="ft-tagline">Personalized fitness programming built around your goals, your schedule, and your life.</p>
     </div>
     <div>
-      <div class="footer-col-h">Program</div>
-      <ul class="footer-links">
-        <li><a href="#">How It Works</a></li>
-        <li><a href="#">Assessment</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">FAQ</a></li>
+      <div class="ft-col-h">Program</div>
+      <ul class="ft-links">
+        <li><a href="#">How It Works</a></li><li><a href="#">Assessment</a></li>
+        <li><a href="#">Pricing</a></li><li><a href="#">FAQ</a></li>
       </ul>
     </div>
     <div>
-      <div class="footer-col-h">Company</div>
-      <ul class="footer-links">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Coaches</a></li>
-        <li><a href="#">Results</a></li>
-        <li><a href="#">Contact</a></li>
+      <div class="ft-col-h">Company</div>
+      <ul class="ft-links">
+        <li><a href="#">About</a></li><li><a href="#">Coaches</a></li>
+        <li><a href="#">Results</a></li><li><a href="#">Contact</a></li>
       </ul>
     </div>
     <div>
-      <div class="footer-col-h">Connect</div>
-      <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">TikTok</a></li>
+      <div class="ft-col-h">Connect</div>
+      <ul class="ft-links">
+        <li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li>
         <li><a href="#">Newsletter</a></li>
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Onus Fitness. All rights reserved.</span>
-    <div class="footer-legal">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Cookie Preferences</a>
+  <div class="ft-bottom">
+    <span class="ft-copy">© 2026 Onus Fitness. All rights reserved.</span>
+    <div class="ft-legal">
+      <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookie Preferences</a>
     </div>
   </div>
 </footer>
 
 <script>
   // Tab system
-  const tabItems = document.querySelectorAll('.tab-item');
-  const panels = document.querySelectorAll('.tab-panel');
-
-  tabItems.forEach(item => {
-    item.addEventListener('click', () => {
-      tabItems.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      item.classList.add('active');
-      const target = document.getElementById('panel-' + item.dataset.tab);
-      if (target) target.classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const panel = document.getElementById('panel-' + btn.dataset.tab);
+      if (panel) panel.classList.add('active');
     });
   });
 
   // Scroll reveal
-  const els = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  els.forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>

@@ -73,8 +73,6 @@ a {
   z-index: 100;
   height: var(--header-height);
   transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
-
-  /* Starts transparent — JS adds .scrolled class */
   background: transparent;
 }
 
@@ -86,73 +84,95 @@ a {
   box-shadow: 0 1px 0 var(--sand);
 }
 
+/* Three-column layout: logo | nav (centered) | cta */
 .header-inner {
   max-width: var(--max-width);
   margin: 0 auto;
   height: 100%;
   padding: 0 var(--space-md);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: var(--space-md);
 }
 
-/* Logo */
+/* ── Logo — left column */
 .header-logo {
-  flex-shrink: 0;
   display: flex;
   align-items: center;
+  justify-self: start;
 }
 
-.header-logo img {
-  height: 40px;
+.logo-svg {
+  height: 36px;
   width: auto;
-  /* The logo is slate blue on white — on dark hero backgrounds
-     we can invert or use a white version later */
+  fill: var(--bronze);
+  transition: fill 0.25s var(--ease);
 }
 
-/* Desktop nav */
+.header-logo:hover .logo-svg {
+  fill: var(--charcoal);
+}
+
+/* ── Desktop nav — center column */
 .header-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
-  margin-left: auto; /* push nav + CTA to the right */
+  gap: 2.5rem;
 }
 
 .header-nav a {
   font-family: var(--sans);
   font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   color: var(--charcoal);
-  opacity: 0.75;
+  opacity: 0.65;
   transition: opacity 0.2s var(--ease);
+  white-space: nowrap;
 }
 
 .header-nav a:hover {
   opacity: 1;
 }
 
-/* CTA button */
+/* ── CTA — right column */
 .header-cta {
-  flex-shrink: 0;
+  justify-self: end;
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ivory);
+  color: var(--charcoal);
+  opacity: 0.75;
+  transition: opacity 0.2s var(--ease);
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Subtle underline on hover — more editorial than a button */
+.header-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
   background: var(--bronze);
-  padding: 0.5rem 1.25rem;
-  border-radius: 2px;
-  transition: background 0.2s var(--ease), transform 0.15s var(--ease);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease);
 }
 
 .header-cta:hover {
-  background: var(--warm-gray-dark);
-  transform: translateY(-1px);
+  opacity: 1;
 }
 
-/* Hamburger (mobile) */
+.header-cta:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Hamburger (mobile) */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -164,7 +184,7 @@ a {
   border: none;
   cursor: pointer;
   padding: 0;
-  margin-left: auto;
+  justify-self: end;
 }
 
 .hamburger span {
@@ -175,7 +195,6 @@ a {
   transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
 }
 
-/* Hamburger → X when open */
 .hamburger.open span:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
 }
@@ -186,7 +205,7 @@ a {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* Mobile drawer */
+/* ── Mobile drawer */
 .mobile-drawer {
   display: none;
   overflow: hidden;
@@ -239,6 +258,10 @@ a {
 
 /* ── MOBILE BREAKPOINT ────────────────────────────────────── */
 @media (max-width: 768px) {
+  .header-inner {
+    grid-template-columns: 1fr auto;
+  }
+
   .header-nav,
   .header-cta {
     display: none;
@@ -251,6 +274,30 @@ a {
   .mobile-drawer {
     display: block;
   }
+}
+
+
+/* ── HERO PLACEHOLDER ─────────────────────────────────────── */
+/* Temporary section to preview the mountain SVG placement.
+   Will be replaced when the Hero section is built. */
+.hero-placeholder {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ivory);
+  padding-top: var(--header-height);
+}
+
+.hero-mountain {
+  width: min(600px, 80vw);
+  opacity: 0.9;
+}
+
+.mountain-svg {
+  width: 100%;
+  height: auto;
+  fill: var(--bronze);
 }
 
 

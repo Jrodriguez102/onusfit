@@ -99,18 +99,33 @@ a {
 .header-logo {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   justify-self: start;
+  transition: opacity 0.2s var(--ease);
 }
 
-.logo-svg {
-  height: 36px;
+.header-logo:hover {
+  opacity: 0.75;
+}
+
+/* Mountain mark — sits to the left of the wordmark */
+.logo-mark {
+  height: 28px;
   width: auto;
   fill: var(--bronze);
-  transition: fill 0.25s var(--ease);
+  flex-shrink: 0;
+  transform: translateY(1px);
 }
 
-.header-logo:hover .logo-svg {
-  fill: var(--charcoal);
+/* Wordmark */
+.logo-wordmark {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--bronze);
+  white-space: nowrap;
+  line-height: 1;
 }
 
 /* ── Desktop nav — center column */
@@ -305,3 +320,4 @@ a {
    ADD NEW SECTIONS BELOW THIS LINE
    Each section gets its own clearly labeled block.
    ============================================================ */
+   

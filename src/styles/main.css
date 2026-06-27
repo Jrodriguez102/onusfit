@@ -110,7 +110,7 @@ a {
 
 /* Mountain mark — sits to the left of the wordmark */
 .logo-mark {
-  height: 28px;
+  height: 32px;
   width: auto;
   fill: var(--bronze);
   flex-shrink: 0;
@@ -120,8 +120,8 @@ a {
 /* Wordmark */
 .logo-wordmark {
   font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.125rem;
+  font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--bronze);
   white-space: nowrap;
@@ -292,27 +292,132 @@ a {
 }
 
 
-/* ── HERO PLACEHOLDER ─────────────────────────────────────── */
-/* Temporary section to preview the mountain SVG placement.
-   Will be replaced when the Hero section is built. */
-.hero-placeholder {
+/* ── HERO ─────────────────────────────────────────────────── */
+.hero {
   min-height: 100vh;
+  background: linear-gradient(160deg, var(--ivory) 0%, var(--cream) 100%);
+  padding-top: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+
+.hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-lg);
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* Left — headline, sub, CTA, proof */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--charcoal);
+  letter-spacing: -0.01em;
+}
+
+.hero-sub {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--warm-gray-dark);
+  letter-spacing: 0.02em;
+  max-width: 28ch;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.hero-cta {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: var(--bronze);
+  padding: 0.875rem 2.25rem;
+  border-radius: 2px;
+  transition: background 0.2s var(--ease), transform 0.15s var(--ease);
+}
+
+.hero-cta:hover {
+  background: var(--warm-gray-dark);
+  transform: translateY(-1px);
+}
+
+/* Social proof pill */
+.hero-proof {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.proof-pill {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--bronze);
+  background: var(--cream);
+  border: 1px solid var(--sand);
+  padding: 0.5rem 1.125rem;
+  border-radius: 100px;
+}
+
+/* Right — photo placeholder */
+.hero-right {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ivory);
-  padding-top: var(--header-height);
+  height: 100%;
+  min-height: 500px;
 }
 
-.hero-mountain {
-  width: min(600px, 80vw);
-  opacity: 0.9;
-}
-
-.mountain-svg {
+.hero-photo {
   width: 100%;
-  height: auto;
-  fill: var(--bronze);
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Hero mobile */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    gap: var(--space-lg);
+    min-height: unset;
+  }
+
+  .hero-right {
+    display: none;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.75rem, 10vw, 4rem);
+  }
 }
 
 
@@ -320,4 +425,3 @@ a {
    ADD NEW SECTIONS BELOW THIS LINE
    Each section gets its own clearly labeled block.
    ============================================================ */
-   

@@ -697,3 +697,297 @@ a {
     margin-top: var(--space-md);
   }
 }
+
+
+/* ── PROBLEM / HOOK ───────────────────────────────────────── */
+/* Dark section — returns to the hero's charcoal palette so the
+   page rhythm reads dark → light → dark → (light next).
+   Structurally rhymes with the methodology pillars, but the ✕
+   markers signal "problem" where the numbers signaled "process."
+   NOTE: All copy is PLACEHOLDER pending approval. */
+.problem {
+  background: var(--charcoal-dark);
+  padding: var(--space-xl) 24px;
+}
+
+.problem-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.problem-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bronze-light);
+}
+
+.problem-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 34px;
+  height: 1px;
+  background: var(--bronze-light);
+  vertical-align: middle;
+  margin-right: 14px;
+}
+
+.problem-headline {
+  font-family: var(--sans);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ivory);
+  margin-top: var(--space-sm);
+  max-width: 18ch;
+}
+
+.problem-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.problem-point {
+  border-top: 1px solid rgba(197, 212, 219, 0.25); /* --sand at low opacity for dark bg */
+  padding-top: var(--space-md);
+}
+
+.point-mark {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--bronze-light);
+}
+
+.point-title {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ivory);
+  margin-top: var(--space-sm);
+}
+
+.point-desc {
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--warm-gray);
+  margin-top: var(--space-xs);
+  max-width: 34ch;
+}
+
+/* Transitional close — serif italic pivot toward the solution */
+.problem-close {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  line-height: 1.25;
+  color: var(--cream);
+  margin-top: var(--space-lg);
+  max-width: 30ch;
+}
+
+.problem-close em {
+  font-style: italic;
+  color: var(--sand);
+}
+
+/* Problem mobile */
+@media (max-width: 768px) {
+  .problem {
+    padding: var(--space-lg) 20px;
+  }
+
+  .problem-points {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .problem-close {
+    margin-top: var(--space-md);
+  }
+}
+
+
+/* ── HOW IT WORKS — four-step process ─────────────────────── */
+/* Light section — continues the dark → light rhythm after
+   Problem/Hook. Related to How We Train (same ivory bg, same
+   heading pattern) but distinguished by card treatment: cream
+   rounded cards instead of hairline-rule pillars, echoing the
+   hero panel's rounded-inset language.
+   NOTE: All copy is PLACEHOLDER pending approval. */
+.process {
+  background: var(--ivory);
+  padding: var(--space-xl) 24px;
+}
+
+.process-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.process-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+
+.process-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 34px;
+  height: 1px;
+  background: var(--bronze-light);
+  vertical-align: middle;
+  margin-right: 14px;
+}
+
+.process-headline {
+  font-family: var(--sans);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-top: var(--space-sm);
+  max-width: 18ch;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+/* Card treatment — cream inset with the hero panel's rounded
+   language; uniform across all four steps */
+.process-step {
+  background: var(--cream);
+  border: 1px solid var(--ivory-dark);
+  border-radius: 20px;
+  padding: var(--space-md);
+}
+
+.step-number {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--bronze-light);
+}
+
+.step-title {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+  margin-top: var(--space-sm);
+}
+
+.step-desc {
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--warm-gray-dark);
+  margin-top: var(--space-xs);
+}
+
+/* ── Section CTA — first CTA since the Hero. Bronze-on-light
+   variant, matching the scrolled header CTA treatment */
+.process-cta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.process-cta {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: var(--bronze);
+  padding: 1.1rem 2.25rem;
+  border-radius: 100px;
+  transition: background 0.2s var(--ease), transform 0.15s var(--ease);
+  white-space: nowrap;
+}
+
+.process-cta:hover {
+  background: var(--warm-gray-dark);
+  transform: translateY(-2px);
+}
+
+.process-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1.5px solid var(--sand);
+  color: var(--bronze);
+  flex-shrink: 0;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.process-arrow svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s var(--ease);
+}
+
+.process-arrow:hover {
+  background: var(--cream);
+  border-color: var(--bronze);
+}
+
+.process-arrow:hover svg {
+  transform: translateX(4px);
+}
+
+/* Process tablet — 2×2 grid before full collapse */
+@media (max-width: 1024px) {
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Process mobile */
+@media (max-width: 768px) {
+  .process {
+    padding: var(--space-lg) 20px;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .process-cta-row {
+    margin-top: var(--space-md);
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -13,11 +13,12 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #1E2A31; /* matches --charcoal-dark; prevents white overscroll flash */
 }
 
 body {
   font-family: var(--sans);
-  background-color: var(--ivory);
+  background-color: var(--charcoal-dark);
   color: var(--charcoal);
   -webkit-font-smoothing: antialiased;
 }
@@ -330,7 +331,7 @@ a {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  padding: var(--space-lg) var(--space-lg) var(--space-lg);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -338,6 +339,7 @@ a {
 
 /* ── Top row — eyebrow left, tier marker right */
 .hero-top {
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -346,7 +348,7 @@ a {
 
 .hero-eyebrow {
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -364,14 +366,16 @@ a {
 }
 
 .hero-tiers {
+  position: absolute;
+  top: -1.5rem;
+  right: 0;
   font-family: var(--serif);
   font-style: italic;
-  font-size: 1.0625rem;
+  font-size: 1.2rem;
   line-height: 1;
   color: var(--sand);
   opacity: 0.85;
   white-space: nowrap;
-  margin-top: -0.15em;
 }
 
 /* ── Headline block — dominant, left-aligned */
@@ -425,13 +429,19 @@ a {
   }
 }
 
-/* ── Bottom row — subhead, CTA */
+/* ── Bottom row — mark, subhead, CTA */
 .hero-bottom {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-md);
   flex-wrap: wrap;
+}
+
+.hero-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
 }
 
 .hero-subhead {
@@ -503,55 +513,50 @@ a {
   transform: translateX(4px);
 }
 
-/* ── Scroll mark — mountain logo, dark frame bottom-left corner */
-.hero-scroll-mark {
-  position: absolute;
-  bottom: 22px;
-  left: 22px;
-  z-index: 2;
-  width: 48px;
-  height: 48px;
+/* ── Mountain mark — sits inline with subhead, left of "A program made for you" */
+.hero-mark {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(244, 246, 247, 0.18);
+  border: 1px solid rgba(244, 246, 247, 0.25);
+  flex-shrink: 0;
   transition: border-color 0.3s var(--ease), transform 0.4s var(--ease), background 0.3s var(--ease);
 }
 
-.hero-scroll-mark svg {
-  width: 26px;
+.hero-mark svg {
+  width: 22px;
   height: auto;
-  fill: var(--warm-gray);
+  fill: var(--sand);
   transition: fill 0.3s var(--ease);
 }
 
-.hero-scroll-mark:hover {
-  border-color: rgba(244, 246, 247, 0.4);
-  background: rgba(244, 246, 247, 0.06);
+.hero-mark:hover {
+  border-color: rgba(244, 246, 247, 0.5);
+  background: rgba(244, 246, 247, 0.08);
   transform: rotate(180deg);
 }
 
-.hero-scroll-mark:hover svg {
+.hero-mark:hover svg {
   fill: var(--ivory);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-scroll-mark:hover {
+  .hero-mark:hover {
     transform: none;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-scroll-mark {
-    bottom: 14px;
-    left: 14px;
-    width: 40px;
-    height: 40px;
+  .hero-mark {
+    width: 36px;
+    height: 36px;
   }
 
-  .hero-scroll-mark svg {
-    width: 22px;
+  .hero-mark svg {
+    width: 18px;
   }
 }
 
@@ -595,3 +600,100 @@ a {
    ADD NEW SECTIONS BELOW THIS LINE
    Each section gets its own clearly labeled block.
    ============================================================ */
+
+
+/* ── HOW WE TRAIN — methodology pillars ───────────────────── */
+/* Light section for rhythm/contrast against the dark hero.
+   Heading is left-aligned to stay consistent with the hero's
+   left-anchored composition. */
+.methodology {
+  background: var(--ivory);
+  padding: var(--space-xl) 24px;
+}
+
+.methodology-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.methodology-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+
+.methodology-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 34px;
+  height: 1px;
+  background: var(--bronze-light);
+  vertical-align: middle;
+  margin-right: 14px;
+}
+
+.methodology-headline {
+  font-family: var(--sans);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-top: var(--space-sm);
+  max-width: 16ch;
+}
+
+.methodology-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.pillar {
+  border-top: 1px solid var(--sand);
+  padding-top: var(--space-md);
+}
+
+.pillar-number {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--bronze-light);
+}
+
+.pillar-title {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+  margin-top: var(--space-sm);
+}
+
+.pillar-desc {
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--warm-gray-dark);
+  margin-top: var(--space-xs);
+  max-width: 34ch;
+}
+
+/* Methodology mobile */
+@media (max-width: 768px) {
+  .methodology {
+    padding: var(--space-lg) 20px;
+  }
+
+  .methodology-pillars {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+}

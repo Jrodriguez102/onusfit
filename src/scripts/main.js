@@ -2,20 +2,32 @@
    ONUS FITNESS — main.js
    ============================================================ */
 
+// Prevent the browser from auto-restoring a previous scroll position
+// on reload — this was causing the header to render in its "scrolled"
+// (frosted/light) state even when the page visually loads at the top.
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
 
 // ── HEADER: scroll state ──────────────────────────────────
 const header = document.getElementById('site-header');
+let headerTicking = false;
 
 function updateHeader() {
-  if (window.scrollY > 20) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
+  header.classList.toggle('scrolled', window.scrollY > 20);
+  headerTicking = false;
+}
+
+function onHeaderScroll() {
+  if (!headerTicking) {
+    window.requestAnimationFrame(updateHeader);
+    headerTicking = true;
   }
 }
 
-window.addEventListener('scroll', updateHeader, { passive: true });
-updateHeader(); // run once on load
+window.addEventListener('scroll', onHeaderScroll, { passive: true });
+window.addEventListener('load', updateHeader);
+updateHeader(); // run once immediately in case we're already at top
 
 
 // ── HEADER: mobile menu toggle ────────────────────────────

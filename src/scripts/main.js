@@ -52,6 +52,26 @@ drawer.querySelectorAll('a').forEach(link => {
 });
 
 
+// ── ABOUT: scroll-reveal for statement / rule / mission line ──
+// Each [data-reveal] element fades/rises in once the About section
+// enters the viewport. Individual stagger timing lives in CSS
+// (transition-delay per element) — this just toggles the class.
+const revealTargets = document.querySelectorAll('[data-reveal]');
+
+if (revealTargets.length) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  revealTargets.forEach(el => revealObserver.observe(el));
+}
+
+
 // ============================================================
 // ADD NEW SECTION SCRIPTS BELOW THIS LINE
 // ============================================================

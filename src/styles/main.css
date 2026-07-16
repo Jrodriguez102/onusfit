@@ -603,7 +603,8 @@ a {
 
 
 /* ── HOW WE TRAIN — methodology pillars ───────────────────── */
-/* Light section for rhythm/contrast against the dark hero.
+/* Light section — alternation is Hero(dark) → How We Train(light)
+   → How It Works(dark) → Pricing(light).
    Heading is left-aligned to stay consistent with the hero's
    left-anchored composition. */
 .methodology {
@@ -699,135 +700,18 @@ a {
 }
 
 
-/* ── PROBLEM / HOOK ───────────────────────────────────────── */
-/* Dark section — returns to the hero's charcoal palette so the
-   page rhythm reads dark → light → dark → (light next).
-   Structurally rhymes with the methodology pillars, but the ✕
-   markers signal "problem" where the numbers signaled "process."
-   NOTE: All copy is PLACEHOLDER pending approval. */
-.problem {
-  background: var(--charcoal-dark);
-  padding: var(--space-xl) 24px;
-}
 
-.problem-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.problem-eyebrow {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--bronze-light);
-}
-
-.problem-eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 34px;
-  height: 1px;
-  background: var(--bronze-light);
-  vertical-align: middle;
-  margin-right: 14px;
-}
-
-.problem-headline {
-  font-family: var(--sans);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  color: var(--ivory);
-  margin-top: var(--space-sm);
-  max-width: 18ch;
-}
-
-.problem-points {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
-}
-
-.problem-point {
-  border-top: 1px solid rgba(197, 212, 219, 0.25); /* --sand at low opacity for dark bg */
-  padding-top: var(--space-md);
-}
-
-.point-mark {
-  display: block;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  line-height: 1;
-  color: var(--bronze-light);
-}
-
-.point-title {
-  font-family: var(--sans);
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--ivory);
-  margin-top: var(--space-sm);
-}
-
-.point-desc {
-  font-family: var(--sans);
-  font-size: 0.98rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--warm-gray);
-  margin-top: var(--space-xs);
-  max-width: 34ch;
-}
-
-/* Transitional close — serif italic pivot toward the solution */
-.problem-close {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(1.3rem, 2vw, 1.7rem);
-  line-height: 1.25;
-  color: var(--cream);
-  margin-top: var(--space-lg);
-  max-width: 30ch;
-}
-
-.problem-close em {
-  font-style: italic;
-  color: var(--sand);
-}
-
-/* Problem mobile */
-@media (max-width: 768px) {
-  .problem {
-    padding: var(--space-lg) 20px;
-  }
-
-  .problem-points {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-    margin-top: var(--space-md);
-  }
-
-  .problem-close {
-    margin-top: var(--space-md);
-  }
-}
 
 
 /* ── HOW IT WORKS — four-step process ─────────────────────── */
-/* Light section — continues the dark → light rhythm after
-   Problem/Hook. Related to How We Train (same ivory bg, same
-   heading pattern) but distinguished by card treatment: cream
-   rounded cards instead of hairline-rule pillars, echoing the
-   hero panel's rounded-inset language.
+/* Dark section — continues the alternation after How We Train
+   (light). Card treatment stays the same rounded shape used
+   before, recolored for the charcoal background — a faint
+   ivory-tinted fill with a hairline sand border, matching how
+   Pricing's cards handle the same surface problem.
    NOTE: All copy is PLACEHOLDER pending approval. */
-.process {
-  background: var(--ivory);
+.process--dark {
+  background: var(--charcoal-dark);
   padding: var(--space-xl) 24px;
 }
 
@@ -836,16 +720,16 @@ a {
   margin: 0 auto;
 }
 
-.process-eyebrow {
+.process--dark .process-eyebrow {
   font-family: var(--sans);
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--bronze);
+  color: var(--bronze-light);
 }
 
-.process-eyebrow::before {
+.process--dark .process-eyebrow::before {
   content: "";
   display: inline-block;
   width: 34px;
@@ -855,13 +739,13 @@ a {
   margin-right: 14px;
 }
 
-.process-headline {
+.process--dark .process-headline {
   font-family: var(--sans);
   font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.02em;
-  color: var(--charcoal);
+  color: var(--ivory);
   margin-top: var(--space-sm);
   max-width: 18ch;
 }
@@ -873,16 +757,16 @@ a {
   margin-top: var(--space-lg);
 }
 
-/* Card treatment — cream inset with the hero panel's rounded
-   language; uniform across all four steps */
-.process-step {
-  background: var(--cream);
-  border: 1px solid var(--ivory-dark);
+/* Card treatment — faint ivory fill, hairline sand border,
+   mirrors the Pricing card surface on the same dark background */
+.process--dark .process-step {
+  background: rgba(244, 246, 247, 0.04);
+  border: 1px solid rgba(197, 212, 219, 0.2);
   border-radius: 20px;
   padding: var(--space-md);
 }
 
-.step-number {
+.process--dark .step-number {
   display: block;
   font-family: var(--serif);
   font-style: italic;
@@ -891,26 +775,26 @@ a {
   color: var(--bronze-light);
 }
 
-.step-title {
+.process--dark .step-title {
   font-family: var(--sans);
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--charcoal);
+  color: var(--ivory);
   margin-top: var(--space-sm);
 }
 
-.step-desc {
+.process--dark .step-desc {
   font-family: var(--sans);
   font-size: 0.98rem;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--warm-gray-dark);
+  color: var(--warm-gray);
   margin-top: var(--space-xs);
 }
 
-/* ── Section CTA — first CTA since the Hero. Bronze-on-light
-   variant, matching the scrolled header CTA treatment */
+/* ── Section CTA — outline-on-dark variant, matching Pricing's
+   tier-cta treatment for consistency across dark sections */
 .process-cta-row {
   display: flex;
   align-items: center;
@@ -918,7 +802,7 @@ a {
   margin-top: var(--space-lg);
 }
 
-.process-cta {
+.process--dark .process-cta {
   display: inline-block;
   font-family: var(--sans);
   font-size: 0.8125rem;
@@ -926,27 +810,30 @@ a {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ivory);
-  background: var(--bronze);
+  background: transparent;
+  border: 1.5px solid var(--sand);
   padding: 1.1rem 2.25rem;
   border-radius: 100px;
-  transition: background 0.2s var(--ease), transform 0.15s var(--ease);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.15s var(--ease);
   white-space: nowrap;
 }
 
-.process-cta:hover {
-  background: var(--warm-gray-dark);
+.process--dark .process-cta:hover {
+  background: var(--bronze-light);
+  border-color: var(--bronze-light);
+  color: var(--charcoal-dark);
   transform: translateY(-2px);
 }
 
-.process-arrow {
+.process--dark .process-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  border: 1.5px solid var(--sand);
-  color: var(--bronze);
+  border: 1.5px solid rgba(197, 212, 219, 0.35);
+  color: var(--sand);
   flex-shrink: 0;
   transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
 }
@@ -957,9 +844,9 @@ a {
   transition: transform 0.3s var(--ease);
 }
 
-.process-arrow:hover {
-  background: var(--cream);
-  border-color: var(--bronze);
+.process--dark .process-arrow:hover {
+  background: rgba(244, 246, 247, 0.06);
+  border-color: var(--sand);
 }
 
 .process-arrow:hover svg {
@@ -975,7 +862,7 @@ a {
 
 /* Process mobile */
 @media (max-width: 768px) {
-  .process {
+  .process--dark {
     padding: var(--space-lg) 20px;
   }
 
@@ -989,5 +876,514 @@ a {
     margin-top: var(--space-md);
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+
+/* ── PRICING / TIERS ──────────────────────────────────────── */
+/* Light section — continues the alternating rhythm after How It
+   Works (dark). Three equal-weight cards, no tier emphasis/
+   badging per direction. Card treatment echoes the process-step
+   cards' rounded language — cream fill with a hairline ivory-dark
+   border, matching how other light sections handle elevated
+   surfaces.
+   NOTE: All copy is PLACEHOLDER pending approval. */
+.pricing {
+  background: var(--ivory);
+  padding: var(--space-xl) 24px;
+}
+
+.pricing-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.pricing-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+
+.pricing-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 34px;
+  height: 1px;
+  background: var(--bronze-light);
+  vertical-align: middle;
+  margin-right: 14px;
+}
+
+.pricing-headline {
+  font-family: var(--sans);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-top: var(--space-sm);
+  max-width: 18ch;
+}
+
+.pricing-subhead {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.4;
+  color: var(--warm-gray-dark);
+  margin-top: var(--space-sm);
+  max-width: 42ch;
+}
+
+.pricing-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+/* Card treatment — cream inset with a hairline ivory-dark
+   border, no tier visually emphasized over another */
+.pricing-card {
+  background: var(--cream);
+  border: 1px solid var(--ivory-dark);
+  border-radius: 20px;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-name {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+}
+
+.tier-price {
+  font-family: var(--sans);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-top: var(--space-xs);
+}
+
+.tier-period {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--warm-gray-dark);
+}
+
+.tier-identity {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--bronze);
+  margin-top: var(--space-sm);
+}
+
+.tier-features {
+  list-style: none;
+  margin-top: var(--space-md);
+  flex-grow: 1;
+}
+
+.tier-features li {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--warm-gray-dark);
+  padding-left: 1.4rem;
+  position: relative;
+  margin-top: var(--space-xs);
+}
+
+.tier-features li:first-child {
+  margin-top: 0;
+}
+
+.tier-features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 1px;
+  background: var(--bronze);
+}
+
+.tier-cta {
+  display: inline-block;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: var(--bronze);
+  border: 1.5px solid var(--bronze);
+  padding: 0.95rem 1.5rem;
+  border-radius: 100px;
+  margin-top: var(--space-md);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.tier-cta:hover {
+  background: var(--warm-gray-dark);
+  border-color: var(--warm-gray-dark);
+}
+
+.pricing-note {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--warm-gray-dark);
+  margin-top: var(--space-lg);
+}
+
+/* Pricing tablet — stack to single column before full collapse */
+@media (max-width: 1024px) {
+  .pricing-tiers {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Pricing mobile */
+@media (max-width: 768px) {
+  .pricing {
+    padding: var(--space-lg) 20px;
+  }
+
+  .pricing-tiers {
+    margin-top: var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  .pricing-note {
+    margin-top: var(--space-md);
+  }
+}
+
+
+/* ── ABOUT / WHY ONUS ─────────────────────────────────────── */
+/* Dark section — continues the alternation after Pricing (light).
+   Deliberately breaks the grid pattern used elsewhere on the page:
+   centered, narrow, no CTA. Contour lines echo the Hero motif at
+   low opacity; copy reveals on scroll (see main.js) with the
+   mission line landing as its own weighted beat.
+   NOTE: All copy is PLACEHOLDER pending approval. */
+.about {
+  position: relative;
+  background: var(--charcoal-dark);
+  padding: var(--space-xl) 24px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.about-contours {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.about-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bronze-light);
+}
+
+.about-statement {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  line-height: 1.55;
+  color: var(--sand);
+  margin-top: var(--space-md);
+}
+
+.about-rule {
+  width: 56px;
+  height: 1px;
+  background: var(--bronze-light);
+  margin: var(--space-md) auto 0;
+}
+
+.about-mission {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ivory);
+  max-width: 26ch;
+  margin: var(--space-md) auto 0;
+}
+
+/* ── Scroll reveal — each [data-reveal] element starts hidden and
+   rises in when the section enters view; the mission line carries
+   a longer delay so it lands as a distinct beat after the
+   statement, not simultaneously with it. JS toggles .in-view. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+
+.about-statement[data-reveal] {
+  transition-delay: 0.05s;
+}
+
+.about-rule[data-reveal] {
+  transition-delay: 0.3s;
+}
+
+.about-mission[data-reveal] {
+  transition-delay: 0.55s;
+}
+
+[data-reveal].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* About mobile */
+@media (max-width: 768px) {
+  .about {
+    padding: var(--space-lg) 20px;
+  }
+
+  .about-statement {
+    margin-top: var(--space-sm);
+  }
+
+  .about-mission {
+    max-width: 22ch;
+  }
+}
+
+
+/* ── FOOTER ────────────────────────────────────────────────── */
+/* Dark — same tonal family as About rather than continuing strict
+   section alternation; footers sit outside that rhythm as the
+   page's closing "basement." Functional/utilitarian in scale
+   compared to About's quiet centered moment.
+   NOTE: All copy is PLACEHOLDER pending approval. Legal links are
+   # until Privacy Policy / Terms pages exist; social links are
+   filler (onusfit) until real accounts are confirmed. */
+.site-footer {
+  background: var(--charcoal-dark);
+  border-top: 1px solid rgba(197, 212, 219, 0.12);
+  padding: var(--space-lg) 24px var(--space-md);
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+/* ── Brand column */
+.footer-logo {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--ivory);
+}
+
+.footer-logo-accent {
+  color: var(--bronze-light);
+}
+
+.footer-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--sand);
+  margin-top: var(--space-xs);
+}
+
+/* ── Nav column */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-nav a {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--warm-gray);
+  transition: color 0.2s var(--ease);
+  width: fit-content;
+}
+
+.footer-nav a:hover {
+  color: var(--ivory);
+}
+
+/* ── Contact column */
+.footer-contact-label {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bronze-light);
+}
+
+.footer-email {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--warm-gray);
+  margin-top: 0.75rem;
+  transition: color 0.2s var(--ease);
+  width: fit-content;
+}
+
+.footer-email:hover {
+  color: var(--ivory);
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: var(--space-md);
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(197, 212, 219, 0.3);
+  color: var(--sand);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.footer-social-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.footer-social-link:hover {
+  background: rgba(244, 246, 247, 0.06);
+  border-color: var(--bronze-light);
+  color: var(--ivory);
+}
+
+/* ── Bottom bar — copyright + legal links */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(197, 212, 219, 0.12);
+  flex-wrap: wrap;
+}
+
+.footer-copyright {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--warm-gray);
+}
+
+.footer-legal {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.footer-legal a {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--warm-gray);
+  transition: color 0.2s var(--ease);
+}
+
+.footer-legal a:hover {
+  color: var(--ivory);
+}
+
+/* Footer tablet */
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    row-gap: var(--space-lg);
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Footer mobile */
+@media (max-width: 600px) {
+  .site-footer {
+    padding: var(--space-md) 20px var(--space-md);
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
   }
 }

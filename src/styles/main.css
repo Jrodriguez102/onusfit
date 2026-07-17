@@ -33,6 +33,18 @@ a {
   color: inherit;
 }
 
+/* ── Quality floor — branded selection + visible keyboard focus */
+::selection {
+  background: var(--bronze-light);
+  color: var(--charcoal-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--bronze-light);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 
 /* ── DESIGN TOKENS ────────────────────────────────────────── */
 :root {
@@ -325,6 +337,38 @@ a {
   width: 100%;
   height: 100%;
   pointer-events: none;
+}
+
+/* ── Contour draw-in — the map of the climb draws itself on load.
+   pathLength="1" on each path (see HTML) normalizes stroke length,
+   so a single dashoffset animation covers every line. Lower lines
+   land first, upper lines follow — the terrain rises. */
+.hero-contours path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: contour-draw 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.hero-contours g:first-of-type path:nth-child(1) { animation-delay: 0.15s; }
+.hero-contours g:first-of-type path:nth-child(2) { animation-delay: 0.3s; }
+.hero-contours g:first-of-type path:nth-child(3) { animation-delay: 0.45s; }
+.hero-contours g:first-of-type path:nth-child(4) { animation-delay: 0.6s; }
+.hero-contours g:first-of-type path:nth-child(5) { animation-delay: 0.75s; }
+.hero-contours g:first-of-type path:nth-child(6) { animation-delay: 0.9s; }
+.hero-contours g:last-of-type path:nth-child(1)  { animation-delay: 1.05s; }
+.hero-contours g:last-of-type path:nth-child(2)  { animation-delay: 1.2s; }
+
+@keyframes contour-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-contours path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
 }
 
 .hero-content {
@@ -657,6 +701,11 @@ a {
 .pillar {
   border-top: 1px solid var(--sand);
   padding-top: var(--space-md);
+  transition: border-color 0.3s var(--ease);
+}
+
+.pillar:hover {
+  border-top-color: var(--bronze);
 }
 
 .pillar-number {
@@ -665,6 +714,11 @@ a {
   font-style: italic;
   font-size: 1.05rem;
   color: var(--bronze-light);
+  transition: color 0.3s var(--ease);
+}
+
+.pillar:hover .pillar-number {
+  color: var(--bronze);
 }
 
 .pillar-title {
@@ -711,11 +765,26 @@ a {
    Pricing's cards handle the same surface problem.
    NOTE: All copy is PLACEHOLDER pending approval. */
 .process--dark {
+  position: relative;
   background: var(--charcoal-dark);
   padding: var(--space-xl) 24px;
+  overflow: hidden;
+}
+
+/* Contour echo — the Hero's terrain carried forward at lower
+   intensity; static (no draw animation), it's an after-image */
+.process-contours {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .process-inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -764,6 +833,13 @@ a {
   border: 1px solid rgba(197, 212, 219, 0.2);
   border-radius: 20px;
   padding: var(--space-md);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.process--dark .process-step:hover {
+  border-color: rgba(122, 155, 173, 0.5);
+  background: rgba(244, 246, 247, 0.06);
+  transform: translateY(-3px);
 }
 
 .process--dark .step-number {
@@ -882,11 +958,14 @@ a {
 
 /* ── PRICING / TIERS ──────────────────────────────────────── */
 /* Light section — continues the alternating rhythm after How It
-   Works (dark). Three equal-weight cards, no tier emphasis/
-   badging per direction. Card treatment echoes the process-step
-   cards' rounded language — cream fill with a hairline ivory-dark
-   border, matching how other light sections handle elevated
-   surfaces.
+   Works (dark). Section background stays flat --ivory (no contour
+   echo behind the section — see How It Works / About for that
+   treatment). Three equal-weight cards, no tier emphasis/badging
+   per direction. Cards are filled with --bronze (the secondary
+   color) rather than a neutral cream tint, echoing the section CTA
+   and How It Works cards' dark-surface language; each card carries
+   its own faint contour-line echo (ivory strokes, ~0.09 opacity)
+   behind the text — the lines live inside the cards only.
    NOTE: All copy is PLACEHOLDER pending approval. */
 .pricing {
   background: var(--ivory);
@@ -945,15 +1024,43 @@ a {
   margin-top: var(--space-lg);
 }
 
-/* Card treatment — cream inset with a hairline ivory-dark
-   border, no tier visually emphasized over another */
+/* Card treatment — solid bronze fill (secondary color), no
+   border; a contour-line echo sits behind the text inside each
+   card (see .pricing-card-contours below). No tier is visually
+   emphasized over another. */
 .pricing-card {
-  background: var(--cream);
-  border: 1px solid var(--ivory-dark);
+  position: relative;
+  background: var(--bronze);
   border-radius: 20px;
   padding: var(--space-md);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.pricing-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(30, 42, 49, 0.18);
+}
+
+/* Contour lines — live only inside the card, behind the text;
+   does not extend into the section background. */
+.pricing-card-contours {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pricing-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .tier-name {
@@ -961,7 +1068,7 @@ a {
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--charcoal);
+  color: var(--ivory);
 }
 
 .tier-price {
@@ -969,7 +1076,7 @@ a {
   font-size: clamp(2rem, 3vw, 2.5rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--charcoal);
+  color: var(--ivory);
   margin-top: var(--space-xs);
 }
 
@@ -977,7 +1084,7 @@ a {
   font-family: var(--sans);
   font-size: 1rem;
   font-weight: 500;
-  color: var(--warm-gray-dark);
+  color: var(--sand);
 }
 
 .tier-identity {
@@ -986,7 +1093,7 @@ a {
   font-weight: 500;
   font-size: 1.05rem;
   line-height: 1.4;
-  color: var(--bronze);
+  color: var(--cream);
   margin-top: var(--space-sm);
 }
 
@@ -1001,7 +1108,7 @@ a {
   font-size: 0.95rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--warm-gray-dark);
+  color: var(--sand);
   padding-left: 1.4rem;
   position: relative;
   margin-top: var(--space-xs);
@@ -1018,7 +1125,7 @@ a {
   top: 0.55em;
   width: 8px;
   height: 1px;
-  background: var(--bronze);
+  background: var(--ivory);
 }
 
 .tier-cta {
@@ -1029,9 +1136,9 @@ a {
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ivory);
-  background: var(--bronze);
-  border: 1.5px solid var(--bronze);
+  color: var(--charcoal-dark);
+  background: var(--ivory);
+  border: 1.5px solid var(--ivory);
   padding: 0.95rem 1.5rem;
   border-radius: 100px;
   margin-top: var(--space-md);
@@ -1039,8 +1146,8 @@ a {
 }
 
 .tier-cta:hover {
-  background: var(--warm-gray-dark);
-  border-color: var(--warm-gray-dark);
+  background: var(--cream);
+  border-color: var(--cream);
 }
 
 .pricing-note {
@@ -1145,35 +1252,42 @@ a {
   margin: var(--space-md) auto 0;
 }
 
-/* ── Scroll reveal — each [data-reveal] element starts hidden and
-   rises in when the section enters view; the mission line carries
-   a longer delay so it lands as a distinct beat after the
-   statement, not simultaneously with it. JS toggles .in-view. */
-[data-reveal] {
+/* ── Scroll reveal — one motion language for the whole page.
+   Every [data-reveal] element rises in when it enters view;
+   grids stagger their children so rows read left-to-right.
+   Hidden state is gated behind html.js (set by main.js) so
+   content is never invisible if JavaScript fails to load.
+   About keeps its slower, weightier beats — that section is
+   the emotional peak and earns the longer landing. */
+html.js [data-reveal] {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
 }
 
-.about-statement[data-reveal] {
-  transition-delay: 0.05s;
-}
+/* Grid staggers — pillars, steps, and tiers cascade */
+html.js .pillar[data-reveal]:nth-child(2)        { transition-delay: 0.12s; }
+html.js .pillar[data-reveal]:nth-child(3)        { transition-delay: 0.24s; }
 
-.about-rule[data-reveal] {
-  transition-delay: 0.3s;
-}
+html.js .process-step[data-reveal]:nth-child(2)  { transition-delay: 0.1s; }
+html.js .process-step[data-reveal]:nth-child(3)  { transition-delay: 0.2s; }
+html.js .process-step[data-reveal]:nth-child(4)  { transition-delay: 0.3s; }
 
-.about-mission[data-reveal] {
-  transition-delay: 0.55s;
-}
+html.js .pricing-card[data-reveal]:nth-child(2)  { transition-delay: 0.12s; }
+html.js .pricing-card[data-reveal]:nth-child(3)  { transition-delay: 0.24s; }
 
-[data-reveal].in-view {
+/* About beats — statement, pause, mission line */
+html.js .about-statement[data-reveal] { transition-delay: 0.05s; }
+html.js .about-rule[data-reveal]      { transition-delay: 0.3s; }
+html.js .about-mission[data-reveal]   { transition-delay: 0.55s; }
+
+html.js [data-reveal].in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
+  html.js [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;
@@ -1223,6 +1337,19 @@ a {
 }
 
 /* ── Brand column */
+.footer-mark {
+  display: block;
+  width: 40px;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-mark svg {
+  width: 100%;
+  height: auto;
+  fill: var(--bronze-light);
+  opacity: 0.85;
+}
+
 .footer-logo {
   font-family: var(--sans);
   font-size: 1.05rem;

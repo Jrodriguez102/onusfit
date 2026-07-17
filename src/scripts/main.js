@@ -2,6 +2,11 @@
    ONUS FITNESS — main.js
    ============================================================ */
 
+// Signal that JS is running — the scroll-reveal hidden state in
+// CSS is gated behind html.js, so content stays visible if this
+// file ever fails to load.
+document.documentElement.classList.add('js');
+
 // Prevent the browser from auto-restoring a previous scroll position
 // on reload — this was causing the header to render in its "scrolled"
 // (frosted/light) state even when the page visually loads at the top.
@@ -52,10 +57,11 @@ drawer.querySelectorAll('a').forEach(link => {
 });
 
 
-// ── ABOUT: scroll-reveal for statement / rule / mission line ──
-// Each [data-reveal] element fades/rises in once the About section
-// enters the viewport. Individual stagger timing lives in CSS
-// (transition-delay per element) — this just toggles the class.
+// ── SCROLL REVEAL: one observer for every [data-reveal] ─────
+// Elements fade/rise in once they enter the viewport. Stagger
+// timing lives in CSS (transition-delay per element/grid child) —
+// this just toggles the class. Threshold is low so tall elements
+// (pricing cards on mobile) still trigger on partial visibility.
 const revealTargets = document.querySelectorAll('[data-reveal]');
 
 if (revealTargets.length) {
@@ -66,7 +72,7 @@ if (revealTargets.length) {
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.15 });
 
   revealTargets.forEach(el => revealObserver.observe(el));
 }

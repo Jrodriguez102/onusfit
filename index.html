@@ -22,7 +22,7 @@
 
       <!-- Nav links (desktop) -->
       <nav class="header-nav" aria-label="Main navigation">
-        <a href="#program">Program</a>
+        <a href="#how-we-train">Program</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#pricing">Pricing</a>
       </nav>
@@ -42,7 +42,7 @@
     <!-- Mobile drawer -->
     <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
       <nav class="mobile-nav">
-        <a href="#program">Program</a>
+        <a href="#how-we-train">Program</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#pricing">Pricing</a>
         <a href="#pricing" class="mobile-cta">Start Here</a>
@@ -56,19 +56,21 @@
   <section class="hero" id="hero">
     <div class="hero-panel">
 
-      <!-- Topographic contour motif — the climb toward your why -->
+      <!-- Topographic contour motif — the climb toward your why.
+           pathLength="1" normalizes every line so the CSS draw-in
+           animation (stroke-dashoffset 1 → 0) works uniformly. -->
       <svg class="hero-contours" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
         <g fill="none" stroke="#7A9BAD" stroke-width="1.2" opacity="0.16">
-          <path d="M-50,760 C250,700 380,540 620,560 C860,580 980,420 1220,440 C1350,450 1420,400 1480,390"/>
-          <path d="M-50,700 C260,640 400,470 640,495 C880,520 1000,350 1240,375 C1370,388 1430,340 1480,330"/>
-          <path d="M-50,640 C270,575 420,400 660,430 C900,460 1020,280 1260,310 C1385,325 1440,280 1480,270"/>
-          <path d="M-50,580 C285,510 445,335 685,368 C920,400 1045,215 1280,248 C1395,263 1445,222 1480,212"/>
-          <path d="M-50,520 C300,445 465,268 705,305 C940,340 1065,150 1300,185 C1405,200 1450,165 1480,155"/>
-          <path d="M-50,460 C315,380 490,205 725,243 C960,280 1085,90 1320,125 C1415,140 1455,108 1480,100"/>
+          <path pathLength="1" d="M-50,760 C250,700 380,540 620,560 C860,580 980,420 1220,440 C1350,450 1420,400 1480,390"/>
+          <path pathLength="1" d="M-50,700 C260,640 400,470 640,495 C880,520 1000,350 1240,375 C1370,388 1430,340 1480,330"/>
+          <path pathLength="1" d="M-50,640 C270,575 420,400 660,430 C900,460 1020,280 1260,310 C1385,325 1440,280 1480,270"/>
+          <path pathLength="1" d="M-50,580 C285,510 445,335 685,368 C920,400 1045,215 1280,248 C1395,263 1445,222 1480,212"/>
+          <path pathLength="1" d="M-50,520 C300,445 465,268 705,305 C940,340 1065,150 1300,185 C1405,200 1450,165 1480,155"/>
+          <path pathLength="1" d="M-50,460 C315,380 490,205 725,243 C960,280 1085,90 1320,125 C1415,140 1455,108 1480,100"/>
         </g>
         <g fill="none" stroke="#C5D4DB" stroke-width="1" opacity="0.09">
-          <path d="M-50,400 C330,318 510,145 745,182 C980,218 1105,30 1340,65 C1425,78 1460,50 1480,45"/>
-          <path d="M-50,340 C345,255 530,85 765,120 C1000,155 1125,-28 1360,5 C1432,15 1462,-8 1480,-12"/>
+          <path pathLength="1" d="M-50,400 C330,318 510,145 745,182 C980,218 1105,30 1340,65 C1425,78 1460,50 1480,45"/>
+          <path pathLength="1" d="M-50,340 C345,255 530,85 765,120 C1000,155 1125,-28 1360,5 C1432,15 1462,-8 1480,-12"/>
         </g>
       </svg>
 
@@ -126,27 +128,27 @@
 
       <!-- Section heading — left-aligned to stay consistent with the
            hero's left-anchored composition -->
-      <div class="methodology-heading">
+      <div class="methodology-heading" data-reveal>
         <p class="methodology-eyebrow">How We Train</p>
         <h2 class="methodology-headline">Structure Without the Noise.</h2>
       </div>
 
-      <!-- Three pillars -->
+      <!-- Three pillars — staggered reveal, same motion language as About -->
       <div class="methodology-pillars">
 
-        <div class="pillar">
+        <div class="pillar" data-reveal>
           <span class="pillar-number">01</span>
           <h3 class="pillar-title">Personalized, Not Generic</h3>
           <p class="pillar-desc">Built for your starting point — beginner through advanced.</p>
         </div>
 
-        <div class="pillar">
+        <div class="pillar" data-reveal>
           <span class="pillar-number">02</span>
           <h3 class="pillar-title">Progressive by Design</h3>
           <p class="pillar-desc">Every phase is programmed to build on the one before it.</p>
         </div>
 
-        <div class="pillar">
+        <div class="pillar" data-reveal>
           <span class="pillar-number">03</span>
           <h3 class="pillar-title">Delivered On Your Time</h3>
           <p class="pillar-desc">Automated delivery means your program shows up exactly when you need it — no waiting on a coach's schedule.</p>
@@ -163,10 +165,25 @@
   <!-- Dark section — continues the alternation after How We Train (light).
        NOTE: All copy in this section is PLACEHOLDER — approve before finalizing. -->
   <section class="process process--dark" id="how-it-works">
+
+    <!-- Contour echo — the Hero's terrain carried forward, quieter.
+         Dark sections share the motif at decreasing intensity:
+         Hero (strong) → here (quiet) → About (nearly still). -->
+    <svg class="process-contours" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="#7A9BAD" stroke-width="1.2" opacity="0.07">
+        <path d="M-50,720 C270,650 410,480 650,505 C890,530 1010,360 1250,385 C1378,398 1435,350 1480,340"/>
+        <path d="M-50,630 C290,550 450,370 690,400 C925,430 1050,245 1285,278 C1398,292 1447,252 1480,242"/>
+        <path d="M-50,540 C310,450 475,255 715,290 C950,325 1075,130 1310,165 C1410,180 1452,145 1480,135"/>
+      </g>
+      <g fill="none" stroke="#C5D4DB" stroke-width="1" opacity="0.045">
+        <path d="M-50,450 C330,350 500,150 740,187 C975,222 1100,25 1335,60 C1423,73 1458,45 1480,40"/>
+      </g>
+    </svg>
+
     <div class="process-inner">
 
       <!-- Section heading — left-aligned, consistent with prior sections -->
-      <div class="process-heading">
+      <div class="process-heading" data-reveal>
         <p class="process-eyebrow">How It Works</p>
         <h2 class="process-headline">From Sign-Up to Your First Session.</h2>
       </div>
@@ -176,25 +193,25 @@
            it from the hairline-rule pillars in How We Train -->
       <div class="process-steps">
 
-        <div class="process-step">
+        <div class="process-step" data-reveal>
           <span class="step-number">01</span>
           <h3 class="step-title">Choose Your Tier</h3>
           <p class="step-desc">Base, Advanced, or VIP — pick the level that matches where you're starting.</p>
         </div>
 
-        <div class="process-step">
+        <div class="process-step" data-reveal>
           <span class="step-number">02</span>
           <h3 class="step-title">Complete Your Intake</h3>
           <p class="step-desc">A short profile — you, your goals, your equipment, your schedule.</p>
         </div>
 
-        <div class="process-step">
+        <div class="process-step" data-reveal>
           <span class="step-number">03</span>
           <h3 class="step-title">Get Your Program</h3>
           <p class="step-desc">Delivered automatically by email and SMS, built around what you shared.</p>
         </div>
 
-        <div class="process-step">
+        <div class="process-step" data-reveal>
           <span class="step-number">04</span>
           <h3 class="step-title">Train On Your Schedule</h3>
           <p class="step-desc">Progressive phases roll out automatically — no waiting on a coach, no live scheduling.</p>
@@ -203,7 +220,7 @@
       </div>
 
       <!-- Section CTA — first CTA since the Hero -->
-      <div class="process-cta-row">
+      <div class="process-cta-row" data-reveal>
         <a href="#pricing" class="process-cta">Start Here</a>
         <a href="#pricing" class="process-arrow" aria-label="Get started">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -219,12 +236,15 @@
 
   <!-- ========== PRICING / TIERS ========== -->
   <!-- NOTE: All copy in this section is PLACEHOLDER — approve before finalizing. -->
-  <!-- Light section — continues the alternating rhythm after How It Works (dark). -->
+  <!-- Light section — continues the alternating rhythm after How It Works (dark).
+       Cards are filled with the bronze secondary color (rather than cream),
+       with a faint contour-line echo behind the text inside each card only —
+       the section background itself stays flat white/ivory. -->
   <section class="pricing" id="pricing">
     <div class="pricing-inner">
 
       <!-- Section heading — left-aligned, consistent with prior sections -->
-      <div class="pricing-heading">
+      <div class="pricing-heading" data-reveal>
         <p class="pricing-eyebrow">Membership</p>
         <h2 class="pricing-headline">Choose your level of support.</h2>
         <p class="pricing-subhead">Every tier follows the same proven programming. What changes is how much we do for you.</p>
@@ -233,46 +253,73 @@
       <!-- Three tier cards — no emphasis/badging, presented equally -->
       <div class="pricing-tiers">
 
-        <div class="pricing-card">
-          <h3 class="tier-name">Base</h3>
-          <p class="tier-price">$30<span class="tier-period">/mo</span></p>
-          <p class="tier-identity">For those who want the tools and the freedom to apply them.</p>
-          <ul class="tier-features">
-            <li>Full exercise library with proper form guidance</li>
-            <li>Modifications for every movement</li>
-            <li>Prescribed RPE for every set</li>
-          </ul>
-          <a href="#" class="tier-cta">Start Here</a>
+        <div class="pricing-card" data-reveal>
+          <svg class="pricing-card-contours" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="#F4F6F7" stroke-width="1" opacity="0.09">
+              <path d="M-30,420 C90,380 150,300 240,315 C330,330 370,250 460,265"/>
+              <path d="M-30,350 C100,305 165,220 255,238 C345,255 380,175 470,192"/>
+              <path d="M-30,280 C110,230 180,140 270,160 C360,180 390,100 480,118"/>
+            </g>
+          </svg>
+          <div class="pricing-card-content">
+            <h3 class="tier-name">Base</h3>
+            <p class="tier-price">$30<span class="tier-period">/mo</span></p>
+            <p class="tier-identity">For those who want the tools and the freedom to apply them.</p>
+            <ul class="tier-features">
+              <li>Full exercise library with proper form guidance</li>
+              <li>Modifications for every movement</li>
+              <li>Prescribed RPE for every set</li>
+            </ul>
+            <a href="#" class="tier-cta">Start Here</a>
+          </div>
         </div>
 
-        <div class="pricing-card">
-          <h3 class="tier-name">Advanced</h3>
-          <p class="tier-price">$50<span class="tier-period">/mo</span></p>
-          <p class="tier-identity">For those who want every set dialed in.</p>
-          <ul class="tier-features">
-            <li>Everything in Base</li>
-            <li>Exact prescribed weights on primary lifts</li>
-            <li>Personalized nutrition guidance</li>
-          </ul>
-          <a href="#" class="tier-cta">Start Here</a>
+        <div class="pricing-card" data-reveal>
+          <svg class="pricing-card-contours" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="#F4F6F7" stroke-width="1" opacity="0.09">
+              <path d="M-30,420 C90,380 150,300 240,315 C330,330 370,250 460,265"/>
+              <path d="M-30,350 C100,305 165,220 255,238 C345,255 380,175 470,192"/>
+              <path d="M-30,280 C110,230 180,140 270,160 C360,180 390,100 480,118"/>
+            </g>
+          </svg>
+          <div class="pricing-card-content">
+            <h3 class="tier-name">Advanced</h3>
+            <p class="tier-price">$50<span class="tier-period">/mo</span></p>
+            <p class="tier-identity">For those who want every set dialed in.</p>
+            <ul class="tier-features">
+              <li>Everything in Base</li>
+              <li>Exact prescribed weights on primary lifts</li>
+              <li>Personalized nutrition guidance</li>
+            </ul>
+            <a href="#" class="tier-cta">Start Here</a>
+          </div>
         </div>
 
-        <div class="pricing-card">
-          <h3 class="tier-name">VIP</h3>
-          <p class="tier-price">$99<span class="tier-period">/mo</span></p>
-          <p class="tier-identity">For those who want a coach in their corner.</p>
-          <ul class="tier-features">
-            <li>Everything in Advanced</li>
-            <li>Direct email access to a coach</li>
-            <li>Priority response on questions and adjustments</li>
-          </ul>
-          <a href="#" class="tier-cta">Start Here</a>
+        <div class="pricing-card" data-reveal>
+          <svg class="pricing-card-contours" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="#F4F6F7" stroke-width="1" opacity="0.09">
+              <path d="M-30,420 C90,380 150,300 240,315 C330,330 370,250 460,265"/>
+              <path d="M-30,350 C100,305 165,220 255,238 C345,255 380,175 470,192"/>
+              <path d="M-30,280 C110,230 180,140 270,160 C360,180 390,100 480,118"/>
+            </g>
+          </svg>
+          <div class="pricing-card-content">
+            <h3 class="tier-name">VIP</h3>
+            <p class="tier-price">$99<span class="tier-period">/mo</span></p>
+            <p class="tier-identity">For those who want a coach in their corner.</p>
+            <ul class="tier-features">
+              <li>Everything in Advanced</li>
+              <li>Direct email access to a coach</li>
+              <li>Priority response on questions and adjustments</li>
+            </ul>
+            <a href="#" class="tier-cta">Start Here</a>
+          </div>
         </div>
 
       </div>
 
       <!-- Footer note — billing clarity, general until commitment-discount numbers are set -->
-      <p class="pricing-note">All plans billed monthly. Save more when you commit to longer terms.</p>
+      <p class="pricing-note" data-reveal>All plans billed monthly. Save more when you commit to longer terms.</p>
 
     </div>
   </section>
@@ -328,6 +375,13 @@
       <div class="footer-top">
 
         <div class="footer-brand">
+          <!-- Mountain mark — bookends the Hero's mark; the page opens
+               and closes with the same symbol -->
+          <span class="footer-mark" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="350 370 530 150" focusable="false">
+              <path d="M604.01 370.987C606.628 371.218 623.819 386.749 627.585 389.981C641.479 401.976 655.46 413.869 669.526 425.661C676.182 431.222 685.548 439.338 692.647 443.927C712.352 440.155 716.815 437.35 732.358 424.985C739.014 429.031 752.328 440.167 758.922 445.287C771.07 454.74 783.63 463.652 796.564 471.998C811.819 481.944 829.119 491.673 845.237 500.157C855.054 505.324 866.346 509.632 876.063 515.184C835.493 505.126 759.98 487.77 731.678 456.811C722.687 462.705 720.095 463.214 709.705 465.078C721.69 479.842 737.229 495.244 750.192 510.915C727.826 503.288 704.857 492.511 682.366 485.013C672.954 481.875 656.022 481.333 648.6 475.588C636.877 466.515 636.066 458.284 622.847 448.202C618.687 446.114 613.742 443.888 610.126 441.054C605.41 431.991 603.568 416.573 601.956 406.243C589.755 413.475 576.999 421.362 567.445 432.017C562.695 437.314 557.753 441.382 551.379 444.602C525.969 457.439 502.404 472.996 478.953 489.039C470.635 494.726 462.386 500.767 453.603 505.797C458.99 498.9 464.489 492.093 470.099 485.377C462.549 479.942 460.685 477.623 455.596 470.129C430.958 486.342 380.259 504.243 350.993 513.034C354.219 510.324 363.951 506.222 368.119 503.883C403.563 483.994 436.611 458.705 467.59 432.507C483.899 442.817 491.384 446.253 509.866 452.023C541.551 426.208 572.772 397.638 604.01 370.987Z"/>
+            </svg>
+          </span>
           <span class="footer-logo">Onus<span class="footer-logo-accent"> Fitness</span></span>
           <p class="footer-tagline">Own your why.</p>
         </div>

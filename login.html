@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In — Onus Fitness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles/main.css" />
+  <link rel="stylesheet" href="portal.css" />
+</head>
+<body class="portal-body">
+
+  <div class="portal-topbar">
+    <a href="index.html" class="portal-logo" aria-label="Onus Fitness home">
+      Onus<span class="portal-logo-accent"> Fitness</span>
+    </a>
+  </div>
+
+  <main class="auth-shell">
+    <div class="auth-card">
+      <p class="auth-eyebrow">Member Portal</p>
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-subtitle">Log in to view your program.</p>
+
+      <form class="auth-form" id="login-form" novalidate>
+        <div id="form-message" class="form-message" role="alert"></div>
+
+        <div class="form-field">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="email" autocomplete="email" required />
+        </div>
+
+        <div class="form-field">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" autocomplete="current-password" required />
+        </div>
+
+        <button type="submit" class="auth-submit" id="login-submit">Log In</button>
+      </form>
+
+      <p class="auth-switch">Don't have an account? <a href="signup.html">Create one</a></p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="portal.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Account — Onus Fitness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles/main.css" />
+  <link rel="stylesheet" href="portal.css" />
+</head>
+<body class="portal-body">
+
+  <div class="portal-topbar">
+    <a href="index.html" class="portal-logo" aria-label="Onus Fitness home">
+      Onus<span class="portal-logo-accent"> Fitness</span>
+    </a>
+    <button class="portal-logout" id="logout-btn" type="button">Log Out</button>
+  </div>
+
+  <main class="dashboard-main" id="dashboard-root">
+
+    <h1 class="dashboard-greeting">Welcome, <span id="greeting-name">...</span></h1>
+    <p class="dashboard-subhead">Here's where things stand.</p>
+
+    <section class="dashboard-section">
+      <p class="dashboard-section-title">Your Program</p>
+      <div id="order-section-content">
+        <p class="dashboard-loading">Loading...</p>
+      </div>
+    </section>
+
+    <section class="dashboard-section">
+      <p class="dashboard-section-title">Your Training Profile</p>
+      <div id="signup-summary-content">
+        <p class="dashboard-loading">Loading...</p>
+      </div>
+    </section>
+
+    <div id="vip-stats-section"></div>
+
+    <section class="dashboard-section">
+      <p class="dashboard-section-title">Your Profile</p>
+      <div class="profile-card">
+        <form id="profile-form">
+          <div id="profile-message" class="form-message" role="alert"></div>
+
+          <div class="profile-grid">
+            <div class="form-field">
+              <label for="profile-full-name">Full Name</label>
+              <input type="text" id="profile-full-name" name="full_name" autocomplete="name" />
+            </div>
+
+            <div class="form-field">
+              <label for="profile-phone">Phone</label>
+              <input type="tel" id="profile-phone" name="phone" autocomplete="tel" />
+            </div>
+          </div>
+
+          <button type="submit" class="profile-save">Save Changes</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="portal.js"></script>
+</body>
+</html>

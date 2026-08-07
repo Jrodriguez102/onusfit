@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onus Fitness — Get Started</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles/main.css" />
+  <link rel="stylesheet" href="src/styles/start.css" />
+</head>
+<body>
+
+<div class="wizard-shell">
+  <div class="wizard-topbar">
+    <div class="wordmark">ONUS<span>.</span></div>
+    <div class="step-count" id="stepCount">Get Started</div>
+  </div>
+
+  <div class="progress-track hidden" id="progressTrack">
+    <div class="progress-seg" data-seg="1"></div>
+    <div class="progress-seg" data-seg="2"></div>
+    <div class="progress-seg" data-seg="3"></div>
+    <div class="progress-seg" data-seg="4"></div>
+  </div>
+
+  <div class="panels">
+
+    <!-- ── PANEL 0 — Interstitial ── -->
+    <section class="panel active interstitial" data-panel="0">
+      <div class="panel-eyebrow">Before We Begin</div>
+      <h1 class="panel-title">Let's create your profile.</h1>
+      <p class="panel-sub">A few quick questions — about two minutes — so the program we build is actually built for you, not a template. You'll see pricing once we're done.</p>
+      <div class="interstitial-meta">
+        <div><span>2 min</span> to complete</div>
+        <div><span>4 steps</span> total</div>
+        <div><span>0</span> payment info yet</div>
+      </div>
+      <button type="button" class="btn btn-primary" id="beginBtn">Begin</button>
+    </section>
+
+    <!-- ── PANEL 1 — Goals ── -->
+    <section class="panel" data-panel="1">
+      <div class="panel-eyebrow">Your Program — Goals</div>
+      <h1 class="panel-title">What are you<br>training for?</h1>
+      <p class="panel-sub">This shapes everything about how your program is built.</p>
+
+      <div class="field-group">
+        <label class="field-label">What's your main goal?</label>
+        <div class="option-grid" id="mainGoalGrid">
+          <button type="button" class="option-card" data-value="Weight loss">
+            <div class="option-card-title">Weight loss</div>
+            <div class="option-card-desc">Sustainable fat loss without losing strength</div>
+          </button>
+          <button type="button" class="option-card" data-value="Weight maintenance">
+            <div class="option-card-title">Weight maintenance</div>
+            <div class="option-card-desc">Stay where you are, get stronger doing it</div>
+          </button>
+          <button type="button" class="option-card" data-value="Health & longevity">
+            <div class="option-card-title">Health &amp; longevity</div>
+            <div class="option-card-desc">Train for how you feel and function long-term</div>
+          </button>
+          <button type="button" class="option-card" data-value="Gain muscle mass">
+            <div class="option-card-title">Gain muscle mass</div>
+            <div class="option-card-desc">Add size and strength with structured overload</div>
+          </button>
+          <button type="button" class="option-card" data-value="Athletic performance">
+            <div class="option-card-title">Athletic performance</div>
+            <div class="option-card-desc">Train for a sport, event, or performance goal</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="field-group" style="margin-bottom: 8px;">
+        <label class="field-label">Pick two goals that matter most to you <span class="field-counter" id="subGoalCounter">0 / 2</span></label>
+        <div class="option-grid" id="subGoalGrid">
+          <button type="button" class="option-card compact" data-value="Gain muscle"><div class="option-card-title">Gain muscle</div></button>
+          <button type="button" class="option-card compact" data-value="Improve endurance"><div class="option-card-title">Improve endurance</div></button>
+          <button type="button" class="option-card compact" data-value="Improve confidence"><div class="option-card-title">Improve confidence</div></button>
+          <button type="button" class="option-card compact" data-value="Increase power"><div class="option-card-title">Increase power</div></button>
+          <button type="button" class="option-card compact" data-value="Improve strength"><div class="option-card-title">Improve strength</div></button>
+          <button type="button" class="option-card compact" data-value="Improve muscular endurance"><div class="option-card-title">Improve muscular endurance</div></button>
+          <button type="button" class="option-card compact" data-value="Build healthy habits"><div class="option-card-title">Build healthy habits</div></button>
+          <button type="button" class="option-card compact" data-value="Increase speed/quickness"><div class="option-card-title">Increase speed/quickness</div></button>
+          <button type="button" class="option-card compact" data-value="Other" id="otherGoalCard"><div class="option-card-title">Other — explain</div></button>
+        </div>
+        <div class="other-goal-wrap" id="otherGoalWrap">
+          <textarea id="otherGoalText" placeholder="Tell us more about this goal"></textarea>
+        </div>
+      </div>
+
+      <div class="wizard-nav">
+        <span></span>
+        <button type="button" class="btn btn-primary" id="toStep2" disabled>Continue</button>
+      </div>
+    </section>
+
+    <!-- ── PANEL 2 — Access & Time ── -->
+    <section class="panel" data-panel="2">
+      <div class="panel-eyebrow">Access &amp; Time</div>
+      <h1 class="panel-title">What are you<br>working with?</h1>
+      <p class="panel-sub">Your equipment and schedule decide how your program is structured week to week.</p>
+
+      <div class="field-group">
+        <label class="field-label">What best describes the equipment you have access to?</label>
+        <div class="option-grid single-col" id="equipTierGrid">
+          <button type="button" class="option-card" data-value="Full commercial gym">
+            <div class="option-card-title">Full commercial gym</div>
+            <div class="option-card-desc">Machines, free weights, cardio — everything's available</div>
+          </button>
+          <button type="button" class="option-card" data-value="Fully equipped home gym">
+            <div class="option-card-title">Fully equipped home gym</div>
+            <div class="option-card-desc">Machines + barbell, squat rack, bench, dumbbells</div>
+          </button>
+          <button type="button" class="option-card" data-value="Basic home gym">
+            <div class="option-card-title">Basic home gym</div>
+            <div class="option-card-desc">Barbell, rack, bench, dumbbells</div>
+          </button>
+          <button type="button" class="option-card" data-value="Minimal equipment">
+            <div class="option-card-title">Minimal equipment</div>
+            <div class="option-card-desc">Dumbbells, bands, boxes, bench</div>
+          </button>
+          <button type="button" class="option-card" data-value="None — bodyweight only">
+            <div class="option-card-title">None — bodyweight only</div>
+            <div class="option-card-desc">No equipment, trained entirely with bodyweight</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="field-group" style="margin-bottom: 8px;">
+        <label class="field-label">How many days a week can you train?</label>
+        <div class="option-grid tri" id="daysGrid">
+          <button type="button" class="option-card compact" data-value="3 days">
+            <div class="option-card-title">3 days</div>
+            <div class="option-card-sub">60–70 min</div>
+          </button>
+          <button type="button" class="option-card compact" data-value="4 days">
+            <div class="option-card-title">4 days</div>
+            <div class="option-card-sub">50–60 min</div>
+          </button>
+          <button type="button" class="option-card compact" data-value="5 days">
+            <div class="option-card-title">5 days</div>
+            <div class="option-card-sub">45–60 min</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="wizard-nav">
+        <button type="button" class="btn btn-ghost" data-back="1">Back</button>
+        <button type="button" class="btn btn-primary" id="toStep3" disabled>Continue</button>
+      </div>
+    </section>
+
+    <!-- ── PANEL 3 — About You ── -->
+    <section class="panel" data-panel="3">
+      <div class="panel-eyebrow">About You</div>
+      <h1 class="panel-title">A little about who<br>we're building for.</h1>
+      <p class="panel-sub">This is just for your program and your coach — nothing public.</p>
+
+      <div class="input-row">
+        <div class="field-group">
+          <label class="field-label">First name</label>
+          <input type="text" id="firstName" placeholder="Jordan">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Last name</label>
+          <input type="text" id="lastName" placeholder="Rivera">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Phone number</label>
+        <input type="tel" id="phone" placeholder="(555) 123-4567">
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Gender</label>
+        <div class="gender-row" id="genderGrid">
+          <button type="button" class="option-card compact" data-value="Male"><div class="option-card-title">Male</div></button>
+          <button type="button" class="option-card compact" data-value="Female"><div class="option-card-title">Female</div></button>
+        </div>
+      </div>
+
+      <div class="wizard-nav">
+        <button type="button" class="btn btn-ghost" data-back="2">Back</button>
+        <button type="button" class="btn btn-primary" id="toStep4" disabled>Continue</button>
+      </div>
+    </section>
+
+    <!-- ── PANEL 4 — Account creation ── -->
+    <section class="panel" data-panel="4">
+      <div class="panel-eyebrow">Last Step</div>
+      <h1 class="panel-title">Create your account.</h1>
+      <p class="panel-sub">You'll pick your plan and pay right after this — your account holds your program once it's ready.</p>
+
+      <div class="summary-card" id="summaryCard"></div>
+
+      <div class="field-group">
+        <label class="field-label">Email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+      </div>
+
+      <div class="field-group" style="margin-bottom: 20px;">
+        <label class="field-label">Password</label>
+        <input type="password" id="password" placeholder="At least 8 characters">
+      </div>
+      <p class="password-hint" style="margin-top: -12px;">Use at least 8 characters. You'll use this to log in and check your program later.</p>
+
+      <div class="field-group" style="margin-bottom: 8px;">
+        <label class="consent-row" id="consentRow">
+          <input type="checkbox" id="consentCheckbox">
+          <span class="consent-text">I agree to the <a href="#" target="_blank" rel="noopener">Privacy Policy</a> and <a href="#" target="_blank" rel="noopener">Terms of Service</a>.</span>
+        </label>
+      </div>
+
+      <div class="wizard-nav">
+        <button type="button" class="btn btn-ghost" data-back="3">Back</button>
+        <button type="button" class="btn btn-primary" id="createAccount" disabled>Create account &amp; continue to pricing</button>
+      </div>
+    </section>
+
+    <!-- ── PANEL 5 — Pricing ── -->
+    <section class="panel" data-panel="5">
+      <div class="panel-eyebrow">Choose Your Plan</div>
+      <h1 class="panel-title">Pick the plan<br>that fits.</h1>
+      <p class="panel-sub">Your account is created — this is where you'd choose a tier and pay.</p>
+
+      <div class="pricing-grid" id="pricingGrid">
+        <button type="button" class="pricing-card" data-value="Base">
+          <div class="pricing-card-title">Base</div>
+          <div class="pricing-card-price">$XX<span>/mo</span></div>
+          <ul class="pricing-card-list">
+            <li>Custom program built around your goals</li>
+            <li>Delivered to your portal each training block</li>
+            <li>Built from your intake — goals, equipment, schedule</li>
+          </ul>
+        </button>
+        <button type="button" class="pricing-card" data-value="Advanced">
+          <div class="pricing-card-title">Advanced</div>
+          <div class="pricing-card-price">$XX<span>/mo</span></div>
+          <ul class="pricing-card-list">
+            <li>Everything in Base</li>
+            <li>More frequent program updates</li>
+            <li>Deeper progression tracking</li>
+          </ul>
+        </button>
+        <button type="button" class="pricing-card" data-value="VIP">
+          <div class="pricing-card-title">VIP</div>
+          <div class="pricing-card-price">$XX<span>/mo</span></div>
+          <ul class="pricing-card-list">
+            <li>Everything in Advanced</li>
+            <li>1:1 check-ins on your maxes &amp; bodyweight</li>
+            <li>Priority support</li>
+          </ul>
+        </button>
+      </div>
+      <p class="pricing-placeholder-note">Pricing shown here is a placeholder — final tiers and pricing are still being finalized.</p>
+
+      <div class="wizard-nav">
+        <button type="button" class="btn btn-ghost" data-back="4">Back</button>
+        <button type="button" class="btn btn-primary" id="toPayment" disabled>Continue to payment</button>
+      </div>
+    </section>
+
+    <!-- ── PANEL 6 — Mock payment ── -->
+    <section class="panel" data-panel="6">
+      <div class="panel-eyebrow">Payment</div>
+      <h1 class="panel-title">Complete your order.</h1>
+      <p class="panel-sub">This is where Stripe Checkout or Stripe Elements takes over at launch — the fields below are placeholders for this prototype.</p>
+
+      <div class="mock-banner">This is a mock form. No real payment is processed here.</div>
+
+      <div class="field-group">
+        <label class="field-label">Name on card</label>
+        <input type="text" id="cardName" placeholder="Jordan Rivera">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Card number</label>
+        <input type="text" id="cardNumber" placeholder="4242 4242 4242 4242">
+      </div>
+      <div class="input-row">
+        <div class="field-group">
+          <label class="field-label">Expiry</label>
+          <input type="text" id="cardExpiry" placeholder="MM/YY">
+        </div>
+        <div class="field-group">
+          <label class="field-label">CVC</label>
+          <input type="text" id="cardCvc" placeholder="123">
+        </div>
+      </div>
+
+      <div class="wizard-nav">
+        <button type="button" class="btn btn-ghost" data-back="5">Back</button>
+        <button type="button" class="btn btn-primary" id="submitPayment">Pay &amp; finish (mock)</button>
+      </div>
+    </section>
+
+    <!-- ── PANEL 7 — Final confirmation (mock) ── -->
+    <section class="panel confirm-panel" data-panel="7">
+      <div class="confirm-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7A9BAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div class="panel-eyebrow" style="justify-content:center;">Prototype checkpoint</div>
+      <h1 class="panel-title">You're in.</h1>
+      <p class="panel-sub">No real account or payment was created — this prototype shows the full flow end to end. Everything below is what would be saved and what Stripe would process at launch.</p>
+      <div class="summary-card" id="finalSummaryCard" style="text-align:left;"></div>
+      <button type="button" class="btn btn-ghost" id="startOver">Start over</button>
+    </section>
+
+  </div>
+</div>
+
+<script src="src/scripts/start.js"></script>
+</body>
+</html>

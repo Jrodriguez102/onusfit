@@ -1,6 +1,6 @@
 /* ============================================================
    ONUS FITNESS — portal.js
-   Shared across login.html, signup.html, dashboard.html.
+   Shared across login.html, dashboard.html.
    Requires the Supabase JS CDN script to be loaded first (see
    each page's <script> tags).
    ============================================================ */
@@ -46,7 +46,7 @@ async function requireSession() {
   return session;
 }
 
-// Redirect already-signed-in visitors away from login/signup.
+// Redirect already-signed-in visitors away from login.
 async function redirectIfSignedIn() {
   const { data: { session } } = await supabaseClient.auth.getSession();
   if (session) {
@@ -57,50 +57,6 @@ async function redirectIfSignedIn() {
 async function logout() {
   await supabaseClient.auth.signOut();
   window.location.href = 'login.html';
-}
-
-
-// ── SIGNUP ────────────────────────────────────────────────────
-function initSignupForm() {
-  const form = document.getElementById('signup-form');
-  if (!form) return;
-
-  const messageEl = document.getElementById('form-message');
-  const submitBtn = document.getElementById('signup-submit');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    hideMessage(messageEl);
-
-    const email = document.getElementById('signup-email').value.trim();
-    const password = document.getElementById('signup-password').value;
-    const confirmPassword = document.getElementById('signup-confirm-password').value;
-
-    if (password !== confirmPassword) {
-      showMessage(messageEl, 'Passwords don\u2019t match.', 'error');
-      return;
-    }
-    if (password.length < 8) {
-      showMessage(messageEl, 'Password needs at least 8 characters.', 'error');
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Creating Account...';
-
-    const { error } = await supabaseClient.auth.signUp({ email, password });
-
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Create Account';
-
-    if (error) {
-      showMessage(messageEl, error.message, 'error');
-      return;
-    }
-
-    showMessage(messageEl, 'Account created. Check your email to confirm, then log in.', 'success');
-    form.reset();
-  });
 }
 
 
@@ -351,10 +307,9 @@ async function initDashboard() {
 
 // ── Run the relevant initializer for whichever page loaded this file ──
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('login-form') || document.getElementById('signup-form')) {
+  if (document.getElementById('login-form')) {
     redirectIfSignedIn();
   }
-  initSignupForm();
   initLoginForm();
   initDashboard();
 });

@@ -1,6 +1,7 @@
 /* ============================================================
    ONUS FITNESS — portal.js
-   Shared across login.html, dashboard.html.
+   Shared across login.html, dashboard.html, and index.html
+   (header account icon only).
    Requires the Supabase JS CDN script to be loaded first (see
    each page's <script> tags).
    ============================================================ */
@@ -57,6 +58,20 @@ async function redirectIfSignedIn() {
 async function logout() {
   await supabaseClient.auth.signOut();
   window.location.href = 'login.html';
+}
+
+
+// ── HEADER ACCOUNT ICON (index.html) ─────────────────────────
+// Defaults to login.html in markup; points signed-in visitors at
+// the dashboard instead.
+async function initHeaderAccount() {
+  const link = document.getElementById('header-account');
+  if (!link) return;
+
+  const { data: { session } } = await supabaseClient.auth.getSession();
+  if (session) {
+    link.href = 'dashboard.html';
+  }
 }
 
 
@@ -219,7 +234,8 @@ async function initDashboard() {
   document.getElementById('greeting-name').textContent = greetingName(profile, user);
 
   // Populate profile form
-  document.getElementById('profile-full-name').value = (profile && profile.full_name) || '';
+  document.getElementById('profile-first-name').value = (profile && profile.first_name) || '';
+  document.getElementById('profile-last-name').value = (profile && profile.last_name) || '';
   document.getElementById('profile-phone').value = (profile && profile.phone) || '';
 
   renderSignupSummary(profile);
@@ -276,7 +292,8 @@ async function initDashboard() {
     hideMessage(profileMessage);
 
     const updates = {
-      full_name: document.getElementById('profile-full-name').value.trim(),
+      first_name: document.getElementById('profile-first-name').value.trim(),
+      last_name: document.getElementById('profile-last-name').value.trim(),
       phone: document.getElementById('profile-phone').value.trim(),
       updated_at: new Date().toISOString(),
     };
@@ -291,7 +308,7 @@ async function initDashboard() {
     } else {
       showMessage(profileMessage, 'Profile updated.', 'success');
       document.getElementById('greeting-name').textContent = greetingName(
-        { ...profile, full_name: updates.full_name },
+        { ...profile, first_name: updates.first_name, last_name: updates.last_name },
         user
       );
     }
@@ -312,4 +329,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initLoginForm();
   initDashboard();
+  initHeaderAccount();
 });

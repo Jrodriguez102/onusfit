@@ -398,7 +398,7 @@ input:focus { border-color: var(--bronze); outline: none; }
 .pricing-card-list li { font-size: 0.85rem; color: var(--warm-gray-dark); padding-left: 16px; position: relative; }
 .pricing-card-list li::before { content: '✓'; color: var(--bronze); position: absolute; left: 0; }
 
-.pricing-placeholder-note {
+.pricing-note {
   font-size: 0.8rem;
   color: var(--warm-gray-dark);
   font-style: italic;

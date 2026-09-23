@@ -1,8 +1,10 @@
 /* ============================================================
    ONUS FITNESS — start.js
    Get-started signup wizard (start.html) only.
-   Mock account creation / mock payment — sessionStorage-backed
-   state, no Supabase calls. Real backend wiring is a later pass.
+   Panel 4 (account creation) is wired to Supabase via the shared
+   supabaseClient/showMessage/hideMessage from portal.js, loaded
+   before this file. Panels 5–6 (plan select, payment) are still
+   mock — sessionStorage-backed state, no Supabase calls.
    ============================================================ */
 
 const MAX_SUBGOALS = 2;
@@ -226,8 +228,72 @@ function renderSummary(targetId) {
   `;
 }
 
-// ── Panel 4 — mock account creation — Panel 5 ───────────
-document.getElementById('createAccount').addEventListener('click', () => {
+// ── Panel 4 — account creation — Panel 5 ────────────────
+const createAccountBtn = document.getElementById('createAccount');
+const accountMessage = document.getElementById('accountMessage');
+
+createAccountBtn.addEventListener('click', async () => {
+  hideMessage(accountMessage);
+  createAccountBtn.disabled = true;
+  createAccountBtn.textContent = 'Creating Account...';
+
+  const { data, error: signUpError } = await supabaseClient.auth.signUp({
+    email: state.email,
+    password: state.password,
+  });
+
+  if (signUpError) {
+    createAccountBtn.disabled = false;
+    createAccountBtn.textContent = 'Create account & continue to pricing';
+    showMessage(accountMessage, signUpError.message, 'error');
+    return;
+  }
+
+  // Maps the wizard's internal state keys to the profiles columns
+  // dashboard.html/portal.js read (see renderSignupSummary + the
+  // profile-edit form in portal.js). gender/first_name/last_name
+  // are unconfirmed against the live schema — flagged for Julian
+  // to verify.
+  const profileUpdates = {
+    main_goal: state.goal,
+    sub_goals: state.subGoals,
+    sub_goal_other: state.subGoalOther || null,
+    equipment_tier: state.equipmentTier,
+    training_days: state.schedule,
+    gender: state.gender,
+    first_name: state.firstName,
+    last_name: state.lastName,
+    phone: state.phone,
+  };
+
+  const { data: updatedRows, error: profileError } = await supabaseClient
+    .from('profiles')
+    .update(profileUpdates)
+    .eq('id', data.user.id)
+    .select();
+
+  createAccountBtn.disabled = false;
+  createAccountBtn.textContent = 'Create account & continue to pricing';
+
+  if (profileError) {
+    showMessage(accountMessage, profileError.message, 'error');
+    return;
+  }
+
+  // RLS-filtered updates don't error on a zero-row match — this is
+  // the likely symptom if email confirmation is required (no session
+  // yet right after signUp, so this request runs unauthenticated and
+  // matches nothing). Surface it rather than silently losing the
+  // wizard's answers.
+  if (!updatedRows || updatedRows.length === 0) {
+    showMessage(
+      accountMessage,
+      'Account created, but we couldn’t save your details. This usually means email confirmation is required before your account can be updated — check the Supabase auth settings.',
+      'error'
+    );
+    return;
+  }
+
   goToPanel(5);
 });
 

@@ -165,23 +165,46 @@ a {
 .header-nav a:hover { color: var(--ivory); }
 .header-nav a:hover::after { transform: scaleX(1); }
 
-/* ── CTA — solid pill */
-.header-cta {
+/* ── Right-side actions — account icon + mobile hamburger */
+.header-actions {
   justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* ── Account pill — icon + label, same treatment as the old CTA pill */
+.header-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+  height: 48px;
+  padding: 0 26px 0 20px;
+  border-radius: 100px;
+  color: var(--charcoal-dark);
+  background: var(--ivory);
+  transition: background 0.2s var(--ease), transform 0.15s var(--ease), color 0.35s var(--ease);
+}
+
+.header-account svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.header-account-label {
   font-family: var(--sans);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--charcoal-dark);
-  background: var(--ivory);
-  padding: 13px 28px;
-  border-radius: 100px;
   white-space: nowrap;
-  transition: background 0.2s var(--ease), transform 0.15s var(--ease), color 0.35s var(--ease);
 }
 
-.header-cta:hover {
+.header-account:hover {
   background: var(--bronze-light);
   color: var(--ivory);
   transform: translateY(-1px);
@@ -191,11 +214,11 @@ a {
 .site-header.scrolled .logo-wordmark { color: var(--bronze); }
 .site-header.scrolled .logo-accent { color: var(--warm-gray-dark); }
 .site-header.scrolled .header-nav a  { color: var(--charcoal); }
-.site-header.scrolled .header-cta {
+.site-header.scrolled .header-account {
   color: var(--ivory);
   background: var(--bronze);
 }
-.site-header.scrolled .header-cta:hover {
+.site-header.scrolled .header-account:hover {
   background: var(--warm-gray-dark);
 }
 .site-header.scrolled .hamburger span { background: var(--charcoal); }
@@ -212,7 +235,6 @@ a {
   border: none;
   cursor: pointer;
   padding: 0;
-  justify-self: end;
 }
 
 .hamburger span {
@@ -258,29 +280,25 @@ a {
 
 .mobile-nav a:last-child { border-bottom: none; }
 
-.mobile-cta {
-  display: inline-block;
-  margin-top: var(--space-xs);
-  font-size: 0.875rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ivory) !important;
-  background: var(--bronze);
-  padding: 0.75rem 1.5rem;
-  border-radius: 100px;
-  text-align: center;
-  border-bottom: none !important;
-}
-
 /* ── MOBILE BREAKPOINT ────────────────────────────────────── */
 @media (max-width: 768px) {
   .header-inner {
     grid-template-columns: 1fr auto;
   }
 
-  .header-nav,
-  .header-cta {
+  .header-nav {
+    display: none;
+  }
+
+  /* Collapse the pill to icon-only so it doesn't crowd the hamburger */
+  .header-account {
+    gap: 0;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-account-label {
     display: none;
   }
 

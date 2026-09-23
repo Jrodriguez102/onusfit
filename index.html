@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/styles/main.css" />
+  <link rel="stylesheet" href="src/styles/main.css?v=5" />
 </head>
 <body>
 
@@ -27,15 +27,23 @@
         <a href="#pricing">Pricing</a>
       </nav>
 
-      <!-- CTA — solid pill -->
-      <a href="start.html" class="header-cta">Start Here</a>
+      <!-- Right-side actions: account icon + mobile hamburger -->
+      <div class="header-actions">
+        <a href="login.html" class="header-account" id="header-account">
+          <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="8.5" r="3.5" fill="currentColor"/>
+            <path d="M4.5 20c0-4.5 4-7 7.5-7s7.5 2.5 7.5 7" fill="currentColor"/>
+          </svg>
+          <span class="header-account-label">Join Now</span>
+        </a>
 
-      <!-- Mobile hamburger -->
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <!-- Mobile hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
     </div>
 
@@ -45,7 +53,6 @@
         <a href="#how-we-train">Program</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#pricing">Pricing</a>
-        <a href="start.html" class="mobile-cta">Start Here</a>
       </nav>
     </div>
   </header>
@@ -434,6 +441,8 @@
   <!-- ========== /FOOTER ========== -->
 
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="portal.js"></script>
   <script src="src/scripts/main.js"></script>
 </body>
 </html>
